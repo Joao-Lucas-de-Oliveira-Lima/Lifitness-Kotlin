@@ -6,7 +6,7 @@ O Lifitness é uma aplicação completa e intuitiva para o gerenciamento de diet
 
 ### Protótipo
 
-![Lifitness Logo](https://raw.githubusercontent.com/Joao-Lucas-de-Oliveira-Lima/Lifitness-Kotlin/main/public/LifitnessLogo.png)
+[Lifitness](https://www.figma.com/file/kpAmeslbdwWbFey51SuAtt/Lifitness-prot%C3%B3tipo-1.0?type=design&node-id=4-0&mode=design&t=OroJyVva0BpYtCxa-0)
 
 ## Funcionalidades principais
 
