@@ -1,10 +1,12 @@
 package com.example.lifitness.common.composable
 
-
+import com.example.lifitness.ui.theme.cardBackground
+import com.example.lifitness.ui.theme.textColor
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,6 +33,9 @@ private fun CardEditor(
 ) {
     Card(
         modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = cardBackground
+        )
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -40,7 +45,7 @@ private fun CardEditor(
 
         ) {
             if (content.isNotBlank()) {
-                Text(text = content, fontFamily = FontFamily.SansSerif, modifier = Modifier.padding(16.dp, 0.dp))
+                Text(text = content, color = textColor, fontFamily = FontFamily.SansSerif, modifier = Modifier.padding(16.dp, 0.dp))
             }
         }
     }
