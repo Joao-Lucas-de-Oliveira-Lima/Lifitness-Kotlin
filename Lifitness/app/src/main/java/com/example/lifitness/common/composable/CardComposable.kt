@@ -17,9 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.lifitness.common.ext.textButton
 
 @Composable
-fun BioCard(
-    content: String,
-) {
+fun BioCard(content: String) {
     CardEditor(
         content = content ,
         modifier = Modifier.textButton()
