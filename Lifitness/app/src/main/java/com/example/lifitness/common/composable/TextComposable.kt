@@ -7,5 +7,5 @@ import com.example.lifitness.R.string as AppText
 
 @Composable
 fun MoreTitle(){
-    Text(stringResource(AppText.more_title))
+    return Text(stringResource(AppText.more_title))
 }
