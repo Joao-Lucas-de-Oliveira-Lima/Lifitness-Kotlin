@@ -12,9 +12,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
-fun LiFitnessLogoNameConponent(value : String){
+fun BrandLogoName(value: String) {
     Text(
         text = value,
         modifier = Modifier
@@ -22,7 +21,7 @@ fun LiFitnessLogoNameConponent(value : String){
             //Altura mínima
             .heightIn(min = 80.dp),
         style = TextStyle(
-            fontSize = 40.sp,
+            fontSize = 50.sp,
             fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.Normal
         ),

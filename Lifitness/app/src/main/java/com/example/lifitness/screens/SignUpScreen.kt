@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.lifitness.components.BrandLogoName
 import com.example.lifitness.components.NormalTextComponent
 
 @Composable
@@ -16,6 +17,6 @@ fun SignUpScreen(){
             .background(Color.Black)
             .fillMaxSize()
     ){
-
+        BrandLogoName(value = "LiFitness")
     }
 }
