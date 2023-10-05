@@ -4,5 +4,5 @@
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_email_field">email</string>
     <string name="sign_up_password_field">password</string>
-    <string name="sign_up_retype_your_password_field">Retype your password</string>
+    <string name="sign_up_retype_your_password_field">retype your password</string>
 </resources>
