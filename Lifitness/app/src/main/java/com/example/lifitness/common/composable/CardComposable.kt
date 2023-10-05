@@ -1,8 +1,9 @@
 package com.example.lifitness.common.composable
 
-import com.example.lifitness.ui.theme.cardBackground
-import com.example.lifitness.ui.theme.textColor
+import com.example.lifitness.ui.theme.CardBackground
+import com.example.lifitness.ui.theme.TextColor
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -12,13 +13,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.lifitness.common.ext.spacer
 import com.example.lifitness.common.ext.textButton
 
 @Composable
-fun BioCard(content: String) {
+fun BioCard(content: String, nickname: String) {
     CardEditor(
+        nickname = nickname,
         content = content ,
         modifier = Modifier.textButton()
     )
@@ -26,26 +31,42 @@ fun BioCard(content: String) {
 
 @Composable
 private fun CardEditor(
+    nickname: String,
     content: String,
     modifier: Modifier
 ) {
     Card(
-        modifier = modifier,
+        modifier = Modifier
+            .fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = cardBackground
+            containerColor = CardBackground
         )
     ) {
+        Spacer(modifier = Modifier.spacer())
+        Text(text = nickname,
+            color = TextColor,
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
+            modifier = Modifier.padding(start = 16.dp)
+        )
+        Spacer(modifier = Modifier.spacer())
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
 
         ) {
             if (content.isNotBlank()) {
-                Text(text = content, color = textColor, fontFamily = FontFamily.SansSerif, modifier = Modifier.padding(16.dp, 0.dp))
+                Text(text = content,
+                    color = TextColor,
+                    fontFamily = FontFamily.SansSerif,
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(24.dp, 0.dp),
+                )
             }
         }
+        Spacer(modifier = Modifier.spacer())
     }
 }
 
@@ -53,6 +74,8 @@ private fun CardEditor(
 @Preview
 fun PreviewBioCard(){
     BioCard(
+
         "My story begins with the Lifitness app, which has been my trusty companion on this fitness adventure. I believe that age is just a number, and with the right tools and mindset, we can all live life to the fullest.",
+        "Pedro Marcelo"
     )
 }
