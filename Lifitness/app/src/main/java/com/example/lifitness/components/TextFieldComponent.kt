@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.CheckboxDefaults.colors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -52,8 +53,6 @@ fun TextFieldComponent(labelValue : String){
         ),
         keyboardOptions = KeyboardOptions.Default,
         textStyle = androidx.compose.ui.text.TextStyle(color = Color.White),
-
-
 
     )
 }
