@@ -12,10 +12,20 @@ import androidx.compose.ui.unit.sp
 import com.example.lifitness.R.string as AppText
 import com.example.lifitness.ui.theme.TextColor
 
-
 @Composable
 fun MoreTitle(){
     Text(stringResource(AppText.more_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SettingsTitle(){
+    Text(stringResource(AppText.settings_title),
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 24.sp,
