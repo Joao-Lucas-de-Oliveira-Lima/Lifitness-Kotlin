@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.lifitness"
+    namespace = "com.lifitness"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.lifitness"
+        applicationId = "com.lifitness"
         minSdk = 30
         targetSdk = 33
         versionCode = 1
