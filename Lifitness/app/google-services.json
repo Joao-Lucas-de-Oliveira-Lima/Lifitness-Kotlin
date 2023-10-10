@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:209633528508:android:9a11a44d6754c4ef045eb9",
+        "mobilesdk_app_id": "1:209633528508:android:b9ffce872ec7afd6045eb9",
         "android_client_info": {
-          "package_name": "com.example.lifitness"
+          "package_name": "com.lifitness"
         }
       },
       "oauth_client": [],
