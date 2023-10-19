@@ -24,6 +24,17 @@ fun MoreTitle(){
 }
 
 @Composable
+fun EditTitle(){
+    Text(stringResource(AppText.edit_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun SettingsTitle(){
     Text(stringResource(AppText.settings_title),
         color = TextColor,
