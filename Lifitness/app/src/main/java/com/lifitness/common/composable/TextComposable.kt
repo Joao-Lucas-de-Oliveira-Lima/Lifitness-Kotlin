@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -66,6 +67,27 @@ fun HireInstructorTitle(){
         fontWeight = FontWeight.Bold
     )
 }
+@Composable
+fun HireNutricionistTitle(){
+    Text(stringResource(AppText.hireNutricionist_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DietsRecomendationTitle(){
+    Text(stringResource(AppText.dietsRecomendation_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
 
 @Composable
 fun IntermediateTitle(){
@@ -104,6 +126,37 @@ fun SpecificHealthInstructorName(instructorName: String){
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificDietName(dietName: String){
+    Text(dietName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificDietCal(dietCal: String){
+    Text(dietCal,
+        color = Color.Gray,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 5.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DietsTitle(){
+    Text(stringResource(AppText.diets_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
         fontWeight = FontWeight.Bold
     )
 }
