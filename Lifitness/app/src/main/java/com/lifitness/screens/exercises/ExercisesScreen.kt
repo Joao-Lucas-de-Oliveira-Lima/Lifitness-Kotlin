@@ -12,8 +12,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.lifitness.common.composable.BegginerTitle
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.HealthInstructorCard
+import com.lifitness.common.composable.HireInstructorTitle
+import com.lifitness.common.composable.IntermediateTitle
 import com.lifitness.common.composable.TrainsTitle
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
@@ -31,6 +34,7 @@ fun ExercisesScreen() {
                 TrainsTitle()
             }
             Spacer(modifier = Modifier.spacer())
+            HireInstructorTitle()
             Row(
                 modifier = Modifier
                     .horizontalScroll(rememberScrollState())
@@ -42,9 +46,20 @@ fun ExercisesScreen() {
                 HealthInstructorCard(exerciseName = "Carlos")
             }
             Spacer(modifier = Modifier.spacer())
-            ExerciseCard("Agachamento", "1 HORA")
-            ExerciseCard("Treino de Perna", "2 HORAS")
-            ExerciseCard("Treino de Costa", "1 HORA")
+            Column {
+                BegginerTitle()
+                ExerciseCard("TREINO DE ABDÔMEN", "20 MIN")
+                ExerciseCard("TREINO DE PEITO", "9 MIN")
+                ExerciseCard("TREINO DE BRAÇO", "17 MIN")
+                ExerciseCard("TREINO DE PERNA", "26 MIN")
+            }
+            Column {
+                IntermediateTitle()
+                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN")
+                ExerciseCard("TREINO DE PEITO", "15 MIN")
+                ExerciseCard("TREINO DE BRAÇO", "26 MIN")
+                ExerciseCard("TREINO DE PERNA", "41 MIN")
+            }
         }
     }
 }
