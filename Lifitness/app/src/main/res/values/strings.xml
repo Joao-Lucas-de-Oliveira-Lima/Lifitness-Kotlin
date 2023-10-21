@@ -7,8 +7,11 @@
     <string name="sign_up_email_field">email</string>
     <string name="sign_up_password_field">password</string>
     <string name="sign_up_retype_your_password_field">retype your password</string>
-    <string name="trains_title">TRAINS</string>
+    <string name="trains_title">TREINOS</string>
     <string name="begginer_title">TREINOS INICIANTE</string>
     <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
     <string name="hireInstructor_title">CONTRATE UM INSTRUTOR</string>
+    <string name="hireNutricionist_title">CONTRATE UM NUTRICIONISTA</string>
+    <string name="diets_title">DIETAS</string>
+    <string name="dietsRecomendation_title">RECOMENDAÇÕES DE DIETAS</string>
 </resources>
