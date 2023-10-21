@@ -41,6 +41,9 @@ fun EditorExerciseCard(exerciseName: String, exerciseDuration: String) {
         Row {
             ImageExercise()
             Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
