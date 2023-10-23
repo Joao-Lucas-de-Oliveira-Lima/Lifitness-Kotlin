@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lifitness.R
+import com.lifitness.common.composable.CheckboxComponent
 import com.lifitness.common.composable.CreateAnAccountText
 import com.lifitness.common.composable.GreetingText
 import com.lifitness.common.composable.LogoComponent
@@ -63,6 +64,8 @@ fun SignUpScreen(){
             PasswordTextFieldComponent(
                 labelValue = stringResource(id = R.string.sign_up_retype_your_password_field),
                 imageVector = Icons.Default.Lock)
+            Spacer(modifier = Modifier.height(15.dp))
+            CheckboxComponent(text = stringResource(id = R.string.privacy_policy_and_terms_of_use_text))
             Spacer(modifier = Modifier.height(80.dp))
             RegistrationScreenButtonComponent("next")
         }
