@@ -1,16 +1,11 @@
 package com.lifitness.common.composable
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.PersonOutline
 import androidx.compose.material.icons.filled.Preview
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -26,7 +21,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -34,23 +28,23 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable.*
-import com.lifitness.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextFieldComponent(labelValue : String, imageVector : ImageVector){
+fun TextFieldComponent(labelValue: String, imageVector: ImageVector) {
 
-    var textValue = remember{
+    var textValue = remember {
         mutableStateOf("")
     }
-    Row(){
+    Row() {
 
         OutlinedTextField(
             modifier = Modifier
                 .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
             label = {
-                Text(text = labelValue, color = Color.White)},
+                Text(text = labelValue, color = Color.White)
+            },
             value = textValue.value,
             onValueChange = {
                 textValue.value = it
@@ -76,11 +70,11 @@ fun TextFieldComponent(labelValue : String, imageVector : ImageVector){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordTextFieldComponent(labelValue : String, imageVector : ImageVector){
-    var textValue = remember{
+fun PasswordTextFieldComponent(labelValue: String, imageVector: ImageVector) {
+    var textValue = remember {
         mutableStateOf("")
     }
-    var isPasswordVisible = remember{
+    var isPasswordVisible = remember {
         mutableStateOf(false)
     }
     val visualTransformation = if (isPasswordVisible.value) {
@@ -117,9 +111,9 @@ fun PasswordTextFieldComponent(labelValue : String, imageVector : ImageVector){
         },
 
         trailingIcon = {
-            val iconImage = if(isPasswordVisible.value){
+            val iconImage = if (isPasswordVisible.value) {
                 Icons.Default.Visibility
-            }else{
+            } else {
                 Icons.Default.VisibilityOff
             }
             IconButton(onClick = { isPasswordVisible.value = !isPasswordVisible.value }) {
@@ -136,12 +130,12 @@ fun PasswordTextFieldComponent(labelValue : String, imageVector : ImageVector){
 
 @Preview
 @Composable
-fun PreviewTextFieldComponent(){
+fun PreviewTextFieldComponent() {
     TextFieldComponent(labelValue = "Preview", imageVector = Icons.Default.Preview)
 }
 
 @Preview
 @Composable
-fun PreviewPasswordTextFieldComponent(){
+fun PreviewPasswordTextFieldComponent() {
     PasswordTextFieldComponent(labelValue = "Preview", imageVector = Icons.Default.Lock);
 }

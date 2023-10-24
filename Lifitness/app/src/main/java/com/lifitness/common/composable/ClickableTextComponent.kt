@@ -10,67 +10,70 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ClickablePolicyTextAndTermsTextComponent(text : String){
+fun ClickablePolicyTextAndTermsTextComponent(text: String) {
     val initialText = "By continuing you accept our "
     val privacyPolicyText = "Privacy policy "
     val andText = "and "
     val termsAndConditionslText = "Term of Use"
 
     val annotatedString = buildAnnotatedString {
-        withStyle(style = SpanStyle(Color.White)){
+        withStyle(style = SpanStyle(Color.White)) {
             append(initialText)
         }
-        withStyle(style = SpanStyle(Color(173, 216, 230))){
+        withStyle(style = SpanStyle(Color(173, 216, 230))) {
             pushStringAnnotation(tag = privacyPolicyText, annotation = privacyPolicyText)
             append(privacyPolicyText)
         }
-        withStyle(style = SpanStyle(Color.White)){
+        withStyle(style = SpanStyle(Color.White)) {
             append(andText)
         }
-        withStyle(style = SpanStyle(Color(173, 216, 230))){
-            pushStringAnnotation(tag = termsAndConditionslText, annotation = termsAndConditionslText)
+        withStyle(style = SpanStyle(Color(173, 216, 230))) {
+            pushStringAnnotation(
+                tag = termsAndConditionslText,
+                annotation = termsAndConditionslText
+            )
             append(termsAndConditionslText)
         }
     }
 
-    ClickableText(text = annotatedString, onClick = {
-        offset -> annotatedString.getStringAnnotations(offset, offset)
-        .firstOrNull()?.also {
-            span -> Log.d("clickableTextComponent", "{$span.item}")
-        }
+    ClickableText(text = annotatedString, onClick = { offset ->
+        annotatedString.getStringAnnotations(offset, offset)
+            .firstOrNull()?.also { span ->
+                Log.d("clickableTextComponent", "{$span.item}")
+            }
     })
 }
 
 @Composable
-fun ClickableLoginTextComponent(text : String){
+fun ClickableLoginTextComponent(text: String) {
     val initialText = "Already hava an account? "
     val loginText = "Login"
 
     val annotatedString = buildAnnotatedString {
-        withStyle(style = SpanStyle(Color.White)){
+        withStyle(style = SpanStyle(Color.White)) {
             append(initialText)
         }
-        withStyle(style = SpanStyle(Color(173, 216, 230))){
+        withStyle(style = SpanStyle(Color(173, 216, 230))) {
             pushStringAnnotation(tag = loginText, annotation = loginText)
             append(loginText)
         }
     }
-    ClickableText(text = annotatedString, onClick = {
-            offset -> annotatedString.getStringAnnotations(offset, offset)
-        .firstOrNull()?.also {
-                span -> Log.d("clickableTextComponent", "{$span.item}")
-        }
+    ClickableText(text = annotatedString, onClick = { offset ->
+        annotatedString.getStringAnnotations(offset, offset)
+            .firstOrNull()?.also { span ->
+                Log.d("clickableTextComponent", "{$span.item}")
+            }
     })
 }
 
 @Preview
 @Composable
-fun PreviewClickablepolicyTextAndTermsTextComponent(){
+fun PreviewClickablepolicyTextAndTermsTextComponent() {
     ClickablePolicyTextAndTermsTextComponent("Preview")
 }
 
 @Preview
 @Composable
-fun PreviewClickableLoginTextComponent(){
+fun PreviewClickableLoginTextComponent() {
     ClickablePolicyTextAndTermsTextComponent(text = "preview")
 }

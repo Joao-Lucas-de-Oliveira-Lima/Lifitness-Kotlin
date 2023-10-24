@@ -45,7 +45,7 @@ fun ImageBackground() {
 }
 
 @Composable
-fun LogoComponent(minWidth : Int, minHeight : Int){
+fun LogoComponent(minWidth: Int, minHeight: Int) {
     Image(
         painter = painterResource(id = R.drawable.lifitnesslogo),
         contentDescription = "Logo",
@@ -57,18 +57,18 @@ fun LogoComponent(minWidth : Int, minHeight : Int){
 
 @Preview
 @Composable
-fun PreviewLogoImage(){
+fun PreviewLogoImage() {
     LogoComponent(60, 70)
 }
 
 @Preview
 @Composable
-fun PreviewImageProfile(){
+fun PreviewImageProfile() {
     ImageProfile()
 }
 
 @Preview
 @Composable
-fun PreviewImageBackground(){
+fun PreviewImageBackground() {
     ImageBackground()
 }

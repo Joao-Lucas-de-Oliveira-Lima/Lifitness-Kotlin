@@ -17,12 +17,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lifitness.R
-import com.lifitness.R.string as AppText
 import com.lifitness.ui.theme.TextColor
+import com.lifitness.R.string as AppText
 
 @Composable
-fun MoreTitle(){
-    Text(stringResource(AppText.more_title),
+fun MoreTitle() {
+    Text(
+        stringResource(AppText.more_title),
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 24.sp,
@@ -34,8 +35,9 @@ fun MoreTitle(){
 }
 
 @Composable
-fun SettingsTitle(){
-    Text(stringResource(AppText.settings_title),
+fun SettingsTitle() {
+    Text(
+        stringResource(AppText.settings_title),
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 24.sp,
@@ -47,7 +49,7 @@ fun SettingsTitle(){
 }
 
 @Composable
-fun GreetingText(text : String = stringResource(id = R.string.greeting_text)){
+fun GreetingText(text: String = stringResource(id = R.string.greeting_text)) {
     Text(
         text = text,
         modifier = Modifier
@@ -63,7 +65,7 @@ fun GreetingText(text : String = stringResource(id = R.string.greeting_text)){
 }
 
 @Composable
-fun CreateAnAccountText(text : String = stringResource(id = R.string.create_an_account_text)){
+fun CreateAnAccountText(text: String = stringResource(id = R.string.create_an_account_text)) {
     Text(
         text = text,
         modifier = Modifier
@@ -79,7 +81,10 @@ fun CreateAnAccountText(text : String = stringResource(id = R.string.create_an_a
 }
 
 @Composable
-fun BrandLogoNameTitle(value: String = stringResource(id = R.string.brand_logo_name), minHeight : Int) {
+fun BrandLogoNameTitle(
+    value: String = stringResource(id = R.string.brand_logo_name),
+    minHeight: Int
+) {
     Text(
         text = value,
         modifier = Modifier
@@ -98,6 +103,6 @@ fun BrandLogoNameTitle(value: String = stringResource(id = R.string.brand_logo_n
 
 @Preview
 @Composable
-fun PreviewBrandLogoNameComponent(){
+fun PreviewBrandLogoNameComponent() {
     BrandLogoNameTitle(minHeight = 80)
 }
