@@ -1,8 +1,8 @@
 package com.lifitness.common.composable
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Checkbox
@@ -24,8 +24,8 @@ fun CheckboxComponent(text : String){
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 10.dp)
-            .padding(horizontal = 30.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 50.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ){
         var isChecked = remember {
             mutableStateOf(false)
@@ -33,16 +33,6 @@ fun CheckboxComponent(text : String){
         Checkbox(checked = isChecked.value, onCheckedChange = {
             isChecked.value = !isChecked.value
         })
-        Text(
-            text = text,
-            color = Color.White,
-            fontSize = 15.sp
-        )
+        ClickablePolicyTextAndTermsTextComponent(text)
     }
-}
-
-@Preview
-@Composable
-fun PreviewCheckboxComponent(){
-    CheckboxComponent("Preview")
 }

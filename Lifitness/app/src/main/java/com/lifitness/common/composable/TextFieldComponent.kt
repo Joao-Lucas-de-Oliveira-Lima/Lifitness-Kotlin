@@ -117,14 +117,14 @@ fun PasswordTextFieldComponent(labelValue : String, imageVector : ImageVector){
         },
 
         trailingIcon = {
-            val IconImage = if(isPasswordVisible.value){
+            val iconImage = if(isPasswordVisible.value){
                 Icons.Default.Visibility
             }else{
                 Icons.Default.VisibilityOff
             }
             IconButton(onClick = { isPasswordVisible.value = !isPasswordVisible.value }) {
                 Icon(
-                    IconImage,
+                    iconImage,
                     contentDescription = "",
                     tint = Color.White
                 )

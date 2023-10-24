@@ -3,6 +3,8 @@
     <string name="greeting_text">Hey there,</string>
     <string name="create_an_account_text">Create an Account</string>
     <string name="privacy_policy_and_terms_of_use_text">By continuing you accept our Privacy Policy and Terms of Use</string>
+    <string name="return_to_login_screen_text">Already hava an account? Login</string>
+    <string name="next_title">next</string>
     <string name="more_title">MORE</string>
     <string name="settings_title">SETTINGS</string>
     <string name="brand_logo_name">LiFitness</string>
