@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Lifitness</string>
     <string name="greeting_text">Hey there,</string>
+    <string name="welcome_back_text">Welcome Back</string>
     <string name="create_an_account_text">Create an Account</string>
+    <string name="forgot_your_password_text">Forgot your password?</string>
+    <string name="login_title">login</string>
+    <string name="dont_hava_an_account_text">Don\'t hava an account yet? Register</string>
     <string name="privacy_policy_and_terms_of_use_text">By continuing you accept our Privacy Policy and Terms of Use</string>
     <string name="return_to_login_screen_text">Already hava an account? Login</string>
     <string name="next_title">next</string>

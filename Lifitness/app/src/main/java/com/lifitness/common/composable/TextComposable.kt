@@ -49,33 +49,17 @@ fun SettingsTitle() {
 }
 
 @Composable
-fun GreetingText(text: String = stringResource(id = R.string.greeting_text)) {
+fun NormalText(text : String, fontSize : Int, color : Color){
     Text(
         text = text,
         modifier = Modifier
             .fillMaxWidth(),
         style = TextStyle(
-            fontSize = 15.sp,
+            fontSize = fontSize.sp,
             fontStyle = FontStyle.Normal,
             fontWeight = FontWeight.Normal
         ),
-        color = Color.White,
-        textAlign = TextAlign.Center
-    )
-}
-
-@Composable
-fun CreateAnAccountText(text: String = stringResource(id = R.string.create_an_account_text)) {
-    Text(
-        text = text,
-        modifier = Modifier
-            .fillMaxWidth(),
-        style = TextStyle(
-            fontSize = 25.sp,
-            fontStyle = FontStyle.Normal,
-            fontWeight = FontWeight.Bold
-        ),
-        color = Color.White,
+        color = color,
         textAlign = TextAlign.Center
     )
 }
