@@ -3,6 +3,7 @@ package com.lifitness
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.Composable
 import com.lifitness.app.LiFitnessApp
 import com.lifitness.ui.theme.LifitnessTheme
 
