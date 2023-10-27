@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">Lifitness</string>
+    <string name="greeting_text">Hey there,</string>
+    <string name="create_an_account_text">Create an Account</string>
+    <string name="privacy_policy_and_terms_of_use_text">By continuing you accept our Privacy Policy and Terms of Use</string>
+    <string name="return_to_login_screen_text">Already hava an account? Login</string>
+    <string name="next_title">next</string>
     <string name="more_title">MORE</string>
     <string name="settings_title">SETTINGS</string>
     <string name="brand_logo_name">LiFitness</string>
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_email_field">email</string>
     <string name="sign_up_password_field">password</string>
-    <string name="sign_up_retype_your_password_field">retype your password</string>
+    <string name="sign_up_retype_your_password_field">confirm password</string>
     <string name="trains_title">TRAINS</string>
     <string name="begginer_title">TREINOS INICIANTE</string>
     <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
