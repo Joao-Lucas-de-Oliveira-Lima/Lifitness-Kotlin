@@ -60,6 +60,52 @@ fun TrainsTitle(){
 }
 
 @Composable
+fun ExerciseTitle(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun ExerciseDescription(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(bottom = 20.dp).padding(top = 20.dp).padding(start = 5.dp).padding(end = 5.dp),
+        textAlign = TextAlign.Center
+    )
+}
+@Composable
+fun DescriptionTitle(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp).padding(bottom = 20.dp),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun AmountExerciseTitle(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 50.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(top = 15.dp).padding(bottom = 25.dp),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
 fun GreetingText(text: String = stringResource(id = R.string.greeting_text)) {
     Text(
         text = text,
@@ -222,7 +268,7 @@ fun PersonalNutricionistTitle(){
 @Composable
 fun ContratPersonalDietTitle(){
     Text(stringResource(AppText.hirePersonalDiet_title),
-        color = Color.Black,
+        color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 20.sp,
         modifier = Modifier
