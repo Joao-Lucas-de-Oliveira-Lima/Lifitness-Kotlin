@@ -1,5 +1,8 @@
 package com.lifitness.common.composable
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -114,6 +117,28 @@ fun HireInstructorTitle(){
 }
 
 @Composable
+fun HireNutricionistTitle(){
+    Text(stringResource(AppText.hireNutricionist_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DietsRecomendationTitle(){
+    Text(stringResource(AppText.dietsRecomendation_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun IntermediateTitle(){
     Text(stringResource(AppText.intermediate_title),
         color = TextColor,
@@ -152,6 +177,61 @@ fun SpecificHealthInstructorName(instructorName: String){
         fontFamily = FontFamily.SansSerif,
         fontSize = 10.sp,
         fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificDietName(dietName: String){
+    Text(dietName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificDietCal(dietCal: String){
+    Text(dietCal,
+        color = Color.Gray,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 5.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DietsTitle(){
+    Text(stringResource(AppText.diets_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun PersonalNutricionistTitle(){
+    Text(stringResource(AppText.personalDiet_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun ContratPersonalDietTitle(){
+    Text(stringResource(AppText.hirePersonalDiet_title),
+        color = Color.Black,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier
+            .fillMaxWidth(),
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
     )
 }
 
