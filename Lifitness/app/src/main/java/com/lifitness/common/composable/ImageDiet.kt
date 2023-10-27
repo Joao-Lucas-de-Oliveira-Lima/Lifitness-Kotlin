@@ -38,7 +38,7 @@ fun ImagePersonalDiet() {
             contentDescription = "Exercise picture",
             modifier = Modifier
                 .fillMaxSize()
-                .blur(10.dp),
+                .blur(100.dp),
 
         )
 }
