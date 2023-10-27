@@ -49,6 +49,16 @@ fun SettingsTitle() {
 }
 
 @Composable
+fun TrainsTitle(){
+    Text(stringResource(AppText.trains_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+}
+
+@Composable
 fun GreetingText(text: String = stringResource(id = R.string.greeting_text)) {
     Text(
         text = text,
@@ -65,6 +75,16 @@ fun GreetingText(text: String = stringResource(id = R.string.greeting_text)) {
 }
 
 @Composable
+fun BegginerTitle(){
+    Text(stringResource(AppText.begginer_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+}
+
+@Composable
 fun CreateAnAccountText(text: String = stringResource(id = R.string.create_an_account_text)) {
     Text(
         text = text,
@@ -77,6 +97,59 @@ fun CreateAnAccountText(text: String = stringResource(id = R.string.create_an_ac
         ),
         color = Color.White,
         textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun HireInstructorTitle(){
+    Text(stringResource(AppText.hireInstructor_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun IntermediateTitle(){
+    Text(stringResource(AppText.intermediate_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificTrainTitle(trainName: String){
+    Text(trainName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificTrainDuration(trainDuration: String)
+{
+    Text(trainDuration,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificHealthInstructorName(instructorName: String){
+    Text(instructorName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
     )
 }
 
