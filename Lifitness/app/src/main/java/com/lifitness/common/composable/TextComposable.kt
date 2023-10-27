@@ -56,6 +56,7 @@ fun TrainsTitle(){
         fontSize = 24.sp,
         modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
         fontWeight = FontWeight.Bold
+    )
 }
 
 @Composable
@@ -82,6 +83,7 @@ fun BegginerTitle(){
         fontSize = 20.sp,
         modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
         fontWeight = FontWeight.Bold
+    )
 }
 
 @Composable
