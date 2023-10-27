@@ -17,6 +17,8 @@ import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.DietsTitle
 import com.lifitness.common.composable.HealthInstructorCard
 import com.lifitness.common.composable.HireNutricionistTitle
+import com.lifitness.common.composable.PersonalDietCard
+import com.lifitness.common.composable.PersonalNutricionistTitle
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
@@ -34,6 +36,7 @@ fun DietsScreen() {
             }
             Spacer(modifier = Modifier.spacer())
             HireNutricionistTitle()
+
             Row(
                 modifier = Modifier
                     .horizontalScroll(rememberScrollState())
@@ -44,6 +47,11 @@ fun DietsScreen() {
                 HealthInstructorCard(exerciseName = "Carlos")
                 HealthInstructorCard(exerciseName = "Carlos")
             }
+
+            Spacer(modifier = Modifier.spacer())
+            PersonalNutricionistTitle()
+            PersonalDietCard("pedro", "carlo")
+
             Spacer(modifier = Modifier.spacer())
             DietsRecomendationTitle()
             Row(
