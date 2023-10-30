@@ -30,9 +30,7 @@
 
     <string name="more_title">MORE</string>
     <string name="settings_title">SETTINGS</string>
-<<<<<<< HEAD
 
-=======
     <string name="trains_title">TREINOS</string>
     <string name="begginer_title">TREINOS INICIANTE</string>
     <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
@@ -42,5 +40,5 @@
     <string name="dietsRecomendation_title">RECOMENDAÇÕES DE DIETAS</string>
     <string name="personalDiet_title">SUA DIETA PESSOAL</string>
     <string name="hirePersonalDiet_title">CONTRATE UM NUTRICIONISTA</string>
->>>>>>> 14c34389b7f6ba8246049e0cb96a407a65c8be8b
+
 </resources>

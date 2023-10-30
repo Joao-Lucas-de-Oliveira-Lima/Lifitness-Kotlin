@@ -277,30 +277,3 @@ fun ContratPersonalDietTitle(){
         textAlign = TextAlign.Center,
     )
 }
-
-@Composable
-fun BrandLogoNameTitle(
-    value: String = stringResource(id = R.string.brand_logo_name),
-    minHeight: Int
-) {
-    Text(
-        text = value,
-        modifier = Modifier
-            .fillMaxWidth()
-            //Altura mínima
-            .heightIn(min = minHeight.dp),
-        style = TextStyle(
-            fontSize = 50.sp,
-            fontStyle = FontStyle.Normal,
-            fontWeight = FontWeight.Normal
-        ),
-        color = Color.White,
-        textAlign = TextAlign.Center
-    )
-}
-
-@Preview
-@Composable
-fun PreviewBrandLogoNameComponent() {
-    BrandLogoNameTitle(minHeight = 80)
-}
