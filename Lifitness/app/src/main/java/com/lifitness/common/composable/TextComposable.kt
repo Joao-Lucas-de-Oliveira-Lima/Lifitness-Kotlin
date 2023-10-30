@@ -48,3 +48,259 @@ fun SettingsTitle() {
     )
 }
 
+@Composable
+fun TrainsTitle(){
+    Text(stringResource(AppText.trains_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun ExerciseTitle(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun ExerciseDescription(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(bottom = 20.dp).padding(top = 20.dp).padding(start = 5.dp).padding(end = 5.dp),
+        textAlign = TextAlign.Center
+    )
+}
+@Composable
+fun DescriptionTitle(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp).padding(bottom = 20.dp),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun AmountExerciseTitle(exerciseName: String){
+    Text(text = exerciseName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 50.sp,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(top = 15.dp).padding(bottom = 25.dp),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun GreetingText(text: String = stringResource(id = R.string.greeting_text)) {
+    Text(
+        text = text,
+        modifier = Modifier
+            .fillMaxWidth(),
+        style = TextStyle(
+            fontSize = 15.sp,
+            fontStyle = FontStyle.Normal,
+            fontWeight = FontWeight.Normal
+        ),
+        color = Color.White,
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun BegginerTitle(){
+    Text(stringResource(AppText.begginer_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun CreateAnAccountText(text: String = stringResource(id = R.string.create_an_account_text)) {
+    Text(
+        text = text,
+        modifier = Modifier
+            .fillMaxWidth(),
+        style = TextStyle(
+            fontSize = 25.sp,
+            fontStyle = FontStyle.Normal,
+            fontWeight = FontWeight.Bold
+        ),
+        color = Color.White,
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun HireInstructorTitle(){
+    Text(stringResource(AppText.hireInstructor_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun HireNutricionistTitle(){
+    Text(stringResource(AppText.hireNutricionist_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DietsRecomendationTitle(){
+    Text(stringResource(AppText.dietsRecomendation_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun IntermediateTitle(){
+    Text(stringResource(AppText.intermediate_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificTrainTitle(trainName: String){
+    Text(trainName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificTrainDuration(trainDuration: String)
+{
+    Text(trainDuration,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificHealthInstructorName(instructorName: String){
+    Text(instructorName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificDietName(dietName: String){
+    Text(dietName,
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun SpecificDietCal(dietCal: String){
+    Text(dietCal,
+        color = Color.Gray,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 5.sp,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun DietsTitle(){
+    Text(stringResource(AppText.diets_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun PersonalNutricionistTitle(){
+    Text(stringResource(AppText.personalDiet_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun ContratPersonalDietTitle(){
+    Text(stringResource(AppText.hirePersonalDiet_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier
+            .fillMaxWidth(),
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
+fun BrandLogoNameTitle(
+    value: String = stringResource(id = R.string.brand_logo_name),
+    minHeight: Int
+) {
+    Text(
+        text = value,
+        modifier = Modifier
+            .fillMaxWidth()
+            //Altura mínima
+            .heightIn(min = minHeight.dp),
+        style = TextStyle(
+            fontSize = 50.sp,
+            fontStyle = FontStyle.Normal,
+            fontWeight = FontWeight.Normal
+        ),
+        color = Color.White,
+        textAlign = TextAlign.Center
+    )
+}
+
+@Preview
+@Composable
+fun PreviewBrandLogoNameComponent() {
+    BrandLogoNameTitle(minHeight = 80)
+}
