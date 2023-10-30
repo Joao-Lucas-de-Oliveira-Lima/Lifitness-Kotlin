@@ -9,6 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--Screen colors-->
-    <color name="screen_background_color">#1B1717
-    </color>
+    <color name="screen_background_color">#1B1717</color>
 </resources>

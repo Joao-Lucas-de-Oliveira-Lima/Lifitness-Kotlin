@@ -1,6 +1,6 @@
 package com.lifitness.screens.register
 
-import ButtonWithoutIconComponent
+import ButtonWithoutIconComposable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,13 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lifitness.R
-import com.lifitness.common.composable.CheckboxComponent
+import com.lifitness.common.composable.CheckboxComposable
 import com.lifitness.common.composable.ClickableLoginTextComponent
-import com.lifitness.common.composable.DividerTextComponent
+import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.LogoComponent
-import com.lifitness.common.composable.NormalText
-import com.lifitness.common.composable.PasswordTextFieldComponent
-import com.lifitness.common.composable.TextFieldComponent
+import com.lifitness.common.composable.NormalTextComposable
+import com.lifitness.common.composable.PasswordTextFieldComposable
+import com.lifitness.common.composable.TextFieldComposable
 
 @Composable
 fun SignUpScreen() {
@@ -44,40 +44,40 @@ fun SignUpScreen() {
             Spacer(modifier = Modifier.height(20.dp))
             LogoComponent(60, 70)
             Spacer(modifier = Modifier.height(5.dp))
-            NormalText(
+            NormalTextComposable(
                 text = stringResource(id = R.string.greeting_text),
                 fontSize = 15,
                 color = Color.White
             )
-            NormalText(
+            NormalTextComposable(
                 text = stringResource(id = R.string.create_an_account_text),
                 fontSize = 25,
                 color = Color.White
             )
             Spacer(modifier = Modifier.height(5.dp))
-            TextFieldComponent(
+            TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_username_field),
                 imageVector = Icons.Default.Person
             )
             Spacer(modifier = Modifier.height(10.dp))
-            TextFieldComponent(
+            TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_email_field),
                 imageVector = Icons.Default.Email
             )
             Spacer(modifier = Modifier.height(10.dp))
-            PasswordTextFieldComponent(
+            PasswordTextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_password_field),
                 imageVector = Icons.Default.Lock
             )
             Spacer(modifier = Modifier.height(10.dp))
-            PasswordTextFieldComponent(
+            PasswordTextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_retype_your_password_field),
                 imageVector = Icons.Default.Lock
             )
             Spacer(modifier = Modifier.height(5.dp))
-            CheckboxComponent(text = stringResource(id = R.string.privacy_policy_and_terms_of_use_text))
+            CheckboxComposable(text = stringResource(id = R.string.privacy_policy_and_terms_of_use_text))
             Spacer(modifier = Modifier.height(50.dp))
-            ButtonWithoutIconComponent(
+            ButtonWithoutIconComposable(
                 text = stringResource(id = R.string.next_title),
                 textColor = Color.Black,
                 fontSize = 17,
@@ -86,8 +86,8 @@ fun SignUpScreen() {
                 horizontalPadding = 50
             )
             Spacer(modifier = Modifier.height(5.dp))
-            DividerTextComponent(
-                text = "Or",
+            DividerTextComposable(
+                text = stringResource(id = R.string.divisive_text),
                 fontSize = 18,
                 color = Color.White,
                 thickness = 1
@@ -100,6 +100,6 @@ fun SignUpScreen() {
 
 @Preview
 @Composable
-fun defaultPreviewSignUpScreen() {
+fun PreviewSignUpScreen() {
     SignUpScreen()
 }

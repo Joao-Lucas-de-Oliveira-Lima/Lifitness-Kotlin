@@ -1,6 +1,6 @@
 package com.lifitness.screens.profile
 
-import DefaultButton
+import com.lifitness.common.composable.DefaultButton
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

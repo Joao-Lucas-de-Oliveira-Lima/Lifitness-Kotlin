@@ -9,11 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DividerTextComponent(text: String, fontSize: Int, color: Color, thickness: Int) {
+fun DividerTextComposable(text: String, fontSize: Int, color: Color, thickness: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,4 +41,10 @@ fun DividerTextComponent(text: String, fontSize: Int, color: Color, thickness: I
             thickness = thickness.dp
         )
     }
+}
+
+@Preview
+@Composable
+fun PreviewDividerTextComposable(){
+    DividerTextComposable(text = "Preview", fontSize = 20, color = Color.White, thickness = 1)
 }

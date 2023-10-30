@@ -1,6 +1,6 @@
 package com.lifitness.screens.login
 
-import ButtonWithoutIconComponent
+import ButtonWithoutIconComposable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,11 +22,11 @@ import androidx.compose.ui.unit.dp
 import com.lifitness.R
 import com.lifitness.common.composable.ClickableDontHaveAnAccountTextComponent
 import com.lifitness.common.composable.ClickableForgotYouPasswordTextComponent
-import com.lifitness.common.composable.DividerTextComponent
+import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.LogoComponent
-import com.lifitness.common.composable.NormalText
-import com.lifitness.common.composable.PasswordTextFieldComponent
-import com.lifitness.common.composable.TextFieldComponent
+import com.lifitness.common.composable.NormalTextComposable
+import com.lifitness.common.composable.PasswordTextFieldComposable
+import com.lifitness.common.composable.TextFieldComposable
 
 @Composable
 fun LoginScreen() {
@@ -43,30 +43,30 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(20.dp))
             LogoComponent(60, 70)
             Spacer(modifier = Modifier.height(5.dp))
-            NormalText(
+            NormalTextComposable(
                 text = stringResource(id = R.string.greeting_text),
                 fontSize = 15,
                 color = Color.White
             )
-            NormalText(
+            NormalTextComposable(
                 text = stringResource(id = R.string.welcome_back_text),
                 fontSize = 25,
                 color = Color.White
             )
             Spacer(modifier = Modifier.height(5.dp))
-            TextFieldComponent(
+            TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_username_field),
                 imageVector = Icons.Default.Person
             )
             Spacer(modifier = Modifier.height(10.dp))
-            PasswordTextFieldComponent(
+            PasswordTextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_password_field),
                 imageVector = Icons.Default.Lock
             )
             Spacer(modifier = Modifier.height(10.dp))
             ClickableForgotYouPasswordTextComponent(text = stringResource(id = R.string.forgot_your_password_text))
             Spacer(modifier = Modifier.height(200.dp))
-            ButtonWithoutIconComponent(
+            ButtonWithoutIconComposable(
                 text = stringResource(id = R.string.login_title),
                 textColor = Color.Black,
                 fontSize = 17,
@@ -74,8 +74,8 @@ fun LoginScreen() {
                 buttonColor = Color.White,
                 horizontalPadding = 50
             )
-            DividerTextComponent(
-                text = "Or",
+            DividerTextComposable(
+                text = stringResource(id = R.string.divisive_text),
                 fontSize = 18,
                 color = Color.White,
                 thickness = 1
