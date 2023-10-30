@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun CheckboxComponent(text: String) {
+fun CheckboxComposable(text: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

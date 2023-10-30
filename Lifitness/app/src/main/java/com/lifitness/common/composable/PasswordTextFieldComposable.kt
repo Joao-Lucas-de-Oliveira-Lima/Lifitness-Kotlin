@@ -1,12 +1,10 @@
 package com.lifitness.common.composable
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Preview
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,50 +25,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.R.drawable.*
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextFieldComponent(labelValue: String, imageVector: ImageVector) {
-
-    var textValue = remember {
-        mutableStateOf("")
-    }
-    Row() {
-
-        OutlinedTextField(
-            modifier = Modifier
-                .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
-            label = {
-                Text(text = labelValue, color = Color.White)
-            },
-            value = textValue.value,
-            onValueChange = {
-                textValue.value = it
-            },
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                unfocusedBorderColor = Color.White,
-                focusedBorderColor = Color.White,
-                focusedLabelColor = Color.White,
-                cursorColor = Color.White,
-            ),
-            keyboardOptions = KeyboardOptions.Default,
-            textStyle = androidx.compose.ui.text.TextStyle(color = Color.White),
-            leadingIcon = {
-                Icon(
-                    imageVector,
-                    contentDescription = "",
-                    tint = Color.White
-                )
-            }
-        )
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun PasswordTextFieldComponent(labelValue: String, imageVector: ImageVector) {
+fun PasswordTextFieldComposable(labelValue: String, imageVector: ImageVector) {
     var textValue = remember {
         mutableStateOf("")
     }
@@ -130,12 +88,6 @@ fun PasswordTextFieldComponent(labelValue: String, imageVector: ImageVector) {
 
 @Preview
 @Composable
-fun PreviewTextFieldComponent() {
-    TextFieldComponent(labelValue = "Preview", imageVector = Icons.Default.Preview)
-}
-
-@Preview
-@Composable
-fun PreviewPasswordTextFieldComponent() {
-    PasswordTextFieldComponent(labelValue = "Preview", imageVector = Icons.Default.Lock);
+fun PreviewPasswordTextFieldComposable() {
+    PasswordTextFieldComposable(labelValue = "Preview", imageVector = Icons.Default.Lock);
 }

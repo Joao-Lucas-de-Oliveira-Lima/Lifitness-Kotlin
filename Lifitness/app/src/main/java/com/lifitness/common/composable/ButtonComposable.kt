@@ -1,3 +1,5 @@
+package com.lifitness.common.composable
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,40 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lifitness.ui.theme.ButtonColorPerfil
-
-@Composable
-fun ButtonWithoutIconComponent(
-    text: String,
-    textColor: Color,
-    fontSize: Int,
-    minHeight: Int,
-    buttonColor: Color,
-    horizontalPadding: Int
-) {
-    Button(
-        onClick = {},
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(minHeight.dp)
-            .padding(horizontal = horizontalPadding.dp),
-        colors = ButtonDefaults.buttonColors(buttonColor),
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(minHeight.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = text,
-                color = textColor,
-                fontSize = fontSize.sp,
-                //Provisional
-                fontWeight = FontWeight.Bold
-            )
-        }
-    }
-}
 
 @Composable
 fun DefaultButton(

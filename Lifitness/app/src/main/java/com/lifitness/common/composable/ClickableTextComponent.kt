@@ -66,6 +66,47 @@ fun ClickableLoginTextComponent(text: String) {
     })
 }
 
+@Composable
+fun ClickableForgotYouPasswordTextComponent(text: String) {
+    val text = "Forgot your password? "
+
+    val annotatedString = buildAnnotatedString {
+        withStyle(style = SpanStyle(Color(173, 216, 230))) {
+            pushStringAnnotation(tag = text, annotation = text)
+            append(text)
+        }
+    }
+    ClickableText(text = annotatedString, onClick = { offset ->
+        annotatedString.getStringAnnotations(offset, offset)
+            .firstOrNull()?.also { span ->
+                Log.d("clickableTextComponent", "{$span.item}")
+            }
+    })
+}
+
+
+@Composable
+fun ClickableDontHaveAnAccountTextComponent(text: String) {
+    val initialText = "Don't hava an account yet? "
+    val registerText = "Register"
+
+    val annotatedString = buildAnnotatedString {
+        withStyle(style = SpanStyle(Color.White)) {
+            append(initialText)
+        }
+        withStyle(style = SpanStyle(Color(173, 216, 230))) {
+            pushStringAnnotation(tag = registerText, annotation = registerText)
+            append(registerText)
+        }
+    }
+    ClickableText(text = annotatedString, onClick = { offset ->
+        annotatedString.getStringAnnotations(offset, offset)
+            .firstOrNull()?.also { span ->
+                Log.d("clickableTextComponent", "{$span.item}")
+            }
+    })
+}
+
 @Preview
 @Composable
 fun PreviewClickablepolicyTextAndTermsTextComponent() {
