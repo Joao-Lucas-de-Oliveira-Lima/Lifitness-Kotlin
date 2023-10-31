@@ -56,6 +56,7 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(5.dp))
             TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_username_field),
+                hasAnIcon = true,
                 imageVector = Icons.Default.Person
             )
             Spacer(modifier = Modifier.height(10.dp))

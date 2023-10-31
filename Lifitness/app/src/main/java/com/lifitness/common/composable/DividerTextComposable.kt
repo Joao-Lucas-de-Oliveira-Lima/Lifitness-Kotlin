@@ -45,6 +45,6 @@ fun DividerTextComposable(text: String, fontSize: Int, color: Color, thickness: 
 
 @Preview
 @Composable
-fun PreviewDividerTextComposable(){
+fun PreviewDividerTextComposable() {
     DividerTextComposable(text = "Preview", fontSize = 20, color = Color.White, thickness = 1)
 }

@@ -26,10 +26,11 @@ import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.PasswordTextFieldComposable
+import com.lifitness.common.composable.RegistrationProgressBarComposable
 import com.lifitness.common.composable.TextFieldComposable
 
 @Composable
-fun SignUpScreen() {
+fun MainRegistrationScreen() {
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.screen_background_color))
@@ -41,13 +42,20 @@ fun SignUpScreen() {
                 .align(Alignment.TopCenter)
                 .fillMaxSize(),
         ) {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(15.dp))
+            RegistrationProgressBarComposable(
+                currentStep = 1,
+                totalSteps = 5,
+                Color(255, 102, 102),
+                160
+            )
+            Spacer(modifier = Modifier.height(5.dp))
             LogoComponent(60, 70)
             Spacer(modifier = Modifier.height(5.dp))
             NormalTextComposable(
                 text = stringResource(id = R.string.greeting_text),
                 fontSize = 15,
-                color = Color.White
+                color = Color.White,
             )
             NormalTextComposable(
                 text = stringResource(id = R.string.create_an_account_text),
@@ -57,11 +65,13 @@ fun SignUpScreen() {
             Spacer(modifier = Modifier.height(5.dp))
             TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_username_field),
+                hasAnIcon = true,
                 imageVector = Icons.Default.Person
             )
             Spacer(modifier = Modifier.height(10.dp))
             TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_email_field),
+                hasAnIcon = true,
                 imageVector = Icons.Default.Email
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -92,14 +102,15 @@ fun SignUpScreen() {
                 color = Color.White,
                 thickness = 1
             )
-
             ClickableLoginTextComponent(text = stringResource(id = R.string.create_an_account_text))
+            Spacer(modifier = Modifier.height(5.dp))
+
         }
     }
 }
 
 @Preview
 @Composable
-fun PreviewSignUpScreen() {
-    SignUpScreen()
+fun PreviewMainRegistrationScreen() {
+    MainRegistrationScreen()
 }

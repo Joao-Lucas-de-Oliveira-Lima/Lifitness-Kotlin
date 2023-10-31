@@ -23,12 +23,12 @@ import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
 fun ExercisesScreen() {
-    Box (
+    Box(
         modifier = Modifier
             .background(BackgroundColor)
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-    ){
+    ) {
         Column {
             Row {
                 TrainsTitle()

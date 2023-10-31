@@ -2,14 +2,14 @@
 
     <string name="app_name">Lifitness</string>
 
-    <!--Registration and login screen-->
+    <!--Main registration and login screen-->
 
     <string name="greeting_text">Hey there,</string>
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_password_field">password</string>
     <string name="divisive_text">or</string>
 
-    <!--Registration screen-->
+    <!--Main registration screen-->
 
     <string name="create_an_account_text">Create an Account</string>
     <string name="welcome_back_text">Welcome Back</string>
@@ -18,6 +18,13 @@
     <string name="sign_up_email_field">email</string>
     <string name="sign_up_retype_your_password_field">confirm password</string>
     <string name="return_to_login_screen_text">Already hava an account? Login</string>
+
+    <!--Personal Data Registration Screen-->
+
+    <string name="personal_data_registration_screen_greeting_text">To help our professionals offer a service made especially for you</string>
+    <string name="personal_data_registration_screen_age_field">Age</string>
+    <string name="personal_data_registration_screen_height_field">Height (cm)</string>
+    <string name="personal_data_registration_screen_weight_field">Weight (kg)</string>
 
     <!--Login screen-->
 
