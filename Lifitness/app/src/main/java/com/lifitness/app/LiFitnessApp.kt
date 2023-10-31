@@ -6,15 +6,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.lifitness.screens.register.SignUpScreen
+import com.lifitness.screens.login.LoginScreen
 
 @Composable
-fun LiFitnessApp(){
+fun LiFitnessApp() {
     Surface(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-    ){
-        SignUpScreen()
+    ) {
+        LoginScreen()
     }
 }

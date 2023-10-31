@@ -2,14 +2,14 @@
 
     <string name="app_name">Lifitness</string>
 
-    <!--Registration and login screen-->
+    <!--Main registration and login screen-->
 
     <string name="greeting_text">Hey there,</string>
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_password_field">password</string>
     <string name="divisive_text">or</string>
 
-    <!--Registration screen-->
+    <!--Main registration screen-->
 
     <string name="create_an_account_text">Create an Account</string>
     <string name="welcome_back_text">Welcome Back</string>
