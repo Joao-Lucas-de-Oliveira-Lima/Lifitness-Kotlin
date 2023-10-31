@@ -65,5 +65,9 @@ fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: Ima
 @Preview
 @Composable
 fun PreviewTextFieldComposable() {
-    TextFieldComposable(labelValue = "Preview", hasAnIcon = true, imageVector = Icons.Default.Preview)
+    TextFieldComposable(
+        labelValue = "Preview",
+        hasAnIcon = true,
+        imageVector = Icons.Default.Preview
+    )
 }

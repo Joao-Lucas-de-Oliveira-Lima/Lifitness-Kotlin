@@ -1,4 +1,4 @@
-package com.lifitness.screens.login
+package com.lifitness.screens.register
 
 import ButtonWithoutIconComposable
 import androidx.compose.foundation.Image
@@ -81,17 +81,17 @@ fun PersonalDataRegistrationScreen() {
             }
             Spacer(modifier = Modifier.height(5.dp))
             NormalTextComposable(
-                text = "To help our professionals offer a service made especially for you",
+                text = stringResource(id = R.string.personal_data_registration_screen_greeting_text),
                 fontSize = 15,
                 color = Color.White,
                 horizontalPadding = 50
             )
             Spacer(modifier = Modifier.height(10.dp))
-            TextFieldWithoutIconComposable(labelValue = "Age ")
+            TextFieldWithoutIconComposable(labelValue = stringResource(id = R.string.personal_data_registration_screen_age_field))
             Spacer(modifier = Modifier.height(10.dp))
-            TextFieldWithoutIconComposable(labelValue = "Height (cm) ")
+            TextFieldWithoutIconComposable(labelValue = stringResource(id = R.string.personal_data_registration_screen_height_field))
             Spacer(modifier = Modifier.height(10.dp))
-            TextFieldWithoutIconComposable(labelValue = "Weight (kg) ")
+            TextFieldWithoutIconComposable(labelValue = stringResource(id = R.string.personal_data_registration_screen_weight_field))
             Spacer(modifier = Modifier.height(170.dp))
             ButtonWithoutIconComposable(
                 text = stringResource(id = R.string.next_title),

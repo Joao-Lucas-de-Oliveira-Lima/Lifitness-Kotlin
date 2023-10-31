@@ -19,6 +19,13 @@
     <string name="sign_up_retype_your_password_field">confirm password</string>
     <string name="return_to_login_screen_text">Already hava an account? Login</string>
 
+    <!--Personal Data Registration Screen-->
+
+    <string name="personal_data_registration_screen_greeting_text">To help our professionals offer a service made especially for you</string>
+    <string name="personal_data_registration_screen_age_field">Age</string>
+    <string name="personal_data_registration_screen_height_field">Height (cm)</string>
+    <string name="personal_data_registration_screen_weight_field">Weight (kg)</string>
+
     <!--Login screen-->
 
     <string name="forgot_your_password_text">Forgot your password?</string>

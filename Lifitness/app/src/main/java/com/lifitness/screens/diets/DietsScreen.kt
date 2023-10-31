@@ -59,8 +59,8 @@ fun DietsScreen() {
                     .horizontalScroll(rememberScrollState())
             ) {
                 DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                DietRecomendationCard(exerciseName = "Feijão Mulato" , "200CAL")
-                DietRecomendationCard(exerciseName = "Frango" , "200CAL")
+                DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
+                DietRecomendationCard(exerciseName = "Frango", "200CAL")
                 DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
                 DietRecomendationCard(exerciseName = "Saladas", "200CAL")
             }
@@ -99,7 +99,6 @@ fun DietsScreen() {
         }
     }
 }
-
 
 
 @Preview
