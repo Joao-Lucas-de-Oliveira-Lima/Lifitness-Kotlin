@@ -1,11 +1,53 @@
 <resources>
+
     <string name="app_name">Lifitness</string>
-    <string name="more_title">MORE</string>
-    <string name="settings_title">SETTINGS</string>
-    <string name="brand_logo_name">LiFitness</string>
+
+    <!--Main registration and login screen-->
+
+    <string name="greeting_text">Hey there,</string>
     <string name="sign_up_username_field">username</string>
-    <string name="sign_up_email_field">email</string>
     <string name="sign_up_password_field">password</string>
     <string name="sign_up_retype_your_password_field">retype your password</string>
     <string name="edit_title">EDIT PROFILE</string>
+
+    <string name="divisive_text">or</string>
+
+    <!--Main registration screen-->
+
+    <string name="create_an_account_text">Create an Account</string>
+    <string name="welcome_back_text">Welcome Back</string>
+    <string name="privacy_policy_and_terms_of_use_text">By continuing you accept our Privacy Policy and Terms of Use</string>
+    <string name="next_title">next</string>
+    <string name="sign_up_email_field">email</string>
+    <string name="return_to_login_screen_text">Already hava an account? Login</string>
+
+    <!--Personal Data Registration Screen-->
+
+    <string name="personal_data_registration_screen_greeting_text">To help our professionals offer a service made especially for you</string>
+    <string name="personal_data_registration_screen_age_field">Age</string>
+    <string name="personal_data_registration_screen_height_field">Height (cm)</string>
+    <string name="personal_data_registration_screen_weight_field">Weight (kg)</string>
+
+    <!--Login screen-->
+
+    <string name="forgot_your_password_text">Forgot your password?</string>
+    <string name="login_title">login</string>
+    <string name="dont_hava_an_account_text">Don\'t hava an account yet? Register</string>
+
+
+    <!--Profile screen-->
+
+    <string name="more_title">MORE</string>
+    <string name="settings_title">SETTINGS</string>
+
+    <string name="trains_title">TREINOS</string>
+    <string name="begginer_title">TREINOS INICIANTE</string>
+    <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
+    <string name="hireInstructor_title">CONTRATE UM INSTRUTOR</string>
+    <string name="hireNutricionist_title">NUTRICIONISTAS</string>
+    <string name="diets_title">DIETAS</string>
+    <string name="dietsRecomendation_title">RECOMENDAÇÕES DE DIETAS</string>
+    <string name="personalDiet_title">SUA DIETA PESSOAL</string>
+    <string name="hirePersonalDiet_title">CONTRATE UM NUTRICIONISTA</string>
+
 </resources>

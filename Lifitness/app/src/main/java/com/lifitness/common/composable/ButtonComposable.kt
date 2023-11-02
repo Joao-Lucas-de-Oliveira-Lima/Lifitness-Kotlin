@@ -1,3 +1,5 @@
+package com.lifitness.common.composable
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -31,8 +33,8 @@ fun DefaultButton(
     Button(
         onClick = { onClick() },
         modifier = Modifier
-                    .fillMaxWidth()
-                    .height(85.dp),
+            .fillMaxWidth()
+            .height(85.dp),
         shape = RoundedCornerShape(10),
         border = BorderStroke(1.dp, Color.Gray),
         colors = ButtonDefaults.buttonColors(buttonColor)
@@ -85,7 +87,7 @@ fun SmallButton(
 
 @Composable
 @Preview
-fun PreviewButton(){
+fun PreviewButton() {
 
     DefaultButton(
         contentIcon = Icons.Default.ExitToApp,
