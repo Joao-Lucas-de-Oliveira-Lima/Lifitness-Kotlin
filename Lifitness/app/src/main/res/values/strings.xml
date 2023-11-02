@@ -7,6 +7,9 @@
     <string name="greeting_text">Hey there,</string>
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_password_field">password</string>
+    <string name="sign_up_retype_your_password_field">retype your password</string>
+    <string name="edit_title">EDIT PROFILE</string>
+
     <string name="divisive_text">or</string>
 
     <!--Main registration screen-->
@@ -16,7 +19,6 @@
     <string name="privacy_policy_and_terms_of_use_text">By continuing you accept our Privacy Policy and Terms of Use</string>
     <string name="next_title">next</string>
     <string name="sign_up_email_field">email</string>
-    <string name="sign_up_retype_your_password_field">confirm password</string>
     <string name="return_to_login_screen_text">Already hava an account? Login</string>
 
     <!--Personal Data Registration Screen-->

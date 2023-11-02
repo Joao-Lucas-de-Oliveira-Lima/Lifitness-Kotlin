@@ -11,3 +11,4 @@ fun Modifier.textButton(): Modifier {
 fun Modifier.spacer(): Modifier {
     return this.fillMaxWidth().padding(12.dp)
 }
+
