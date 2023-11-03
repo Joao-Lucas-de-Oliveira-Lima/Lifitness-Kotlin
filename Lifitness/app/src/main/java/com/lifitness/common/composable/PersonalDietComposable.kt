@@ -40,7 +40,7 @@ fun EditorPersonalDietCard(healthInstructorName: String, dietCal: String) {
             contentAlignment = Alignment.Center
         ) {
             ImagePersonalDiet()
-            ContratPersonalDietTitle()
+            HirePersonalDietTitle()
         }
     }
 }
