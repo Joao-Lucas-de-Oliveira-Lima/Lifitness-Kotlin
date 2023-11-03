@@ -266,8 +266,32 @@ fun PersonalNutricionistTitle(){
 }
 
 @Composable
-fun ContratPersonalDietTitle(){
+fun PersonalTrainerTitle(){
+    Text(stringResource(AppText.personalTrainer_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun HirePersonalDietTitle(){
     Text(stringResource(AppText.hirePersonalDiet_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier
+            .fillMaxWidth(),
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
+fun HirePersonalTrainerTitle(){
+    Text(stringResource(AppText.hirePersonalTrainer_title),
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 20.sp,
