@@ -17,12 +17,12 @@ import androidx.compose.ui.unit.dp
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun PersonalDietCard(exerciseName: String, dietCal: String) {
-    EditorPersonalDietCard(exerciseName, dietCal)
+fun PersonalTrainCard(exerciseName: String, dietCal: String) {
+    EditorTrainCard(exerciseName, dietCal)
 }
 
 @Composable
-fun EditorPersonalDietCard(healthInstructorName: String, dietCal: String) {
+fun EditorTrainCard(healthInstructorName: String, dietCal: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -39,8 +39,8 @@ fun EditorPersonalDietCard(healthInstructorName: String, dietCal: String) {
                 .fillMaxHeight(),
             contentAlignment = Alignment.Center
         ) {
-            ImagePersonalDiet()
-            HirePersonalDietTitle()
+            ImagePersonalTrain()
+            HirePersonalTrainerTitle()
         }
     }
 }
@@ -49,6 +49,6 @@ fun EditorPersonalDietCard(healthInstructorName: String, dietCal: String) {
 
 @Preview
 @Composable
-fun PreviewEditorPersonalDietCard() {
-    PersonalDietCard(exerciseName = "Cassandra", "200CAL")
+fun PreviewEditorPersonalTrainCard() {
+    PersonalTrainCard(exerciseName = "Cassandra", "200CAL")
 }

@@ -1,7 +1,6 @@
 package com.lifitness.common.composable
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,7 +12,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lifitness.R
@@ -299,8 +297,32 @@ fun PersonalNutricionistTitle(){
 }
 
 @Composable
-fun ContratPersonalDietTitle(){
+fun PersonalTrainerTitle(){
+    Text(stringResource(AppText.personalTrainer_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun HirePersonalDietTitle(){
     Text(stringResource(AppText.hirePersonalDiet_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier
+            .fillMaxWidth(),
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
+fun HirePersonalTrainerTitle(){
+    Text(stringResource(AppText.hirePersonalTrainer_title),
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 20.sp,
