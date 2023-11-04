@@ -1,19 +1,16 @@
 package com.lifitness
 
-import DefaultButton
-import SmallButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.ui.test.assertContentDescriptionContains
-import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertHeightIsEqualTo
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
-import androidx.compose.ui.test.assertWidthIsEqualTo
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.lifitness.common.composable.SmallButton
+import com.lifitness.common.composable.DefaultButton
 import com.lifitness.ui.theme.ButtonColorProfile
 
 import org.junit.Test
