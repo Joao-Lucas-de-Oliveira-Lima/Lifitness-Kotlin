@@ -24,7 +24,7 @@ import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
 import com.lifitness.ui.theme.CardBackground
-import com.lifitness.ui.theme.CardRed
+import com.lifitness.ui.theme.RedChart
 import com.lifitness.ui.theme.GrayCard
 
 @Composable
@@ -74,18 +74,18 @@ fun WeightLineChart() {
                 Line(
                     dataPoints = pointsData,
                     LineStyle(
-                        color = CardRed,
+                        color = RedChart,
                         lineType = LineType.Straight(isDotted = false)
                     ),
                     IntersectionPoint(
-                        color = CardRed
+                        color = RedChart
                     ),
                     SelectionHighlightPoint(color = MaterialTheme.colorScheme.primary),
                     ShadowUnderLine(
                         alpha = 0.5f,
                         brush = Brush.verticalGradient(
                             colors = listOf(
-                                CardRed,
+                                RedChart,
                                 CardBackground
                             )
                         )

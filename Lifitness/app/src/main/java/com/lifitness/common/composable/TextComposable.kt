@@ -277,6 +277,17 @@ fun DietsTitle(){
 }
 
 @Composable
+fun ClientsTitle(){
+    Text(stringResource(AppText.clients_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun PersonalNutricionistTitle(){
     Text(stringResource(AppText.personalDiet_title),
         color = TextColor,

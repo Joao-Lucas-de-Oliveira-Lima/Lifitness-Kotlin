@@ -40,6 +40,9 @@
     <string name="more_title">MORE</string>
     <string name="settings_title">SETTINGS</string>
 
+    <!--Clients list screen-->
+    <string name="clients_title">CLIENTS</string>
+
     <string name="trains_title">TREINOS</string>
     <string name="begginer_title">TREINOS INICIANTE</string>
     <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
