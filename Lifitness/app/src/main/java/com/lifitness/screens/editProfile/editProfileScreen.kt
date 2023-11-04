@@ -40,6 +40,8 @@ fun EditProfileScreen() {
             Spacer(modifier = Modifier.spacer())
             TextFieldComponent(labelValue = "What keep you from working-out")
             Spacer(modifier = Modifier.spacer())
+            TextFieldComponent(labelValue = "Bio")
+            Spacer(modifier = Modifier.spacer())
             SmallButton(
                 contentTitle = "SALVAR",
                 onClick = { /*TODO*/ },

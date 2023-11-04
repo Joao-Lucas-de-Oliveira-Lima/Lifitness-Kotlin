@@ -1,5 +1,6 @@
 package com.lifitness.common.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
@@ -23,8 +24,8 @@ import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
 import com.lifitness.ui.theme.CardBackground
+import com.lifitness.ui.theme.CardRed
 import com.lifitness.ui.theme.GrayCard
-import com.lifitness.ui.theme.RedChart
 
 @Composable
 fun WeightLineChart() {
@@ -73,18 +74,18 @@ fun WeightLineChart() {
                 Line(
                     dataPoints = pointsData,
                     LineStyle(
-                        color = RedChart,
+                        color = CardRed,
                         lineType = LineType.Straight(isDotted = false)
                     ),
                     IntersectionPoint(
-                        color = RedChart
+                        color = CardRed
                     ),
                     SelectionHighlightPoint(color = MaterialTheme.colorScheme.primary),
                     ShadowUnderLine(
                         alpha = 0.5f,
                         brush = Brush.verticalGradient(
                             colors = listOf(
-                                RedChart,
+                                CardRed,
                                 CardBackground
                             )
                         )
@@ -103,6 +104,7 @@ fun WeightLineChart() {
         modifier = Modifier
             .fillMaxWidth()
             .height(300.dp),
+
         lineChartData = lineChartData
 
     )
