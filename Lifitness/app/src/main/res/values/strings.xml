@@ -5,10 +5,11 @@
     <!--Main registration and login Screen-->
 
     <string name="divisive_text">or</string>
+    <string name="edit_title">EDIT PROFILE</string>
     <string name="greeting_text">Hey there,</string>
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_password_field">password</string>
-
+    <string name="sign_up_retype_your_password_field">retype your password</string>
 
     <!--Main registration Screen-->
 
@@ -38,8 +39,12 @@
     <string name="more_title">MORE</string>
     <string name="settings_title">SETTINGS</string>
 
+    <!--Clients list screen-->
+  
+    <string name="clients_title">CLIENTS</string>
+  
     <!--Exercises Screen -->
-
+  
     <string name="trains_title">TREINOS</string>
     <string name="begginer_title">TREINOS INICIANTE</string>
     <string name="personalTrainer_title">SEU TREINO PESSOAL</string>
@@ -54,6 +59,5 @@
     <string name="hireNutricionist_title">NUTRICIONISTAS</string>
     <string name="dietsRecomendation_title">RECOMENDAÇÕES DE DIETAS</string>
     <string name="hirePersonalDiet_title">CONTRATE UM NUTRICIONISTA</string>
-
 
 </resources>

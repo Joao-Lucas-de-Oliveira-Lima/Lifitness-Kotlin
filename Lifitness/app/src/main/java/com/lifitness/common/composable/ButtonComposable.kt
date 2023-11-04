@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.lifitness.ui.theme.ButtonColorPerfil
+import com.lifitness.ui.theme.ButtonColorProfile
 
 @Composable
 fun DefaultButton(
@@ -64,6 +64,26 @@ fun DefaultButton(
     }
 }
 
+@Composable
+fun SmallButton(
+    contentTitle: String,
+    onClick: () -> Unit,
+    buttonColor: Color){
+    Button(
+        onClick = { onClick() },
+        modifier = Modifier
+            .height(60.dp),
+        shape = RoundedCornerShape(10),
+        border = BorderStroke(1.dp, Color.Gray),
+        colors = ButtonDefaults.buttonColors(buttonColor)
+    ) {
+        Text(
+            text = contentTitle,
+            modifier = Modifier
+                .padding(10.dp, 4.dp))
+    }
+}
+
 
 @Composable
 @Preview
@@ -75,6 +95,19 @@ fun PreviewButton() {
         onClick = {
             // Your button click logic here
         },
-        buttonColor = ButtonColorPerfil
+        buttonColor = ButtonColorProfile
+    )
+}
+
+@Composable
+@Preview
+fun PreviewSmallButton(){
+
+    SmallButton(
+        contentTitle = "Salvar",
+        onClick = {
+            // Your button click logic here
+        },
+        buttonColor = ButtonColorProfile
     )
 }
