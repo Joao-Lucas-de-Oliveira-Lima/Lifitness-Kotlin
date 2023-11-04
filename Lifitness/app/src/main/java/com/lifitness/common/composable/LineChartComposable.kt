@@ -22,13 +22,12 @@ import co.yml.charts.ui.linechart.model.LineType
 import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
-import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.GrayCard
 import com.lifitness.ui.theme.RedChart
 
 @Composable
-fun WeightLineChart(){
+fun WeightLineChart() {
     val months = 5
     val pointsData: List<Point> =
         listOf(
@@ -60,7 +59,7 @@ fun WeightLineChart(){
         .steps(months)
         .backgroundColor(CardBackground)
         .labelData { i ->
-            val yScale = 100/ months
+            val yScale = 100 / months
             (i * yScale).toString()
         }
         .labelAndAxisLinePadding(20.dp)
@@ -111,6 +110,6 @@ fun WeightLineChart(){
 
 @Composable
 @Preview
-fun PreviewLineChart(){
+fun PreviewLineChart() {
     WeightLineChart()
 }

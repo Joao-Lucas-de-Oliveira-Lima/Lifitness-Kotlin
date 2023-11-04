@@ -22,16 +22,15 @@ import com.lifitness.common.composable.ImageExerciseDescription
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
-import com.lifitness.ui.theme.CardRed
 
 @Composable
 fun ExerciseDescriptionScreen() {
-    Box (
+    Box(
         modifier = Modifier
             .background(BackgroundColor)
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-    ){
+    ) {
         Column {
             Row {
                 ExerciseTitle("AGACHAMENTO")
@@ -46,10 +45,11 @@ fun ExerciseDescriptionScreen() {
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
-            ){
+            ) {
                 ExerciseDescription(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do" +
-                            " eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+                            " eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                )
                 AmountExerciseTitle("4x13")
             }
 
