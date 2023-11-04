@@ -9,7 +9,6 @@
     <string name="greeting_text">Hey there,</string>
     <string name="sign_up_username_field">username</string>
     <string name="sign_up_password_field">password</string>
-    <string name="sign_up_retype_your_password_field">retype your password</string>
 
     <!--Main registration Screen-->
 
