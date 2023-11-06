@@ -78,6 +78,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
 
     implementation("androidx.compose.material:material-icons-extended:1.5.3")
-
-    implementation("co.yml:ycharts:2.1.0")
+    implementation ("androidx.compose.material:material:1.1.0-alpha06")
 }
