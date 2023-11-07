@@ -19,7 +19,10 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ClickableDontHaveAnAccountTextComponent
 import com.lifitness.common.composable.ClickableForgotYouPasswordTextComponent
 import com.lifitness.common.composable.DividerTextComposable
@@ -29,7 +32,7 @@ import com.lifitness.common.composable.PasswordTextFieldComposable
 import com.lifitness.common.composable.TextFieldComposable
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -73,7 +76,10 @@ fun LoginScreen() {
                 fontSize = 17,
                 minHeight = 30,
                 buttonColor = Color.White,
-                horizontalPadding = 50
+                horizontalPadding = 50,
+                onClick = {
+                    navController.navigate(LifitnessScreen.Home.name)
+                }
             )
             DividerTextComposable(
                 text = stringResource(id = R.string.divisive_text),
@@ -89,5 +95,6 @@ fun LoginScreen() {
 @Preview
 @Composable
 fun PreviewLoginScreen() {
-    LoginScreen()
+    val navController = rememberNavController()
+    LoginScreen(navController)
 }

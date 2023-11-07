@@ -12,6 +12,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.DietRecomendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.DietsTitle
@@ -23,7 +25,7 @@ import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun DietsScreen() {
+fun DietsScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -104,5 +106,6 @@ fun DietsScreen() {
 @Preview
 @Composable
 fun PreviewDietsScreen() {
-    DietsScreen()
+    val navController = rememberNavController()
+    DietsScreen(navController)
 }
