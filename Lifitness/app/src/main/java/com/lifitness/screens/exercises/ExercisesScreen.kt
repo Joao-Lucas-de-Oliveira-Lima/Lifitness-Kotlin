@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.BegginerTitle
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.HealthInstructorCard
@@ -21,7 +23,7 @@ import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun ExercisesScreen() {
+fun ExercisesScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -69,5 +71,6 @@ fun ExercisesScreen() {
 @Preview
 @Composable
 fun DefaultPreviewExercises() {
-    ExercisesScreen()
+    val navController = rememberNavController()
+    ExercisesScreen(navController)
 }

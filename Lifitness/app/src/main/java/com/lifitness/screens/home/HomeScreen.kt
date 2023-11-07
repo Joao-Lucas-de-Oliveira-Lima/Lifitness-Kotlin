@@ -10,16 +10,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.DietRecomendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.IntermediateTitle
-import com.lifitness.common.composable.Navbar
-import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navController: NavHostController){
     LazyColumn(
         userScrollEnabled = true,
                 modifier = Modifier
@@ -55,5 +55,6 @@ fun HomeScreen(){
 @Preview
 @Composable
 fun PreviewHomeScreen(){
-    HomeScreen()
+    val navController = rememberNavController()
+    HomeScreen(navController)
 }
