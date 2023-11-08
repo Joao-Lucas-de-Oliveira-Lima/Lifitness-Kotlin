@@ -46,6 +46,16 @@
     <string name="to_gain_lean_mass_option">TO GAIN LEAN MASS</string>
     <string name="to_be_healthy_option">TO BE HEALTHY</string>
 
+    <!--Physical Activity Level Registration Screen-->
+    <string name="sedentary_option">SEDENTARY</string>
+    <string name="slightly_active_option">SLIGHTLY ACTIVE</string>
+    <string name="active_option">ACTIVE</string>
+    <string name="very_active_option">VERY ACTIVE</string>
+    <string name="almost_no_exercise_description">ALMOST NO EXERCISE</string>
+    <string name="up_to_2_hours_of_exercise_per_week_description">UP TO 2 HOURS OF EXERCISE PER WEEK</string>
+    <string name="up_to_4_hours_of_exercise_per_week_description">UP TO 4 HOURS OF EXERCISE PER WEEK</string>
+    <string name="more_than_4_hours_of_exercise_per_week_description">MORE THAN 4 HOURS OF EXERCISE PER WEEK</string>
+
     <!--Clients list screen-->
     <string name="clients_title">CLIENTS</string>
 
