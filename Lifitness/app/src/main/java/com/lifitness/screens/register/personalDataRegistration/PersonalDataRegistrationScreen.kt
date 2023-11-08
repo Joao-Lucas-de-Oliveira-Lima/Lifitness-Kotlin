@@ -1,4 +1,4 @@
-package com.lifitness.screens.register
+package com.lifitness.screens.register.personalDataRegistration
 
 import ButtonWithoutIconComposable
 import androidx.compose.foundation.Image

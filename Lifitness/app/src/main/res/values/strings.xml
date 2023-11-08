@@ -40,6 +40,12 @@
     <string name="more_title">MORE</string>
     <string name="settings_title">SETTINGS</string>
 
+    <!--Goal Registration Screen-->
+    <string name="to_lose_weight_option">TO LOSE WEIGHT</string>
+    <string name="to_become_strong_option">TO BECOME STRONG</string>
+    <string name="to_gain_lean_mass_option">TO GAIN LEAN MASS</string>
+    <string name="to_be_healthy_option">TO BE HEALTHY</string>
+
     <!--Clients list screen-->
     <string name="clients_title">CLIENTS</string>
 
