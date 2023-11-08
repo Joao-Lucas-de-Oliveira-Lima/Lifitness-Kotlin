@@ -78,6 +78,12 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
 
     implementation("androidx.compose.material:material-icons-extended:1.5.3")
+    implementation ("androidx.compose.material:material:1.1.0-alpha06")
 
-    implementation("co.yml:ycharts:2.1.0")
+    val nav_version = "2.5.3"
+
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+
 }

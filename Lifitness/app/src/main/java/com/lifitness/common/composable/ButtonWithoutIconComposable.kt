@@ -20,10 +20,11 @@ fun ButtonWithoutIconComposable(
     fontSize: Int,
     minHeight: Int,
     buttonColor: Color,
-    horizontalPadding: Int
+    horizontalPadding: Int,
+    onClick: () -> Unit
 ) {
     Button(
-        onClick = {},
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(minHeight.dp)

@@ -9,12 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.*
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun ProgressScreen(){
+fun ProgressScreen(navController: NavHostController){
     Column (Modifier.background(BackgroundColor)){
             ProgressTitle()
         Spacer(modifier = Modifier.spacer())
@@ -31,5 +33,6 @@ fun ProgressScreen(){
 @Preview
 @Composable
 fun PreviewProgressScreen(){
-    ProgressScreen()
+    val navController = rememberNavController()
+    ProgressScreen(navController)
 }
