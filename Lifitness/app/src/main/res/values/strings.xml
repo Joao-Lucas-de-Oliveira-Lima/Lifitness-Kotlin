@@ -56,6 +56,13 @@
     <string name="up_to_4_hours_of_exercise_per_week_description">UP TO 4 HOURS OF EXERCISE PER WEEK</string>
     <string name="more_than_4_hours_of_exercise_per_week_description">MORE THAN 4 HOURS OF EXERCISE PER WEEK</string>
 
+    <!--Impediments Registration Screen-->
+    <string name="no_motivation_option">NO MOTIVATION</string>
+    <string name="lack_of_knowledge_option">LACK OF KNOWLEDGE</string>
+    <string name="busy_schedule_option">BUSY SCHEDULE</string>
+    <string name="not_enough_guidance_option">NOT ENOUGH GUIDANCE</string>
+    <string name="finish_title">finish</string>
+
     <!--Clients list screen-->
     <string name="clients_title">CLIENTS</string>
 
