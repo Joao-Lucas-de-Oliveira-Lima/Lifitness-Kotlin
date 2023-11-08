@@ -1,4 +1,4 @@
-package com.lifitness.screens.register.goalRegistration
+package com.lifitness.screens.register.recordPhysicalActivityLevel
 
 import ButtonWithoutIconComposable
 import androidx.compose.foundation.Image
@@ -37,21 +37,38 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.lifitness.R
 import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
 
-data class Option(val labelId: Int, val imageId: Int)
+data class Option(val labelId: Int, val descriptionId: Int, val imageId: Int)
 
 @Composable
-fun GoalRegistrationScreen() {
+fun PhysicalActivityLevelRegistrationScreen() {
     val options = listOf(
-        Option(labelId = R.string.to_lose_weight_option, imageId = R.drawable.to_lose_weight),
-        Option(labelId = R.string.to_become_strong_option, imageId = R.drawable.to_become_strong),
-        Option(labelId = R.string.to_gain_lean_mass_option, imageId = R.drawable.to_gain_lean_mass),
-        Option(labelId = R.string.to_be_healthy_option, imageId = R.drawable.to_be_healthy)
+        Option(
+            labelId = R.string.sedentary_option,
+            descriptionId = R.string.almost_no_exercise_description,
+            imageId = R.drawable.sedentary
+        ),
+        Option(
+            labelId = R.string.slightly_active_option,
+            descriptionId = R.string.up_to_2_hours_of_exercise_per_week_description,
+            imageId = R.drawable.slightly_active
+        ),
+        Option(
+            labelId = R.string.active_option,
+            descriptionId = R.string.up_to_4_hours_of_exercise_per_week_description,
+            imageId = R.drawable.active
+        ),
+        Option(
+            labelId = R.string.very_active_option,
+            descriptionId = R.string.more_than_4_hours_of_exercise_per_week_description,
+            imageId = R.drawable.very_active
+        )
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
 
@@ -67,7 +84,7 @@ fun GoalRegistrationScreen() {
         ) {
             Spacer(modifier = Modifier.height(15.dp))
             RegistrationProgressBarComposable(
-                currentStep = 3,
+                currentStep = 4,
                 totalSteps = 5,
                 Color(255, 102, 102),
                 160
@@ -135,11 +152,20 @@ fun GoalRegistrationScreen() {
 
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = stringResource(id = option.labelId),
-                            fontWeight = FontWeight.Bold,
-                            color = (if (option == selectedOption) Color.Black else Color.White)
-                        )
+                        Column(
+
+                        ) {
+                            Text(
+                                text = stringResource(id = option.labelId),
+                                fontWeight = FontWeight.Bold,
+                                color = (if (option == selectedOption) Color.Black else Color.White)
+                            )
+                            Text(
+                                text = stringResource(id = option.descriptionId),
+                                fontSize = 10.sp,
+                                color = (if (option == selectedOption) Color.Black else Color.White)
+                            )
+                        }
                     }
                 }
             }
@@ -167,6 +193,6 @@ fun GoalRegistrationScreen() {
 
 @Preview
 @Composable
-fun GoalRegistrationScreenPreview() {
-    GoalRegistrationScreen();
+fun PhysicalActivityLevelRegistrationScreenPreview() {
+    PhysicalActivityLevelRegistrationScreen()
 }
