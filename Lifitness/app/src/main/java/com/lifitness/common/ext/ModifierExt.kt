@@ -16,3 +16,7 @@ fun Modifier.smallSpacer(): Modifier {
     return this.fillMaxWidth().padding(5.dp)
 }
 
+fun Modifier.endOfScreenSpacer(): Modifier {
+    return this.fillMaxWidth().padding(55.dp)
+}
+
