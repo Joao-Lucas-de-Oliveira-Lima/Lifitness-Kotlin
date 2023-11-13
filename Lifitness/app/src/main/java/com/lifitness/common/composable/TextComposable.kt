@@ -80,6 +80,17 @@ fun ProgressTitle(){
 }
 
 @Composable
+fun FoodTitle(){
+    Text(stringResource(AppText.food_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun ExerciseTitle(exerciseName: String){
     Text(text = exerciseName,
         color = TextColor,
