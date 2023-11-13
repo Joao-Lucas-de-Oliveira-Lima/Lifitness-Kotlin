@@ -14,6 +14,7 @@ import com.lifitness.common.composable.DietRecomendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.IntermediateTitle
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
@@ -46,6 +47,10 @@ fun HomeScreen(navController: NavHostController){
                     DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
                 }
             }
+        }
+
+        item {
+            Spacer(modifier = Modifier.endOfScreenSpacer())
         }
     }
 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
@@ -33,7 +34,7 @@ fun DefaultButton(
     Button(
         onClick = { onClick() },
         modifier = Modifier
-            .fillMaxWidth()
+            .width(350.dp)
             .height(85.dp),
         shape = RoundedCornerShape(10),
         border = BorderStroke(1.dp, Color.Gray),

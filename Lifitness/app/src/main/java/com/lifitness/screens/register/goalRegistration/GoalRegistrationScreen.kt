@@ -150,7 +150,8 @@ fun GoalRegistrationScreen() {
                 fontSize = 17,
                 minHeight = 30,
                 buttonColor = Color.White,
-                horizontalPadding = 50
+                horizontalPadding = 50,
+                onClick = {}
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
