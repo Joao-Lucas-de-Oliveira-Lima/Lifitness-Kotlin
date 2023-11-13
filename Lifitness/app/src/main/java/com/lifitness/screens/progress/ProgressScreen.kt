@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.*
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
@@ -27,6 +28,7 @@ fun ProgressScreen(navController: NavHostController){
         Box(modifier = Modifier.padding(10.dp)) {
             TableChartComposable()
         }
+        Spacer(modifier = Modifier.endOfScreenSpacer())
     }
 }
 

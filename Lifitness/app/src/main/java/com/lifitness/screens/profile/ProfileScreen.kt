@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.BackgroundColor as background
@@ -98,6 +99,8 @@ fun ProfileScreen(
             )
             Spacer(modifier = Modifier.spacer())
         }
+
+        Spacer(modifier = Modifier.endOfScreenSpacer())
 
     }
 }

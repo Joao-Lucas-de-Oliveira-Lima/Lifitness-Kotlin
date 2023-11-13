@@ -19,6 +19,7 @@ import com.lifitness.common.composable.IntermediateTitle
 import com.lifitness.common.composable.PersonalTrainCard
 import com.lifitness.common.composable.PersonalTrainerTitle
 import com.lifitness.common.composable.TrainsTitle
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
@@ -36,6 +37,7 @@ fun ExercisesScreen(navController: NavHostController) {
             item {
                 TrainsTitle()
             }
+
             item {
                 HireInstructorTitle()
                 LazyRow {
@@ -44,11 +46,13 @@ fun ExercisesScreen(navController: NavHostController) {
                     }
                 }
             }
+
             item {
                 Spacer(modifier = Modifier.spacer())
                 PersonalTrainerTitle()
                 PersonalTrainCard("pedro", "carlo")
             }
+
             item {
                 Spacer(modifier = Modifier.spacer())
                 BegginerTitle()
@@ -57,12 +61,17 @@ fun ExercisesScreen(navController: NavHostController) {
                 ExerciseCard("TREINO DE BRAÇO", "17 MIN")
                 ExerciseCard("TREINO DE PERNA", "26 MIN")
             }
+
             item {
                 IntermediateTitle()
                 ExerciseCard("TREINO DE ABDÔMEN", "26 MIN")
                 ExerciseCard("TREINO DE PEITO", "15 MIN")
                 ExerciseCard("TREINO DE BRAÇO", "26 MIN")
                 ExerciseCard("TREINO DE PERNA", "41 MIN")
+            }
+
+            item {
+                Spacer(modifier = Modifier.endOfScreenSpacer())
             }
         }
     }
