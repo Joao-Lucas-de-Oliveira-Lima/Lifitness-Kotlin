@@ -77,27 +77,31 @@ fun ProfileScreen(
                 .fillMaxWidth()) {
             SettingsTitle()
             Spacer(modifier = Modifier.spacer())
-            DefaultButton(
-                contentTitle = "EDIT PROFILE",
-                contentIcon = Icons.Default.Settings,
-                onClick = { /*TODO*/ },
-                buttonColor = BackgroundColor
-            )
-            Spacer(modifier = Modifier.spacer())
-            DefaultButton(
-                contentTitle = "ACCOUNT",
-                contentIcon = Icons.Default.Person,
-                onClick = { /*TODO*/ },
-                buttonColor = BackgroundColor
-            )
-            Spacer(modifier = Modifier.spacer())
-            DefaultButton(
-                contentTitle = "LOG OUT",
-                contentIcon = Icons.Default.ExitToApp,
-                onClick = { /*TODO*/ },
-                buttonColor = BackgroundColor
-            )
-            Spacer(modifier = Modifier.spacer())
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                DefaultButton(
+                    contentTitle = "EDIT PROFILE",
+                    contentIcon = Icons.Default.Settings,
+                    onClick = { /*TODO*/ },
+                    buttonColor = BackgroundColor
+                )
+                Spacer(modifier = Modifier.spacer())
+                DefaultButton(
+                    contentTitle = "ACCOUNT",
+                    contentIcon = Icons.Default.Person,
+                    onClick = { /*TODO*/ },
+                    buttonColor = BackgroundColor
+                )
+                Spacer(modifier = Modifier.spacer())
+                DefaultButton(
+                    contentTitle = "LOG OUT",
+                    contentIcon = Icons.Default.ExitToApp,
+                    onClick = { /*TODO*/ },
+                    buttonColor = BackgroundColor
+                )
+                Spacer(modifier = Modifier.spacer())
+            }
         }
 
         Spacer(modifier = Modifier.endOfScreenSpacer())
