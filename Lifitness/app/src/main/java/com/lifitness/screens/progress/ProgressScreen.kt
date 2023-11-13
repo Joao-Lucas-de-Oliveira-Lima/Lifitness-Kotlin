@@ -13,12 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-<<<<<<< Updated upstream
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-=======
 import androidx.compose.ui.unit.sp
->>>>>>> Stashed changes
 import com.lifitness.common.composable.*
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
