@@ -8,6 +8,8 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import com.lifitness.app.LifitnessScreen
 
 @Composable
 fun ClickablePolicyTextAndTermsTextComponent(text: String) {
@@ -86,7 +88,7 @@ fun ClickableForgotYouPasswordTextComponent(text: String) {
 
 
 @Composable
-fun ClickableDontHaveAnAccountTextComponent(text: String) {
+fun ClickableDontHaveAnAccountTextComponent(text: String, onClick: () -> Unit) {
     val initialText = "Don't hava an account yet? "
     val registerText = "Register"
 
@@ -99,11 +101,12 @@ fun ClickableDontHaveAnAccountTextComponent(text: String) {
             append(registerText)
         }
     }
-    ClickableText(text = annotatedString, onClick = { offset ->
-        annotatedString.getStringAnnotations(offset, offset)
-            .firstOrNull()?.also { span ->
-                Log.d("clickableTextComponent", "{$span.item}")
-            }
+    ClickableText(text = annotatedString, onClick = {offset ->
+        val clickedTag = annotatedString.getStringAnnotations(offset, offset).firstOrNull()?.tag
+        if (clickedTag == registerText) {
+            // Handle click on "Register" text, e.g., navigate to the registration screen
+            onClick()
+        }
     })
 }
 
