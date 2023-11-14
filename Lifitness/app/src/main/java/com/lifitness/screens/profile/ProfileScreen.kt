@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
@@ -83,7 +84,7 @@ fun ProfileScreen(
                 DefaultButton(
                     contentTitle = "EDIT PROFILE",
                     contentIcon = Icons.Default.Settings,
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(LifitnessScreen.Settings.name) },
                     buttonColor = BackgroundColor
                 )
                 Spacer(modifier = Modifier.spacer())
@@ -97,7 +98,7 @@ fun ProfileScreen(
                 DefaultButton(
                     contentTitle = "LOG OUT",
                     contentIcon = Icons.Default.ExitToApp,
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(LifitnessScreen.Login.name) },
                     buttonColor = BackgroundColor
                 )
                 Spacer(modifier = Modifier.spacer())

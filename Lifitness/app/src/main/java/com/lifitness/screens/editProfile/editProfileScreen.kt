@@ -1,5 +1,6 @@
 package com.lifitness.screens.editProfile
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -8,20 +9,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.EditTitle
 import com.lifitness.common.composable.SmallButton
 import com.lifitness.common.composable.TextFieldComponent
 import com.lifitness.common.ext.spacer
+import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.ButtonEdit
 
 
 @Composable
-fun EditProfileScreen() {
+fun EditProfileScreen(navController: NavHostController) {
 
     Column(
         modifier = Modifier
             .fillMaxHeight()
             .fillMaxWidth()
+            .background(BackgroundColor)
     ) {
         EditTitle()
         Spacer(modifier = Modifier.spacer())
@@ -55,5 +60,6 @@ fun EditProfileScreen() {
 @Preview
 @Composable
 fun PreviewEdit() {
-    EditProfileScreen()
+    val navController = rememberNavController()
+    EditProfileScreen(navController)
 }
