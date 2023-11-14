@@ -87,7 +87,12 @@ fun LoginScreen(navController: NavHostController) {
                 color = Color.White,
                 thickness = 1
             )
-            ClickableDontHaveAnAccountTextComponent(text = stringResource(id = R.string.dont_hava_an_account_text))
+            ClickableDontHaveAnAccountTextComponent(
+                text = stringResource(id = R.string.dont_hava_an_account_text),
+                onClick = {
+                    navController.navigate(LifitnessScreen.Register.name)
+                }
+            )
         }
     }
 }
