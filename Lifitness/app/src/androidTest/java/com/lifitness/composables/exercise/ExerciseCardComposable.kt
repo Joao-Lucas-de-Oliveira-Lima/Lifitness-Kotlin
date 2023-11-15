@@ -20,7 +20,7 @@ class ExerciseCardComposable {
     @Test
     fun testShowCardExerciseTexts(){
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE PERNA", "20 MIN")
+            ExerciseCard("TREINO DE PERNA", "20 MIN", onClick = {})
         }
         composeTestRule.onNodeWithText("TREINO DE PERNA").assertIsDisplayed()
         composeTestRule.onNodeWithText("20 MIN").assertIsDisplayed()
@@ -29,7 +29,7 @@ class ExerciseCardComposable {
     @Test
     fun testCardExerciseDimensions(){
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE BRAÇO", "20 MIN")
+            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
         }
 
         /*composeTestRule.onNode(hasTestTag("exercise_card"))
@@ -39,7 +39,7 @@ class ExerciseCardComposable {
     @Test
     fun testShowCardExerciseImages(){
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE BRAÇO", "20 MIN")
+            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
         }
         composeTestRule.onNodeWithContentDescription("Exercise picture").assertExists()
     }
@@ -47,7 +47,7 @@ class ExerciseCardComposable {
     @Test
     fun testClicableCardExerciseImages(){
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE BRAÇO", "20 MIN")
+            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
         }
 
         composeTestRule.onNode(hasText("TREINO DE BRAÇO"))

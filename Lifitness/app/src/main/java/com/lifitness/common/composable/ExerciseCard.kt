@@ -27,14 +27,15 @@ import com.lifitness.R
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun ExerciseCard(exerciseName: String, exerciseDuration: String) {
-    EditorExerciseCard(exerciseName, exerciseDuration)
+fun ExerciseCard(exerciseName: String, exerciseDuration: String, onClick: () -> Unit) {
+    EditorExerciseCard(exerciseName, exerciseDuration, onClick)
 }
 
 @Composable
-fun EditorExerciseCard(exerciseName: String, exerciseDuration: String) {
+fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, onClick: () -> Unit) {
     Card(
         modifier = Modifier
+            .clickable(onClick = { onClick() })
             .fillMaxWidth()
             .height(130.dp)
             .padding(10.dp)
@@ -79,7 +80,7 @@ fun ImagePersonalTrain() {
 @Preview
 @Composable
 fun PreviewExerciseCard() {
-    ExerciseCard(exerciseName = "Treino de Perna", exerciseDuration = "2 horas")
+    ExerciseCard(exerciseName = "Treino de Perna", exerciseDuration = "2 horas", {})
 }
 
 @Preview
