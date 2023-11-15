@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.DietRecomendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.ExerciseCard
@@ -28,9 +29,9 @@ fun HomeScreen(navController: NavHostController){
         item {
             Column {
                 IntermediateTitle()
-                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN")
-                ExerciseCard("TREINO DE PEITO", "15 MIN")
-                ExerciseCard("TREINO DE PEITO", "15 MIN")
+                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE PEITO", "15 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE PEITO", "15 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
             }
         }
 

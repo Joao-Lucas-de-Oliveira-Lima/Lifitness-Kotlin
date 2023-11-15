@@ -39,6 +39,7 @@ import androidx.navigation.compose.rememberNavController
 import com.lifitness.screens.diets.DietsScreen
 import com.lifitness.screens.editProfile.EditProfileScreen
 import com.lifitness.screens.exercises.ExercisesScreen
+import com.lifitness.screens.exercises.exercise.ExerciseDescriptionScreen
 import com.lifitness.screens.home.HomeScreen
 import com.lifitness.screens.login.LoginScreen
 import com.lifitness.screens.profile.ProfileScreen
@@ -190,6 +191,9 @@ fun LiFitnessApp() {
                 }
                 composable(LifitnessScreen.Main_Exercises.name) {
                     ExercisesScreen(navController)
+                }
+                composable(LifitnessScreen.Train.name) {
+                    ExerciseDescriptionScreen(navController)
                 }
                 composable(LifitnessScreen.Main_Diets.name) {
                     DietsScreen(navController)

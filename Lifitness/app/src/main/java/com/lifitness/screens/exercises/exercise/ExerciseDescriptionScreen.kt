@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.AmountExerciseTitle
 import com.lifitness.common.composable.DescriptionTitle
 import com.lifitness.common.composable.ExerciseDescription
@@ -24,7 +26,7 @@ import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun ExerciseDescriptionScreen() {
+fun ExerciseDescriptionScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -60,5 +62,6 @@ fun ExerciseDescriptionScreen() {
 @Preview
 @Composable
 fun defaultPreviewExerciseDescriptionScreen() {
-    ExerciseDescriptionScreen()
+    val navController = rememberNavController()
+    ExerciseDescriptionScreen(navController)
 }
