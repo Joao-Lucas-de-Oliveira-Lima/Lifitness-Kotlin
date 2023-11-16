@@ -1,4 +1,4 @@
-package com.lifitness
+package com.lifitness.composables
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person

@@ -18,7 +18,7 @@ fun ImageHealthInstructor() {
     Image(
         painter = painterResource(R.drawable.nutricionist),
         contentScale = ContentScale.FillHeight,
-        contentDescription = "Exercise picture",
+        contentDescription = "Health instructor picture",
         modifier = Modifier
             .height(100.dp)
             .padding(5.dp)
