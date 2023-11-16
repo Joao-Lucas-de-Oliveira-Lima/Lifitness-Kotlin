@@ -3,6 +3,7 @@ package com.lifitness.common.composable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -33,30 +34,33 @@ fun ExerciseCard(exerciseName: String, exerciseDuration: String, onClick: () -> 
 
 @Composable
 fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, onClick: () -> Unit) {
-    Card(
+    Box (
         modifier = Modifier
             .clickable(onClick = { onClick() })
-            .fillMaxWidth()
-            .height(130.dp)
-            .padding(10.dp)
-            .testTag("exercise_card")
-            .clickable(onClick = {})
-            .clip(RoundedCornerShape(15)),
-        colors = CardDefaults.cardColors(
-            containerColor = CardBackground
-        )
     ) {
-        Row {
-            ImageExercise()
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                SpecificTrainTitle(exerciseName)
-                SpecificTrainDuration(exerciseDuration)
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(130.dp)
+                .padding(10.dp)
+                .testTag("exercise_card")
+                .clip(RoundedCornerShape(15)),
+            colors = CardDefaults.cardColors(
+                containerColor = CardBackground
+            )
+        ) {
+            Row {
+                ImageExercise()
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    SpecificTrainTitle(exerciseName)
+                    SpecificTrainDuration(exerciseDuration)
+                }
             }
         }
     }
