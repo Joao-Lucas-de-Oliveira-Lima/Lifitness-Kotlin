@@ -38,14 +38,14 @@ fun HomeScreen(navController: NavHostController){
             Column {
                 DietsRecomendationTitle()
                 Row {
-                    DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                    DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                    DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
+                    DietRecomendationCard("Arroz Branco", "200CAL")
+                    DietRecomendationCard("Feijão Mulato", "200CAL")
+                    DietRecomendationCard("Feijão Mulato", "200CAL")
                 }
                 Row {
-                    DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                    DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                    DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
+                    DietRecomendationCard("Arroz Branco", "200CAL")
+                    DietRecomendationCard("Feijão Mulato", "200CAL")
+                    DietRecomendationCard("Feijão Mulato", "200CAL")
                 }
             }
         }

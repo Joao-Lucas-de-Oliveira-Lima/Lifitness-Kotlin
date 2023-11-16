@@ -38,7 +38,7 @@ fun DietsScreen(navController: NavHostController) {
                 HireNutricionistTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard(exerciseName = "Clécia")
+                        HealthInstructorCard("Clécia")
                     }
                 }
             }
@@ -57,11 +57,11 @@ fun DietsScreen(navController: NavHostController) {
             item {
                 LazyRow {
                     item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL")
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL")
+                        DietRecomendationCard("Arroz Branco", "200CAL")
+                        DietRecomendationCard("Feijão Mulato", "200CAL")
+                        DietRecomendationCard("Frango", "200CAL")
+                        DietRecomendationCard("Carnes Vermelhas", "200CAL")
+                        DietRecomendationCard("Saladas", "200CAL")
                     }
                 }
             }
@@ -69,11 +69,11 @@ fun DietsScreen(navController: NavHostController) {
             item {
                 LazyRow {
                     item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL")
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL")
+                        DietRecomendationCard("Arroz Branco", "200CAL")
+                        DietRecomendationCard("Feijão Mulato", "200CAL")
+                        DietRecomendationCard("Frango", "200CAL")
+                        DietRecomendationCard("Carnes Vermelhas", "200CAL")
+                        DietRecomendationCard("Saladas", "200CAL")
                     }
                 }
             }

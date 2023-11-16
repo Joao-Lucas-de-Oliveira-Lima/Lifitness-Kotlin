@@ -1,5 +1,6 @@
 package com.lifitness.common.composable
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -19,8 +20,8 @@ import androidx.compose.ui.unit.dp
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun HealthInstructorCard(exerciseName: String) {
-    EditorHealthInstructorCardCard(exerciseName)
+fun HealthInstructorCard(instructorName: String) {
+    EditorHealthInstructorCardCard(instructorName)
 }
 
 @Composable
@@ -53,5 +54,5 @@ fun EditorHealthInstructorCardCard(healthInstructorName: String) {
 @Preview
 @Composable
 fun PreviewHealthInstructorCardCard() {
-    HealthInstructorCard(exerciseName = "Cassandra")
+    HealthInstructorCard("Cassandra")
 }
