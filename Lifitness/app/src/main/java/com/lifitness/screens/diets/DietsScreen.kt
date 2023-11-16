@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.DietRecomendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.DietsTitle
@@ -57,11 +58,11 @@ fun DietsScreen(navController: NavHostController) {
             item {
                 LazyRow {
                     item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL")
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL")
+                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Frango", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Saladas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
                     }
                 }
             }
@@ -69,11 +70,11 @@ fun DietsScreen(navController: NavHostController) {
             item {
                 LazyRow {
                     item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL")
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL")
+                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Frango", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecomendationCard(exerciseName = "Saladas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
                     }
                 }
             }
