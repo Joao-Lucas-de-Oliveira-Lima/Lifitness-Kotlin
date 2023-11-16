@@ -11,7 +11,7 @@ O Lifitness é uma aplicação completa e intuitiva para o gerenciamento de diet
 ## Video de explicação do código
 
 - [Primeira versão](https://youtu.be/UsZ68kc8hRE)
-- [Segunda versão]()
+- [Segunda versão](https://www.youtube.com/watch?v=chsRbn-wu5s)
 - [Terceira versão]()
 
 ## Gerenciamento do projeto
