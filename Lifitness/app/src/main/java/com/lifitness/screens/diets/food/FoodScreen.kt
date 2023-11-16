@@ -28,6 +28,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
 import com.lifitness.common.composable.FoodTitle
 import com.lifitness.common.ext.smallSpacer
@@ -38,7 +40,7 @@ import com.lifitness.ui.theme.RedChart
 import com.lifitness.ui.theme.TextColor
 
 @Composable
-fun FoodScreen(){
+fun FoodScreen(navController: NavHostController){
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -175,5 +177,6 @@ fun FoodScreen(){
 @Composable
 @Preview
 fun FoodScreenPreview(){
-    FoodScreen()
+    val navController = rememberNavController()
+    FoodScreen(navController)
 }
