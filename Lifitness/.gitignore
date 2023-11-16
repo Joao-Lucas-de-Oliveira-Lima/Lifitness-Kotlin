@@ -15,4 +15,5 @@
 .cxx
 local.properties.txt
 
-
+#app/google-services.json
+app/google-services_current.json
