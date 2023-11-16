@@ -10,7 +10,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.lifitness.common.composable.DietRecomendationCard
+import com.lifitness.common.composable.DietRecommendationCard
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,7 +23,7 @@ class DietCardComposable {
     @Test
     fun testShowCardDietTexts() {
         composeTestRule.setContent {
-            DietRecomendationCard("Feijoada","300CAL" )
+            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
         }
         composeTestRule.onNodeWithText("Feijoada").assertIsDisplayed()
         composeTestRule.onNodeWithText("300CAL").assertIsDisplayed()
@@ -32,17 +32,17 @@ class DietCardComposable {
     @Test
     fun testCardDietDimensions() {
         composeTestRule.setContent {
-            DietRecomendationCard("Feijoada","300CAL" )
+            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
         }
 
         composeTestRule.onNode(hasTestTag("diet_card"))
-            .assertHeightIsAtLeast(120.dp)
+            .assertHeightIsAtLeast(140.dp)
     }
 
     @Test
     fun testShowCardDietImages() {
         composeTestRule.setContent {
-            DietRecomendationCard("Feijoada","300CAL" )
+            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
         }
         composeTestRule.onNodeWithContentDescription("Diet picture").assertExists()
     }
@@ -50,7 +50,7 @@ class DietCardComposable {
     @Test
     fun testClicableCardDietImages() {
         composeTestRule.setContent {
-            DietRecomendationCard("Feijoada","300CAL" )
+            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
         }
 
         composeTestRule.onNode(hasText("Feijoada"))
