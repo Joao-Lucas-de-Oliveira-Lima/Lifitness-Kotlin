@@ -39,7 +39,7 @@ fun DietsScreen(navController: NavHostController) {
                 HireNutricionistTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard("Clécia")
+                        HealthInstructorCard("Clécia", {})
                     }
                 }
             }

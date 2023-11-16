@@ -22,35 +22,35 @@ class HealthInstructorCard {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testShowCardExerciseTexts(){
+    fun testShowCardHealthInstructorTexts(){
         composeTestRule.setContent {
-            HealthInstructorCard("Clécia")
+            HealthInstructorCard("Clécia", onClick = {})
         }
         composeTestRule.onNodeWithText("Clécia").assertIsDisplayed()
     }
 
     @Test
-    fun testCardExerciseDimensions(){
+    fun testShowCardHealthInstructorDimensions(){
         composeTestRule.setContent {
-            HealthInstructorCard("Clécia")
+            HealthInstructorCard("Clécia", onClick = {})
         }
 
-        composeTestRule.onNode(hasTestTag("Clécia"))
+        composeTestRule.onNode(hasTestTag("health_instructor_card"))
             .assertHeightIsAtLeast(100.dp)
     }
 
     @Test
-    fun testShowCardExerciseImages(){
+    fun testShowCardHealthInstructorImages(){
         composeTestRule.setContent {
-            HealthInstructorCard("Clécia")
+            HealthInstructorCard("Clécia", onClick = {})
         }
         composeTestRule.onNodeWithContentDescription("Health instructor picture").assertExists()
     }
 
     @Test
-    fun testClickableCardExerciseImages(){
+    fun testClickableCardHealthImages(){
         composeTestRule.setContent {
-            HealthInstructorCard("Clécia")
+            HealthInstructorCard("Clécia", onClick = {})
         }
 
         composeTestRule.onNode(hasText("Clécia"))
