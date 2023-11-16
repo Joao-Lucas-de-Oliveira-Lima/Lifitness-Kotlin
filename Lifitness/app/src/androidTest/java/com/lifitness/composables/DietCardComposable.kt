@@ -36,7 +36,7 @@ class DietCardComposable {
         }
 
         composeTestRule.onNode(hasTestTag("diet_card"))
-            .assertHeightIsAtLeast(120.dp)
+            .assertHeightIsAtLeast(140.dp)
     }
 
     @Test

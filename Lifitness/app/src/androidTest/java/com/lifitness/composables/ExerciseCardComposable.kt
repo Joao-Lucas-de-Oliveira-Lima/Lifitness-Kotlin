@@ -36,7 +36,7 @@ class ExerciseCardComposable {
         }
 
         composeTestRule.onNode(hasTestTag("exercise_card"))
-            .assertHeightIsAtLeast(100.dp)
+            .assertHeightIsAtLeast(130.dp)
     }
 
     @Test

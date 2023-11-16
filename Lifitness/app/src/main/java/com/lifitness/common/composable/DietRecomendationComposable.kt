@@ -31,7 +31,8 @@ fun DietRecommendationCard(foodName: String, dietCal: String, onClick: () -> Uni
 fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, onClick: () -> Unit) {
     Box(
         modifier = Modifier
-        .clickable(onClick = { onClick() })
+            .clickable(onClick = { onClick() })
+            .testTag("diet_card")
     ) {
         Card(
             modifier = Modifier

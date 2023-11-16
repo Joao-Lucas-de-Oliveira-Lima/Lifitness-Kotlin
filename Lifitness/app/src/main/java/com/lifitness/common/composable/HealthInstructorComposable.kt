@@ -31,13 +31,13 @@ fun EditorHealthInstructorCardCard(healthInstructorName: String, onClick: () -> 
     Box(
         modifier = Modifier
             .clickable(onClick = { onClick() })
+            .testTag("health_instructor_card")
 
     ) {
         Card(
             modifier = Modifier
                 .width(130.dp)
                 .height(130.dp)
-                .testTag("health_instructor_card")
                 .padding(5.dp)
                 .clip(RoundedCornerShape(15)),
             colors = CardDefaults.cardColors(
