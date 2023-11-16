@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.app.LifitnessScreen
-import com.lifitness.common.composable.DietRecomendationCard
+import com.lifitness.common.composable.DietRecommendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.DietsTitle
 import com.lifitness.common.composable.HealthInstructorCard
@@ -39,7 +39,7 @@ fun DietsScreen(navController: NavHostController) {
                 HireNutricionistTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard(exerciseName = "Clécia")
+                        HealthInstructorCard("Clécia")
                     }
                 }
             }
@@ -58,11 +58,11 @@ fun DietsScreen(navController: NavHostController) {
             item {
                 LazyRow {
                     item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Frango", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Carnes Vermelhas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Saladas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
                     }
                 }
             }
@@ -70,11 +70,11 @@ fun DietsScreen(navController: NavHostController) {
             item {
                 LazyRow {
                     item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Frango", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Carnes Vermelhas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+                        DietRecommendationCard("Saladas", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
                     }
                 }
             }

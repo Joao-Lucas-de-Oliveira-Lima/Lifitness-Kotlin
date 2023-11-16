@@ -43,7 +43,7 @@ fun ExercisesScreen(navController: NavHostController) {
                 HireInstructorTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard(exerciseName = "Clécia")
+                        HealthInstructorCard("Clécia")
                     }
                 }
             }

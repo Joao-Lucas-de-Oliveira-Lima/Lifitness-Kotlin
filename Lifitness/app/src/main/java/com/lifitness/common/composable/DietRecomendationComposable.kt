@@ -16,13 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun DietRecomendationCard(exerciseName: String, dietCal: String, onClick: () -> Unit) {
-    EditorDietRecomendationCard(exerciseName, dietCal, onClick)
+
+fun DietRecommendationCard(foodName: String, dietCal: String, onClick: () -> Unit) {
+    EditorDietRecomendationCard(foodName, dietCal, onClick)
 }
 
 @Composable
@@ -60,6 +62,7 @@ fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, o
 
 @Preview
 @Composable
-fun PreviewDietRecomendationCard() {
-    DietRecomendationCard(exerciseName = "Cassandra", "200CAL", onClick = {})
+fun PreviewDietRecommendationCard() {
+
+    DietRecommendationCard("Cassandra", "200CAL", onClick = {})
 }

@@ -70,7 +70,7 @@ fun EditTitle(){
 
 @Composable
 fun ProgressTitle(){
-    Text(stringResource(AppText.edit_title),
+    Text(stringResource(AppText.progress_title),
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 24.sp,

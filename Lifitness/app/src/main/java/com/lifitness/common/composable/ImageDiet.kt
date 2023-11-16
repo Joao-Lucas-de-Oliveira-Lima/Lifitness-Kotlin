@@ -20,7 +20,7 @@ fun ImageDiet() {
     Image(
         painter = painterResource(R.drawable.frame_bean),
         contentScale = ContentScale.FillHeight,
-        contentDescription = "Exercise picture",
+        contentDescription = "Diet picture",
         modifier = Modifier
             .height(100.dp)
             .padding(5.dp)
@@ -33,7 +33,7 @@ fun ImagePersonalDiet() {
         Image(
             painter = painterResource(R.drawable.healthy_diet),
             contentScale = ContentScale.FillBounds,
-            contentDescription = "Exercise picture",
+            contentDescription = "Personal diet picture",
             modifier = Modifier
                 .fillMaxSize()
                 .blur(100.dp),
