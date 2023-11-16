@@ -25,15 +25,13 @@ fun BioCard(content: String, nickname: String) {
     CardEditor(
         nickname = nickname,
         content = content,
-        modifier = Modifier.textButton()
     )
 }
 
 @Composable
-private fun CardEditor(
+fun CardEditor(
     nickname: String,
     content: String,
-    modifier: Modifier
 ) {
     Card(
         modifier = Modifier
