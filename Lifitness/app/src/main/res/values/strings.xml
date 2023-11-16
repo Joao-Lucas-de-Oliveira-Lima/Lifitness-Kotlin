@@ -86,4 +86,8 @@
 
     <string name="food_title">FOOD</string>
 
+    <!--Profile Screen-->
+
+    <string name="progress_title">PROGRESS</string>
+
 </resources>
