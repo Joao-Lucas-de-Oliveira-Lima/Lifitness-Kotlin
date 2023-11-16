@@ -36,7 +36,7 @@ class HealthInstructorCard {
         }
 
         composeTestRule.onNode(hasTestTag("health_instructor_card"))
-            .assertHeightIsAtLeast(100.dp)
+            .assertHeightIsAtLeast(130.dp)
     }
 
     @Test

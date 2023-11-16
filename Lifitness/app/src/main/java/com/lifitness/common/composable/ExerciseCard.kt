@@ -37,13 +37,13 @@ fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, onClick: 
     Box (
         modifier = Modifier
             .clickable(onClick = { onClick() })
+            .testTag("exercise_card")
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(130.dp)
                 .padding(10.dp)
-                .testTag("exercise_card")
                 .clip(RoundedCornerShape(15)),
             colors = CardDefaults.cardColors(
                 containerColor = CardBackground
