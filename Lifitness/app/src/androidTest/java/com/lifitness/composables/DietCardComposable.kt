@@ -1,5 +1,6 @@
 package com.lifitness.composables
 
+import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
@@ -55,5 +56,6 @@ class DietCardComposable {
 
         composeTestRule.onNode(hasText("Feijoada"))
             .assertIsEnabled()
+            .assertHasClickAction()
     }
 }
