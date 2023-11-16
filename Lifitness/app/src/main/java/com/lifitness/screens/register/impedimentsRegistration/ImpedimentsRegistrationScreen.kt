@@ -37,7 +37,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
@@ -46,7 +49,7 @@ import com.lifitness.common.composable.RegistrationProgressBarComposable
 data class Option(val labelId: Int, val imageId: Int)
 
 @Composable
-fun ImpedimentsRegistrationScreen() {
+fun ImpedimentsRegistrationScreen(navController: NavHostController) {
     val options = listOf(
         Option(labelId = R.string.no_motivation_option, imageId = R.drawable.no_motivation),
         Option(labelId = R.string.lack_of_knowledge_option, imageId = R.drawable.lack_of_knowledge),
@@ -150,7 +153,9 @@ fun ImpedimentsRegistrationScreen() {
                 fontSize = 17,
                 minHeight = 30,
                 buttonColor = Color.White,
-                horizontalPadding = 50
+                horizontalPadding = 50,
+                onClick = { navController.navigate(LifitnessScreen.Home.name) }
+
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
@@ -168,5 +173,6 @@ fun ImpedimentsRegistrationScreen() {
 @Preview
 @Composable
 fun ImpedimentsRegistrationScreenPreview(){
-    ImpedimentsRegistrationScreen();
+    val navController = rememberNavController()
+    ImpedimentsRegistrationScreen(navController);
 }

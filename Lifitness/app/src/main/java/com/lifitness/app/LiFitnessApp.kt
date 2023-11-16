@@ -3,7 +3,6 @@ package com.lifitness.app
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
@@ -34,42 +33,50 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.screens.diets.DietsScreen
+import com.lifitness.screens.editProfile.EditProfileScreen
 import com.lifitness.screens.exercises.ExercisesScreen
 import com.lifitness.screens.home.HomeScreen
 import com.lifitness.screens.login.LoginScreen
 import com.lifitness.screens.profile.ProfileScreen
 import com.lifitness.screens.progress.ProgressScreen
+import com.lifitness.screens.register.MainRegistrationScreen
+import com.lifitness.screens.register.goalRegistration.GoalRegistrationScreen
+import com.lifitness.screens.register.impedimentsRegistration.ImpedimentsRegistrationScreen
+import com.lifitness.screens.register.personalDataRegistration.PersonalDataRegistrationScreen
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 
 enum class LifitnessScreen {
     Login,
     Register,
-    Interview,
+    PersonalData,
+    GoalRegistration,
+    ImpedimentsRegistration,
     Home,
     Main_Exercises,
+    Settings,
     Train,
     Main_Diets,
     Diet,
     Profile,
     Charts
 }
+
 data class BottomNavigationItem(
     val title: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
     val hasNews: Boolean,
 )
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LiFitnessApp() {
-    var isNavigationBarVisible by remember { mutableStateOf(true) }
     var isLoginScreenDisplayed by remember { mutableStateOf(false) }
     val navController = rememberNavController();
 
@@ -115,7 +122,7 @@ fun LiFitnessApp() {
         }
         Scaffold(
             bottomBar = {
-                if(!isLoginScreenDisplayed) {
+                if (!isLoginScreenDisplayed) {
                     NavigationBar(
                         containerColor = CardBackground,
                         contentColor = RedChart,
@@ -163,6 +170,22 @@ fun LiFitnessApp() {
                     LoginScreen(navController)
                     isLoginScreenDisplayed = true
                 }
+                composable(LifitnessScreen.Register.name) {
+                    MainRegistrationScreen(navController)
+                    isLoginScreenDisplayed = true
+                }
+                composable(LifitnessScreen.PersonalData.name) {
+                    PersonalDataRegistrationScreen(navController)
+                    isLoginScreenDisplayed = true
+                }
+                composable(LifitnessScreen.GoalRegistration.name) {
+                    GoalRegistrationScreen(navController)
+                    isLoginScreenDisplayed = true
+                }
+                composable(LifitnessScreen.ImpedimentsRegistration.name) {
+                    ImpedimentsRegistrationScreen(navController)
+                    isLoginScreenDisplayed = true
+                }
                 composable(LifitnessScreen.Home.name) {
                     HomeScreen(navController)
                     isLoginScreenDisplayed = false
@@ -178,6 +201,9 @@ fun LiFitnessApp() {
                 }
                 composable(LifitnessScreen.Charts.name) {
                     ProgressScreen(navController)
+                }
+                composable(LifitnessScreen.Settings.name) {
+                    EditProfileScreen(navController)
                 }
             }
         }

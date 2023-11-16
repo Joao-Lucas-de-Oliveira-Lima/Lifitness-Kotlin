@@ -19,7 +19,10 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.CheckboxComposable
 import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
@@ -30,7 +33,7 @@ import com.lifitness.common.composable.RegistrationProgressBarComposable
 import com.lifitness.common.composable.TextFieldComposable
 
 @Composable
-fun MainRegistrationScreen() {
+fun MainRegistrationScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.screen_background_color))
@@ -94,7 +97,7 @@ fun MainRegistrationScreen() {
                 minHeight = 30,
                 buttonColor = Color.White,
                 horizontalPadding = 50,
-                onClick = {}
+                onClick = { navController.navigate(LifitnessScreen.PersonalData.name) }
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
@@ -113,5 +116,6 @@ fun MainRegistrationScreen() {
 @Preview
 @Composable
 fun PreviewMainRegistrationScreen() {
-    MainRegistrationScreen()
+    val navController = rememberNavController()
+    MainRegistrationScreen(navController)
 }

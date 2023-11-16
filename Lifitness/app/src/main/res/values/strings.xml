@@ -82,4 +82,8 @@
     <string name="dietsRecomendation_title">RECOMENDAÇÕES DE DIETAS</string>
     <string name="hirePersonalDiet_title">CONTRATE UM NUTRICIONISTA</string>
 
+    <!--Food Screen -->
+
+    <string name="food_title">FOOD</string>
+
 </resources>
