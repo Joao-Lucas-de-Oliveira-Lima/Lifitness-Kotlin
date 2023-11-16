@@ -61,7 +61,8 @@ fun FoodScreen(){
                     .clip(RoundedCornerShape(16.dp))
             )
             Spacer(modifier = Modifier.smallSpacer())
-            Column {
+            Column(modifier = Modifier.background(CardBackground)) {
+
                 Text(text = "Descrição", color = TextColor, fontSize = 20.sp, modifier = Modifier
                     .padding(20.dp, 20.dp, 20.dp, 0.dp)
                     .fillMaxWidth(), textAlign = TextAlign.Start)
@@ -73,7 +74,7 @@ fun FoodScreen(){
                     modifier = Modifier.padding(20.dp) )
                 Spacer(modifier = Modifier.smallSpacer())
             }
-            Card(border = BorderStroke(1.dp, RedChart), modifier = Modifier.padding(20.dp) ) {
+            Card(border = BorderStroke(1.dp, RedChart), modifier = Modifier.padding(0.dp, 20.dp, 0.dp, 20.dp) ) {
                 Row(modifier = Modifier.background(CardBackground)) {
                     Text(
                         text = "Tabela nutricional",

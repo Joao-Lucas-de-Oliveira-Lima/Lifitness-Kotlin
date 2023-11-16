@@ -48,7 +48,7 @@ class ExerciseCardComposable {
     }
 
     @Test
-    fun testClicableCardExerciseImages(){
+    fun testClickableCardExerciseImages(){
         composeTestRule.setContent {
             ExerciseCard("TREINO DE BRAÇO", "20 MIN")
         }
