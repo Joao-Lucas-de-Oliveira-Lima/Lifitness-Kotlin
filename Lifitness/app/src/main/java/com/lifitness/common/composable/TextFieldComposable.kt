@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable.*
@@ -53,7 +54,9 @@ fun TextFieldComposable(
                 focusedLabelColor = Color.White,
                 cursorColor = Color.White,
             ),
-            keyboardOptions = KeyboardOptions.Default,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text
+            ),
             textStyle = androidx.compose.ui.text.TextStyle(color = Color.White),
             leadingIcon = {
                 if (hasAnIcon) {
@@ -66,10 +69,6 @@ fun TextFieldComposable(
             }
         )
     }
-}
-
-fun isInputValid(username: String, password: String): Boolean {
-    return username.isNotBlank() && password.length >= 8
 }
 
 @Preview

@@ -1,6 +1,7 @@
 package com.lifitness.screens.login
 
 import ButtonWithoutIconComposable
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,21 +12,37 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
@@ -37,19 +54,42 @@ import com.lifitness.common.composable.FacebookLoginButton
 import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
-import com.lifitness.common.composable.PasswordTextFieldComposable
-import com.lifitness.common.composable.TextFieldComposable
-import java.lang.System.console
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 fun LoginScreen(navController: NavHostController) {
-    var usernameValue by remember { mutableStateOf("") }
-    var passwordValue by remember { mutableStateOf("") }
+
+    var isPasswordVisible = remember {
+        mutableStateOf(false)
+    }
+    val visualTransformation = if (isPasswordVisible.value) {
+        VisualTransformation.None
+    } else {
+        PasswordVisualTransformation()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.screen_background_color))
     ) {
+        val viewModel = viewModel<LoginScreenViewModel>()
+        val state = viewModel.state
+        val context = LocalContext.current
+        LaunchedEffect(key1 = context) {
+            viewModel.validationEvents.collect { event ->
+                when (event) {
+                    is LoginScreenViewModel.ValidationEvent.Success -> {
+                        Toast.makeText(
+                            context,
+                            "Login successful",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        navController.navigate(LifitnessScreen.Home.name)
+                    }
+                }
+            }
+        }
         Box(
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
@@ -72,18 +112,105 @@ fun LoginScreen(navController: NavHostController) {
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.height(5.dp))
-                TextFieldComposable(
-                    labelValue = stringResource(id = R.string.sign_up_username_field),
-                    hasAnIcon = true,
-                    imageVector = Icons.Default.Person,
-                    onValueChange = { usernameValue = it }
+                // Username Field
+                OutlinedTextField(
+                    value = state.username,
+                    onValueChange = {
+                        viewModel.onEvent(LoginFormEvent.UsernameChanged(it))
+                    },
+                    isError = state.usernameError != null,
+                    modifier = Modifier
+                        .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
+                    label = {
+                        Text(
+                            text = stringResource(id = R.string.sign_up_username_field),
+                            color = Color.White
+                        )
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        cursorColor = Color.White,
+                        focusedBorderColor = Color.White,
+                        unfocusedBorderColor = Color.White,
+                        focusedLabelColor = Color.White,
+                    ),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Text
+                    ),
+                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.White),
+                    leadingIcon = {
+                        Icon(
+                            Icons.Default.Person,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
                 )
+                if (state.usernameError != null) {
+                    Text(
+                        text = state.usernameError,
+                        color = MaterialTheme.colors.error,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                }
+                //
                 Spacer(modifier = Modifier.height(10.dp))
-                PasswordTextFieldComposable(
-                    labelValue = stringResource(id = R.string.sign_up_password_field),
-                    imageVector = Icons.Default.Lock
+                //Password Field
+                OutlinedTextField(
+                    value = state.password,
+                    onValueChange = {
+                        viewModel.onEvent(LoginFormEvent.PasswordChanged(it))
+                    },
+                    isError = state.passwordError != null,
+                    modifier = Modifier
+                        .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
+                    label = {
+                        Text(
+                            text = stringResource(id = R.string.sign_up_password_field),
+                            color = Color.White
+                        )
+                    },
+                    visualTransformation = visualTransformation,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        cursorColor = Color.White,
+                        focusedBorderColor = Color.White,
+                        unfocusedBorderColor = Color.White,
+                        focusedLabelColor = Color.White,
+                    ),
+                    textStyle = TextStyle(color = Color.White),
+                    leadingIcon = {
+                        Icon(
+                            Icons.Default.Lock,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    },
+                    trailingIcon = {
+                        val iconImage = if (isPasswordVisible.value) {
+                            Icons.Default.Visibility
+                        } else {
+                            Icons.Default.VisibilityOff
+                        }
+                        IconButton(onClick = {
+                            isPasswordVisible.value = !isPasswordVisible.value
+                        }) {
+                            Icon(
+                                iconImage,
+                                contentDescription = "",
+                                tint = Color.White
+                            )
+                        }
+                    }
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                if (state.passwordError != null) {
+                    Text(
+                        text = state.passwordError,
+                        color = MaterialTheme.colors.error,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
+                }
+                //
+                Spacer(modifier = Modifier.height(16.dp))
                 ClickableForgotYouPasswordTextComponent(text = stringResource(id = R.string.forgot_your_password_text))
                 Spacer(modifier = Modifier.height(10.dp))
                 Spacer(modifier = Modifier.height(180.dp))
@@ -105,7 +232,7 @@ fun LoginScreen(navController: NavHostController) {
                         buttonColor = Color.White,
                         horizontalPadding = 50,
                         onClick = {
-                            navController.navigate(LifitnessScreen.Home.name)
+                            viewModel.onEvent(LoginFormEvent.Submit)
                         }
                     )
                     Spacer(modifier = Modifier.height(5.dp))
