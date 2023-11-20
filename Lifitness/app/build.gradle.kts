@@ -85,4 +85,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+
 }

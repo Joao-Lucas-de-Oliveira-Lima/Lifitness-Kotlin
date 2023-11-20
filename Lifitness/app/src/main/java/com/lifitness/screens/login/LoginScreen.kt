@@ -15,6 +15,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,9 +39,12 @@ import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.PasswordTextFieldComposable
 import com.lifitness.common.composable.TextFieldComposable
+import java.lang.System.console
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
+    var usernameValue by remember { mutableStateOf("") }
+    var passwordValue by remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -68,7 +75,8 @@ fun LoginScreen(navController: NavHostController) {
                 TextFieldComposable(
                     labelValue = stringResource(id = R.string.sign_up_username_field),
                     hasAnIcon = true,
-                    imageVector = Icons.Default.Person
+                    imageVector = Icons.Default.Person,
+                    onValueChange = { usernameValue = it }
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 PasswordTextFieldComposable(

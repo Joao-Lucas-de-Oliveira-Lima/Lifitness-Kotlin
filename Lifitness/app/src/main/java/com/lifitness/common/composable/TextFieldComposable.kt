@@ -24,7 +24,12 @@ import androidx.core.R.drawable.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: ImageVector) {
+fun TextFieldComposable(
+    labelValue: String,
+    hasAnIcon: Boolean,
+    imageVector: ImageVector,
+    onValueChange: (String) -> Unit
+) {
 
     var textValue = remember {
         mutableStateOf("")
@@ -40,6 +45,7 @@ fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: Ima
             value = textValue.value,
             onValueChange = {
                 textValue.value = it
+                onValueChange(it)
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 unfocusedBorderColor = Color.White,
@@ -62,12 +68,18 @@ fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: Ima
     }
 }
 
+fun isInputValid(username: String, password: String): Boolean {
+    return username.isNotBlank() && password.length >= 8
+}
+
 @Preview
 @Composable
 fun PreviewTextFieldComposable() {
+    var value : String
     TextFieldComposable(
         labelValue = "Preview",
         hasAnIcon = true,
-        imageVector = Icons.Default.Preview
+        imageVector = Icons.Default.Preview,
+        onValueChange = { value = it }
     )
 }

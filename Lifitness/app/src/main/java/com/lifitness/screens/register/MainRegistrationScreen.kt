@@ -12,6 +12,10 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +38,10 @@ import com.lifitness.common.composable.TextFieldComposable
 
 @Composable
 fun MainRegistrationScreen(navController: NavHostController) {
+    var usernameValue by remember { mutableStateOf("") }
+    var emailValue by remember { mutableStateOf("") }
+    var passwordValue by remember { mutableStateOf("") }
+    var passwordConfirmationValue by remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.screen_background_color))
@@ -69,13 +77,15 @@ fun MainRegistrationScreen(navController: NavHostController) {
             TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_username_field),
                 hasAnIcon = true,
-                imageVector = Icons.Default.Person
+                imageVector = Icons.Default.Person,
+                onValueChange = { usernameValue = it }
             )
             Spacer(modifier = Modifier.height(10.dp))
             TextFieldComposable(
                 labelValue = stringResource(id = R.string.sign_up_email_field),
                 hasAnIcon = true,
-                imageVector = Icons.Default.Email
+                imageVector = Icons.Default.Email,
+                onValueChange = { emailValue = it }
             )
             Spacer(modifier = Modifier.height(10.dp))
             PasswordTextFieldComposable(
