@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.BegginerTitle
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.HealthInstructorCard
@@ -42,7 +43,7 @@ fun ExercisesScreen(navController: NavHostController) {
                 HireInstructorTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard(exerciseName = "Clécia")
+                        HealthInstructorCard("Clécia", {})
                     }
                 }
             }
@@ -56,18 +57,22 @@ fun ExercisesScreen(navController: NavHostController) {
             item {
                 Spacer(modifier = Modifier.spacer())
                 BegginerTitle()
-                ExerciseCard("TREINO DE ABDÔMEN", "20 MIN")
-                ExerciseCard("TREINO DE PEITO", "9 MIN")
-                ExerciseCard("TREINO DE BRAÇO", "17 MIN")
-                ExerciseCard("TREINO DE PERNA", "26 MIN")
+                ExerciseCard("TREINO DE ABDÔMEN", "20 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE PEITO", "9 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE BRAÇO", "17 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE PERNA", "26 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
             }
 
             item {
                 IntermediateTitle()
-                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN")
-                ExerciseCard("TREINO DE PEITO", "15 MIN")
-                ExerciseCard("TREINO DE BRAÇO", "26 MIN")
-                ExerciseCard("TREINO DE PERNA", "41 MIN")
+                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE PEITO", "15 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE BRAÇO", "26 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+                ExerciseCard("TREINO DE PERNA", "41 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+            }
+
+            item {
+                Spacer(modifier = Modifier.endOfScreenSpacer())
             }
 
             item {
