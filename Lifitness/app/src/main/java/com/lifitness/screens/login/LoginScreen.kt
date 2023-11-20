@@ -264,9 +264,7 @@ fun LoginScreen(navController: NavHostController) {
                         }
                     )
                 }
-
             }
-
         }
     }
 }
