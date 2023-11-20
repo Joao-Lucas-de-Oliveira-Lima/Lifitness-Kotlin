@@ -121,7 +121,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     fontSize = 25,
                     color = Color.White
                 )
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(3.dp))
                 //Username Field
                 OutlinedTextField(
                     value = state.username,
@@ -163,7 +163,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     )
                 }
                 //
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(3.dp))
                 //Email field
                 OutlinedTextField(
                     value = state.email,
@@ -205,7 +205,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     )
                 }
                 //
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(3.dp))
                 //Password Field
                 OutlinedTextField(
                     value = state.password,
@@ -261,12 +261,12 @@ fun MainRegistrationScreen(navController: NavHostController) {
                         color = MaterialTheme.colors.error,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .padding(horizontal = 50.dp),
+                            .padding(horizontal = 65.dp),
                         textAlign = TextAlign.Center
                     )
                 }
                 //
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(3.dp))
                 //
                 //Password Field
                 OutlinedTextField(
@@ -370,31 +370,33 @@ fun MainRegistrationScreen(navController: NavHostController) {
                             viewModel.onEvent(MainRegistrationScreenFormEvent.Submit)
                         }
                     )
-                    Spacer(modifier = Modifier.height(3.dp))
+                    Spacer(modifier = Modifier.height(2.dp))
                     DividerTextComposable(
                         text = stringResource(id = R.string.divisive_text),
                         fontSize = 18,
                         color = Color.White,
                         thickness = 1
                     )
-                    Spacer(modifier = Modifier.height(3.dp))
+                    Spacer(modifier = Modifier.height(2.dp))
                     Row(
                         modifier = Modifier.width(230.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         GoogleLoginButton(
-                            25,
+                            23,
                             Color.White
                         ) { navController.navigate(LifitnessScreen.Home.name) }
                         FacebookLoginButton(
-                            size = 25,
+                            size = 23,
                             buttonColor = Color.White
                         ) { navController.navigate(LifitnessScreen.Home.name) }
                     }
                     //
-                    Spacer(modifier = Modifier.height(3.dp))
+                    Spacer(modifier = Modifier.height(2.dp))
                     //ClickableLoginTextComponent
-                    ClickableLoginTextComponent(text = stringResource(id = R.string.create_an_account_text))
+                    ClickableLoginTextComponent(
+                        text = stringResource(id = R.string.create_an_account_text)
+                    ) { navController.navigate(LifitnessScreen.Login.name) }
                     Spacer(modifier = Modifier.height(5.dp))
                 }
 

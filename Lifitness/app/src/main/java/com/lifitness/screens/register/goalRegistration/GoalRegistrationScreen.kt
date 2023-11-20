@@ -81,7 +81,9 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(LifitnessScreen.PersonalData.name)
+                    },
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .background(Color.Transparent), // Define o background como transparente
@@ -155,7 +157,7 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 buttonColor = Color.White,
                 horizontalPadding = 50,
 
-                onClick = { navController.navigate(LifitnessScreen.ImpedimentsRegistration.name) }
+                onClick = { navController.navigate(LifitnessScreen.PhysicalActivityLevel.name) }
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
@@ -164,7 +166,9 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 color = Color.White,
                 thickness = 1
             )
-            ClickableLoginTextComponent(text = stringResource(id = R.string.create_an_account_text))
+            ClickableLoginTextComponent(
+                text = stringResource(id = R.string.create_an_account_text)
+            ) { navController.navigate(LifitnessScreen.Login.name) }
             Spacer(modifier = Modifier.height(5.dp))
         }
     }

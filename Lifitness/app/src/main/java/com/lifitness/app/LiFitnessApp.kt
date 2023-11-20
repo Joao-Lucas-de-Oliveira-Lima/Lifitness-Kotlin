@@ -47,6 +47,7 @@ import com.lifitness.screens.register.MainRegistrationScreen
 import com.lifitness.screens.register.goalRegistration.GoalRegistrationScreen
 import com.lifitness.screens.register.impedimentsRegistration.ImpedimentsRegistrationScreen
 import com.lifitness.screens.register.personalDataRegistration.PersonalDataRegistrationScreen
+import com.lifitness.screens.register.recordPhysicalActivityLevel.PhysicalActivityLevelRegistrationScreen
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 
@@ -56,6 +57,7 @@ enum class LifitnessScreen {
     PersonalData,
     GoalRegistration,
     ImpedimentsRegistration,
+    PhysicalActivityLevel,
     Home,
     Main_Exercises,
     Settings,
@@ -184,6 +186,10 @@ fun LiFitnessApp() {
                 }
                 composable(LifitnessScreen.ImpedimentsRegistration.name) {
                     ImpedimentsRegistrationScreen(navController)
+                    isLoginScreenDisplayed = true
+                }
+                composable(LifitnessScreen.PhysicalActivityLevel.name) {
+                    PhysicalActivityLevelRegistrationScreen(navController)
                     isLoginScreenDisplayed = true
                 }
                 composable(LifitnessScreen.Home.name) {

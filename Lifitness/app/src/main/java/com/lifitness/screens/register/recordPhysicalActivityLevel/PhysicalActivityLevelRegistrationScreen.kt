@@ -38,7 +38,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
@@ -47,7 +50,7 @@ import com.lifitness.common.composable.RegistrationProgressBarComposable
 data class Option(val labelId: Int, val descriptionId: Int, val imageId: Int)
 
 @Composable
-fun PhysicalActivityLevelRegistrationScreen() {
+fun PhysicalActivityLevelRegistrationScreen(navController: NavHostController) {
     val options = listOf(
         Option(
             labelId = R.string.sedentary_option,
@@ -95,7 +98,9 @@ fun PhysicalActivityLevelRegistrationScreen() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(LifitnessScreen.GoalRegistration.name)
+                    },
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .background(Color.Transparent), // Define o background como transparente
@@ -177,7 +182,9 @@ fun PhysicalActivityLevelRegistrationScreen() {
                 minHeight = 30,
                 buttonColor = Color.White,
                 horizontalPadding = 50,
-                onClick = {}
+                onClick = {
+                    navController.navigate(LifitnessScreen.ImpedimentsRegistration.name)
+                }
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
@@ -186,7 +193,9 @@ fun PhysicalActivityLevelRegistrationScreen() {
                 color = Color.White,
                 thickness = 1
             )
-            ClickableLoginTextComponent(text = stringResource(id = R.string.create_an_account_text))
+            ClickableLoginTextComponent(
+                text = stringResource(id = R.string.create_an_account_text)
+            ) { navController.navigate(LifitnessScreen.Login.name) }
             Spacer(modifier = Modifier.height(5.dp))
         }
     }
@@ -195,5 +204,6 @@ fun PhysicalActivityLevelRegistrationScreen() {
 @Preview
 @Composable
 fun PhysicalActivityLevelRegistrationScreenPreview() {
-    PhysicalActivityLevelRegistrationScreen()
+    val navController = rememberNavController()
+    PhysicalActivityLevelRegistrationScreen(navController)
 }
