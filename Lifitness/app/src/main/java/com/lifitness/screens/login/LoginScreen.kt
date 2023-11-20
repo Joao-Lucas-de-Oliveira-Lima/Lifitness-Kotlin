@@ -247,11 +247,14 @@ fun LoginScreen(navController: NavHostController) {
                         modifier = Modifier.width(230.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        GoogleLoginButton(25, Color.White)
+                        GoogleLoginButton(
+                            25,
+                            Color.White
+                        ) { navController.navigate(LifitnessScreen.Home.name) }
                         FacebookLoginButton(
                             size = 25,
                             buttonColor = Color.White
-                        )
+                        ) { navController.navigate(LifitnessScreen.Home.name) }
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     ClickableDontHaveAnAccountTextComponent(

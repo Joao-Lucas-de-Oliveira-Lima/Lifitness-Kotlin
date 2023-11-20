@@ -15,9 +15,9 @@ import androidx.compose.ui.unit.dp
 import com.lifitness.R
 
 @Composable
-fun GoogleLoginButton(size: Int, buttonColor : Color) {
+fun GoogleLoginButton(size: Int, buttonColor : Color, onClick : () -> Unit) {
     OutlinedButton(
-        onClick = { /* Handle Google login */ },
+        onClick = onClick,
         modifier = Modifier
             //.size(size.dp)
             .padding(0.dp),
@@ -36,5 +36,5 @@ fun GoogleLoginButton(size: Int, buttonColor : Color) {
 @Composable
 @Preview
 fun PreviewGoogleLoginButton() {
-    GoogleLoginButton(80, Color.White);
+    GoogleLoginButton(80, Color.White) {};
 }
