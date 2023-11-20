@@ -1,7 +1,5 @@
 package com.lifitness.common.composable
 
-import com.lifitness.ui.theme.CardBackground
-import com.lifitness.ui.theme.TextColor
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,21 +17,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lifitness.common.ext.spacer
 import com.lifitness.common.ext.textButton
+import com.lifitness.ui.theme.CardBackground
+import com.lifitness.ui.theme.TextColor
 
 @Composable
 fun BioCard(content: String, nickname: String) {
     CardEditor(
         nickname = nickname,
-        content = content ,
-        modifier = Modifier.textButton()
+        content = content,
     )
 }
 
 @Composable
-private fun CardEditor(
+fun CardEditor(
     nickname: String,
     content: String,
-    modifier: Modifier
 ) {
     Card(
         modifier = Modifier
@@ -43,7 +41,8 @@ private fun CardEditor(
         )
     ) {
         Spacer(modifier = Modifier.spacer())
-        Text(text = nickname,
+        Text(
+            text = nickname,
             color = TextColor,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
@@ -58,7 +57,8 @@ private fun CardEditor(
 
         ) {
             if (content.isNotBlank()) {
-                Text(text = content,
+                Text(
+                    text = content,
                     color = TextColor,
                     fontFamily = FontFamily.SansSerif,
                     fontSize = 16.sp,
@@ -72,7 +72,7 @@ private fun CardEditor(
 
 @Composable
 @Preview
-fun PreviewBioCard(){
+fun PreviewBioCard() {
     BioCard(
 
         "My story begins with the Lifitness app, which has been my trusty companion on this fitness adventure. I believe that age is just a number, and with the right tools and mindset, we can all live life to the fullest.",

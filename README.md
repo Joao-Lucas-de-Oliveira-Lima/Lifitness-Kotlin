@@ -8,9 +8,12 @@ O Lifitness é uma aplicação completa e intuitiva para o gerenciamento de diet
 
 [Lifitness](https://www.figma.com/file/kpAmeslbdwWbFey51SuAtt/Lifitness-prot%C3%B3tipo-1.0?type=design&node-id=4-0&mode=design&t=OroJyVva0BpYtCxa-0)
 
-## Video de explicação do código da primeira versão
+## Video de explicação do código
 
-[Link do vídeo](https://youtu.be/UsZ68kc8hRE)
+- [Primeira versão](https://youtu.be/UsZ68kc8hRE)
+- [Segunda versão](https://www.youtube.com/watch?v=chsRbn-wu5s)
+- [Terceira versão]()
+
 ## Gerenciamento do projeto
 
 [Trello do projeto](https://trello.com/b/2VaejWkK/gest%C3%A3o-de-projeto)

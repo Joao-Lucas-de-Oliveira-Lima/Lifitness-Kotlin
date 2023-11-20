@@ -1,6 +1,6 @@
 package com.lifitness.screens.profile
 
-import DefaultButton
+import com.lifitness.common.composable.DefaultButton
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,13 +25,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.lifitness.app.LifitnessScreen
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.BackgroundColor as background
 
 @Composable
 fun ProfileScreen(
-    modifier: Modifier
+    modifier: Modifier,
+    navController: NavHostController
 ){
     Column(
         modifier = modifier
@@ -73,28 +78,34 @@ fun ProfileScreen(
                 .fillMaxWidth()) {
             SettingsTitle()
             Spacer(modifier = Modifier.spacer())
-            DefaultButton(
-                contentTitle = "EDIT PROFILE",
-                contentIcon = Icons.Default.Settings,
-                onClick = { /*TODO*/ },
-                buttonColor = BackgroundColor
-            )
-            Spacer(modifier = Modifier.spacer())
-            DefaultButton(
-                contentTitle = "ACCOUNT",
-                contentIcon = Icons.Default.Person,
-                onClick = { /*TODO*/ },
-                buttonColor = BackgroundColor
-            )
-            Spacer(modifier = Modifier.spacer())
-            DefaultButton(
-                contentTitle = "LOG OUT",
-                contentIcon = Icons.Default.ExitToApp,
-                onClick = { /*TODO*/ },
-                buttonColor = BackgroundColor
-            )
-            Spacer(modifier = Modifier.spacer())
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                DefaultButton(
+                    contentTitle = "EDIT PROFILE",
+                    contentIcon = Icons.Default.Settings,
+                    onClick = { navController.navigate(LifitnessScreen.Settings.name) },
+                    buttonColor = BackgroundColor
+                )
+                Spacer(modifier = Modifier.spacer())
+                DefaultButton(
+                    contentTitle = "ACCOUNT",
+                    contentIcon = Icons.Default.Person,
+                    onClick = { /*TODO*/ },
+                    buttonColor = BackgroundColor
+                )
+                Spacer(modifier = Modifier.spacer())
+                DefaultButton(
+                    contentTitle = "LOG OUT",
+                    contentIcon = Icons.Default.ExitToApp,
+                    onClick = { navController.navigate(LifitnessScreen.Login.name) },
+                    buttonColor = BackgroundColor
+                )
+                Spacer(modifier = Modifier.spacer())
+            }
         }
+
+        Spacer(modifier = Modifier.endOfScreenSpacer())
 
     }
 }
@@ -102,5 +113,6 @@ fun ProfileScreen(
 @Preview
 @Composable
 fun PreviewProfileScreen(){
-    ProfileScreen(modifier = Modifier)
+    val navController = rememberNavController()
+    ProfileScreen(modifier = Modifier, navController)
 }

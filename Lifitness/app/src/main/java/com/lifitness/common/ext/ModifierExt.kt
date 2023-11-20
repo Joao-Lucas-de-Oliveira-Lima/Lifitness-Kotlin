@@ -11,3 +11,12 @@ fun Modifier.textButton(): Modifier {
 fun Modifier.spacer(): Modifier {
     return this.fillMaxWidth().padding(12.dp)
 }
+
+fun Modifier.smallSpacer(): Modifier {
+    return this.fillMaxWidth().padding(5.dp)
+}
+
+fun Modifier.endOfScreenSpacer(): Modifier {
+    return this.fillMaxWidth().padding(55.dp)
+}
+

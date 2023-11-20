@@ -1,9 +1,12 @@
+package com.lifitness.common.composable
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
@@ -19,7 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.lifitness.ui.theme.ButtonColorPerfil
+import com.lifitness.ui.theme.ButtonColorProfile
 
 @Composable
 fun DefaultButton(
@@ -31,8 +34,8 @@ fun DefaultButton(
     Button(
         onClick = { onClick() },
         modifier = Modifier
-                    .fillMaxWidth()
-                    .height(85.dp),
+            .width(350.dp)
+            .height(85.dp),
         shape = RoundedCornerShape(10),
         border = BorderStroke(1.dp, Color.Gray),
         colors = ButtonDefaults.buttonColors(buttonColor)
@@ -62,10 +65,30 @@ fun DefaultButton(
     }
 }
 
+@Composable
+fun SmallButton(
+    contentTitle: String,
+    onClick: () -> Unit,
+    buttonColor: Color){
+    Button(
+        onClick = { onClick() },
+        modifier = Modifier
+            .height(60.dp),
+        shape = RoundedCornerShape(10),
+        border = BorderStroke(1.dp, Color.Gray),
+        colors = ButtonDefaults.buttonColors(buttonColor)
+    ) {
+        Text(
+            text = contentTitle,
+            modifier = Modifier
+                .padding(10.dp, 4.dp))
+    }
+}
+
 
 @Composable
 @Preview
-fun PreviewButton(){
+fun PreviewButton() {
 
     DefaultButton(
         contentIcon = Icons.Default.ExitToApp,
@@ -73,6 +96,19 @@ fun PreviewButton(){
         onClick = {
             // Your button click logic here
         },
-        buttonColor = ButtonColorPerfil
+        buttonColor = ButtonColorProfile
+    )
+}
+
+@Composable
+@Preview
+fun PreviewSmallButton(){
+
+    SmallButton(
+        contentTitle = "Salvar",
+        onClick = {
+            // Your button click logic here
+        },
+        buttonColor = ButtonColorProfile
     )
 }

@@ -25,7 +25,7 @@ fun TextFieldComponent(labelValue : String){
         modifier = Modifier
             .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
         label = {
-            Text(text = labelValue, color = Color.White)},
+            Text(text = labelValue, color = Color.White.copy(alpha = 0.5f))},
         value = textValue.value,
         onValueChange = {
             textValue.value = it
