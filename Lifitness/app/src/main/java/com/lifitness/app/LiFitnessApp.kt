@@ -41,7 +41,7 @@ import com.lifitness.screens.diets.food.FoodScreen
 import com.lifitness.screens.editProfile.EditProfileScreen
 import com.lifitness.screens.exercises.ExercisesScreen
 import com.lifitness.screens.exercises.exercise.ExerciseDescriptionScreen
-import com.lifitness.screens.home.HomeScreen
+import com.lifitness.screens.home.client.HomeScreen
 import com.lifitness.screens.login.LoginScreen
 import com.lifitness.screens.profile.ProfileScreen
 import com.lifitness.screens.progress.ProgressScreen

@@ -73,6 +73,7 @@
     <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
     <string name="hireInstructor_title">CONTRATE UM INSTRUTOR</string>
     <string name="hirePersonalTrainer_title">CONTRATE UM TREINADOR</string>
+    <string name="exercise_title">EXERCISES</string>
 
     <!--Diets Screen -->
 
@@ -89,5 +90,8 @@
     <!--Profile Screen-->
 
     <string name="progress_title">PROGRESS</string>
+
+    <!--Home Screen -->
+    <string name="home_title">HOME</string>
 
 </resources>

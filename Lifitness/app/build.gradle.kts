@@ -65,6 +65,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.5.3")
 
     // Testing libraries
+    implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation("com.google.firebase:firebase-firestore:24.9.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

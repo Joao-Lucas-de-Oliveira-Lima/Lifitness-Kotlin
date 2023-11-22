@@ -1,4 +1,4 @@
-package com.lifitness.screens.students
+package com.lifitness.screens.studentsPersonal
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
