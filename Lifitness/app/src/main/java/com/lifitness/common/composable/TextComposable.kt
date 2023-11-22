@@ -69,6 +69,28 @@ fun EditTitle(){
 }
 
 @Composable
+fun ExerciseListTitle(){
+    Text(stringResource(AppText.exercise_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun HomeTitle(){
+    Text(stringResource(AppText.home_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun ProgressTitle(){
     Text(stringResource(AppText.progress_title),
         color = TextColor,
