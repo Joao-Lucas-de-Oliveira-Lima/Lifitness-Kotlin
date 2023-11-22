@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.screens.diets.Diet
 import com.lifitness.screens.diets.DietsScreen
 import com.lifitness.screens.diets.food.FoodScreen
 import com.lifitness.screens.editProfile.EditProfileScreen
@@ -52,6 +53,8 @@ import com.lifitness.screens.register.personalDataRegistration.PersonalDataRegis
 import com.lifitness.screens.register.recordPhysicalActivityLevel.PhysicalActivityLevelRegistrationScreen
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 enum class LifitnessScreen {
     Login,
@@ -207,8 +210,8 @@ fun LiFitnessApp() {
                 composable(LifitnessScreen.Main_Diets.name) {
                     DietsScreen(navController)
                 }
-                composable(LifitnessScreen.Food_Screen.name) {
-                    FoodScreen(navController)
+                composable("Food_Screen/{diet}") { backStackEntry ->
+                    FoodScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("diet")!!))
                 }
                 composable(LifitnessScreen.Profile.name) {
                     ProfileScreen(modifier = Modifier, navController)
