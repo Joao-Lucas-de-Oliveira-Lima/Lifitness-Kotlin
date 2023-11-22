@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.CardBackground
@@ -39,6 +40,7 @@ fun TableChartComposable(){
         Spacer(modifier = Modifier.spacer())
         LazyColumn(modifier = Modifier
             .fillMaxWidth()
+            .height(230.dp)
             .background(CardBackground)){
 
             items(5){ index ->
