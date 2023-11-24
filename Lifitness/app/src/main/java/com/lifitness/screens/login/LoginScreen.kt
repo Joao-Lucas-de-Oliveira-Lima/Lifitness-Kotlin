@@ -210,7 +210,7 @@ fun LoginScreen(navController: NavHostController) {
                         color = MaterialTheme.colors.error,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .padding(horizontal=65.dp),
+                            .padding(horizontal = 65.dp),
                         textAlign = TextAlign.Center
                     )
                 }

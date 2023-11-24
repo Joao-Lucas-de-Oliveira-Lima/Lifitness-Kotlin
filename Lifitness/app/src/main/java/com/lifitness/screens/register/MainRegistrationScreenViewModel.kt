@@ -10,11 +10,13 @@ import com.lifitness.domain.use_case.ValidatePassword
 import com.lifitness.domain.use_case.ValidateRepeatedPassword
 import com.lifitness.domain.use_case.ValidateTerms
 import com.lifitness.domain.use_case.ValidateUsername
+import com.lifitness.repository.AuthRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class MainRegistrationScreenViewModel(
+    private val repository: AuthRepository = AuthRepository(),
     private val validateUsername: ValidateUsername = ValidateUsername(),
     private val validateEmail: ValidateEmail = ValidateEmail(),
     private val validatePassword: ValidatePassword = ValidatePassword(),

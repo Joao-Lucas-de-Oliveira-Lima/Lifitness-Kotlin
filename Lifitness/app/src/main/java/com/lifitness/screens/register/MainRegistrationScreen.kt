@@ -58,6 +58,7 @@ import com.lifitness.common.composable.ClickablePolicyTextAndTermsTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.FacebookLoginButton
 import com.lifitness.common.composable.GoogleLoginButton
+import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
 
@@ -93,7 +94,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
             }
         }
         Box(
-            modifier = Modifier.align(Alignment.TopCenter)
+            modifier = Modifier.align(Alignment.Center)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -108,8 +109,8 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     Color(255, 102, 102),
                     160
                 )
-                //Spacer(modifier = Modifier.height(1.dp))
-                //LogoComponent(40, 50)
+                Spacer(modifier = Modifier.height(1.dp))
+                LogoComponent(50, 60)
                 Spacer(modifier = Modifier.height(3.dp))
                 NormalTextComposable(
                     text = stringResource(id = R.string.greeting_text),
@@ -348,7 +349,46 @@ fun MainRegistrationScreen(navController: NavHostController) {
                         color = MaterialTheme.colors.error,
                     )
                 }
-                //Spacer(modifier = Modifier.height(50.dp))
+                Spacer(modifier = Modifier.height(5.dp))
+                ButtonWithoutIconComposable(
+                    text = stringResource(id = R.string.next_title),
+                    textColor = Color.Black,
+                    fontSize = 17,
+                    minHeight = 30,
+                    buttonColor = Color.White,
+                    horizontalPadding = 50,
+                    onClick = {
+                        viewModel.onEvent(MainRegistrationScreenFormEvent.Submit)
+                    }
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                DividerTextComposable(
+                    text = stringResource(id = R.string.divisive_text),
+                    fontSize = 18,
+                    color = Color.White,
+                    thickness = 1
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Row(
+                    modifier = Modifier.width(230.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    GoogleLoginButton(
+                        23,
+                        Color.White
+                    ) { navController.navigate(LifitnessScreen.Home.name) }
+                    FacebookLoginButton(
+                        size = 23,
+                        buttonColor = Color.White
+                    ) { navController.navigate(LifitnessScreen.Home.name) }
+                }
+                //
+                Spacer(modifier = Modifier.height(2.dp))
+                //ClickableLoginTextComponent
+                ClickableLoginTextComponent(
+                    text = stringResource(id = R.string.create_an_account_text)
+                ) { navController.navigate(LifitnessScreen.Login.name) }
+                Spacer(modifier = Modifier.height(5.dp))
             }
             Box(
                 modifier = Modifier.align(Alignment.BottomCenter)
@@ -359,45 +399,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     //.align(Alignment.TopCenter)
                     //.fillMaxSize(),
                 ) {
-                    ButtonWithoutIconComposable(
-                        text = stringResource(id = R.string.next_title),
-                        textColor = Color.Black,
-                        fontSize = 17,
-                        minHeight = 30,
-                        buttonColor = Color.White,
-                        horizontalPadding = 50,
-                        onClick = {
-                            viewModel.onEvent(MainRegistrationScreenFormEvent.Submit)
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    DividerTextComposable(
-                        text = stringResource(id = R.string.divisive_text),
-                        fontSize = 18,
-                        color = Color.White,
-                        thickness = 1
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    Row(
-                        modifier = Modifier.width(230.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        GoogleLoginButton(
-                            23,
-                            Color.White
-                        ) { navController.navigate(LifitnessScreen.Home.name) }
-                        FacebookLoginButton(
-                            size = 23,
-                            buttonColor = Color.White
-                        ) { navController.navigate(LifitnessScreen.Home.name) }
-                    }
-                    //
-                    Spacer(modifier = Modifier.height(2.dp))
-                    //ClickableLoginTextComponent
-                    ClickableLoginTextComponent(
-                        text = stringResource(id = R.string.create_an_account_text)
-                    ) { navController.navigate(LifitnessScreen.Login.name) }
-                    Spacer(modifier = Modifier.height(5.dp))
+
                 }
 
             }
