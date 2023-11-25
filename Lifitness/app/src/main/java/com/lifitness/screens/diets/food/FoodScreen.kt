@@ -33,7 +33,7 @@ import com.lifitness.common.composable.FoodTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
-import com.lifitness.screens.diets.Diet
+import com.lifitness.model.Food
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
@@ -42,7 +42,7 @@ import com.lifitness.ui.theme.TextColor
 @Composable
 fun FoodScreen(
     navController: NavHostController,
-    diet: Diet
+    diet: Food
 ){
     Column(
         modifier = Modifier
