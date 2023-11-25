@@ -19,10 +19,10 @@ import com.lifitness.R
 import com.lifitness.R.drawable as AppImages
 
 @Composable
-fun ImageProfile() {
+fun ImageProfile(imageId: Int) {
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
-            painter = painterResource(AppImages.image_16),
+            painter = painterResource(id = imageId),
             contentDescription = "User profile picture",
             modifier = Modifier
                 .size(120.dp)
@@ -64,7 +64,7 @@ fun PreviewLogoImage() {
 @Preview
 @Composable
 fun PreviewImageProfile() {
-    ImageProfile()
+    ImageProfile(1)
 }
 
 @Preview

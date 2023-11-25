@@ -244,6 +244,27 @@ fun IntermediateTitle(){
         fontWeight = FontWeight.Bold
     )
 }
+@Composable
+fun AddTrainTitle(){
+    Text(stringResource(AppText.add_train_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun AddExerciseTitle(){
+    Text(stringResource(AppText.add_exercise_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
 
 @Composable
 fun SpecificTrainTitle(trainName: String){
