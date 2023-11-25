@@ -26,16 +26,16 @@ import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.HomeTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.screens.diets.Diet
 import com.lifitness.screens.diets.DietsViewModel
 import com.lifitness.ui.theme.BackgroundColor
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @Composable
-fun HomeScreen(navController: NavHostController){
-    val dietViewModel: DietsViewModel = viewModel()
+fun HomeScreen(navController: NavHostController, dietViewModel: DietsViewModel){
     val dietValues = dietViewModel.diets.observeAsState()
-    var isLoadingCompleted by remember { mutableStateOf(false) } // <-- Here.
+    var isLoadingCompleted by remember { mutableStateOf(false) }
 
 
     if (dietValues.value?.isNotEmpty() == true) {
@@ -85,5 +85,6 @@ fun HomeScreen(navController: NavHostController){
 @Composable
 fun PreviewHomeScreen(){
     val navController = rememberNavController()
-    HomeScreen(navController)
+    val dietViewModel: DietsViewModel = viewModel()
+    HomeScreen(navController, dietViewModel)
 }
