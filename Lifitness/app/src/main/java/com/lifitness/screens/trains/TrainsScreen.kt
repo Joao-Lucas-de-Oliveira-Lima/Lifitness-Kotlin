@@ -1,4 +1,4 @@
-package com.lifitness.screens.exercises
+package com.lifitness.screens.trains
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
