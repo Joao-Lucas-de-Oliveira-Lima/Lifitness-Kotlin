@@ -26,11 +26,14 @@ import com.lifitness.common.composable.TrainsTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+
 @Composable
-fun ExercisesScreen(navController: NavHostController) {
-    val basicExercisesViewModel: ExercisesViewModel = viewModel(factory = ExercisesViewModelFactory("train/default/basic"), key = "basicExercise")
+fun TrainsScreen(navController: NavHostController) {
+    val basicExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/basic"), key = "basicExercise")
     val basicExercises = basicExercisesViewModel.trains.observeAsState()
-    val adeptExercisesViewModel: ExercisesViewModel = viewModel(factory = ExercisesViewModelFactory("train/default/adept"), key = "adeptExercise")
+    val adeptExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/adept"), key = "adeptExercise")
     val adeptExercises = adeptExercisesViewModel.trains.observeAsState()
 
     Box(
@@ -76,10 +79,11 @@ fun ExercisesScreen(navController: NavHostController) {
             item {
                 IntermediateTitle()
             }
+
             adeptExercises.value?.chunked(4) { chunk ->
-                items(chunk) { exerciseAdept ->
-                    ExerciseCard(exerciseAdept.trainName, exerciseAdept.duration) {
-                        navController.navigate(LifitnessScreen.Train.name)
+                items(chunk) { exercise ->
+                    ExerciseCard(exercise.trainName, exercise.duration) {
+                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${Json.encodeToString(exercise)}")
                     }
                 }
             }
@@ -99,5 +103,5 @@ fun ExercisesScreen(navController: NavHostController) {
 @Composable
 fun DefaultPreviewExercises() {
     val navController = rememberNavController()
-    ExercisesScreen(navController)
+    TrainsScreen(navController)
 }
