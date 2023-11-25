@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -41,6 +42,7 @@ import com.lifitness.model.createSingleMock
 import com.lifitness.screens.addExercise.AddExerciseScreen
 import com.lifitness.screens.diets.Diet
 import com.lifitness.screens.diets.DietsScreen
+import com.lifitness.screens.diets.DietsViewModel
 import com.lifitness.screens.diets.food.FoodScreen
 import com.lifitness.screens.editProfile.EditProfileScreen
 import com.lifitness.screens.exerciseList.ExerciseListScreen
@@ -94,6 +96,7 @@ data class BottomNavigationItem(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LiFitnessApp() {
+    val dietViewModel: DietsViewModel = viewModel()
     var isLoginScreenDisplayed by remember { mutableStateOf(false) }
     val navController = rememberNavController();
 
@@ -208,7 +211,7 @@ fun LiFitnessApp() {
                     isLoginScreenDisplayed = true
                 }
                 composable(LifitnessScreen.Home.name) {
-                    HomeScreen(navController)
+                    HomeScreen(navController, dietViewModel)
                     isLoginScreenDisplayed = false
                 }
                 composable(LifitnessScreen.Main_Exercises.name) {
@@ -218,7 +221,7 @@ fun LiFitnessApp() {
                     ExerciseDescriptionScreen(navController)
                 }
                 composable(LifitnessScreen.Main_Diets.name) {
-                    DietsScreen(navController)
+                    DietsScreen(navController, dietViewModel)
                 }
                 composable("Food_Screen/{diet}") { backStackEntry ->
                     FoodScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("diet")!!))

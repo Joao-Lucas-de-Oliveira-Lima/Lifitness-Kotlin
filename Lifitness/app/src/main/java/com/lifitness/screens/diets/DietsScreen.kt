@@ -8,7 +8,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -29,9 +33,13 @@ import kotlinx.serialization.*
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun DietsScreen(navController: NavHostController) {
-    val dietViewModel: DietsViewModel = viewModel()
+fun DietsScreen(navController: NavHostController, dietViewModel: DietsViewModel) {
     val dietValues = dietViewModel.diets.observeAsState()
+    var isLoadingCompleted by remember { mutableStateOf(false) }
+
+    if (dietValues.value?.isNotEmpty() == true) {
+        isLoadingCompleted = true
+    }
 
     Box(
         modifier = Modifier
@@ -67,7 +75,7 @@ fun DietsScreen(navController: NavHostController) {
                 LazyRow {
                     dietValues.value?.chunked(4) { chunk ->
                         items(chunk) { diet ->
-                            DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0]) {
+                            DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], isLoadingCompleted) {
                                 navController.navigate("${LifitnessScreen.Food_Screen.name}/${Json.encodeToString(diet)}")
                             }
                         }
@@ -86,5 +94,6 @@ fun DietsScreen(navController: NavHostController) {
 @Composable
 fun PreviewDietsScreen() {
     val navController = rememberNavController()
-    DietsScreen(navController)
+    val dietViewModel: DietsViewModel = viewModel()
+    DietsScreen(navController, dietViewModel)
 }
