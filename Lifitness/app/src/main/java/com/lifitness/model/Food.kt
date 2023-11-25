@@ -1,10 +1,11 @@
 package com.lifitness.model
 
-data class Food (
-    val name: String,
-    val calories: String,
-    val carbohydrates: String,
-    val protein: String,
-    val fat: String,
-    val id: Int,
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Food(
+    val dietName: String = "",
+    val dietId: Int = -1,
+    val dietDescription: String = "",
+    val dietNutricionalTable: List<String> = listOf("")
 )
