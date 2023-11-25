@@ -4,6 +4,7 @@ import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.lifitness.R
 import com.lifitness.common.composable.EditTitle
 import com.lifitness.common.composable.ImageBackground
 import com.lifitness.common.composable.ImageProfile
@@ -30,7 +31,7 @@ class ImageTest {
     @Test
     fun testProfileImageIsDisplayed(){
         imageTestRule.setContent {
-            ImageProfile()
+            ImageProfile(R.drawable.image_16)
         }
 
         imageTestRule.onNode(hasContentDescription("User profile picture"))
