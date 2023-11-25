@@ -6,9 +6,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.app.LifitnessScreen
@@ -17,10 +21,16 @@ import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.HomeTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.screens.diets.DietsViewModel
 import com.lifitness.ui.theme.BackgroundColor
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Composable
 fun HomeScreen(navController: NavHostController){
+    val dietViewModel: DietsViewModel = viewModel()
+    val dietValues = dietViewModel.diets.observeAsState()
+
     LazyColumn(
         userScrollEnabled = true,
                 modifier = Modifier
@@ -41,19 +51,14 @@ fun HomeScreen(navController: NavHostController){
 
         item {
             Spacer(modifier = Modifier.spacer())
-        }
-
-        item{
-            Column {
-                Row {
-                    DietRecommendationCard("Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                    DietRecommendationCard("Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                    DietRecommendationCard("Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                }
-                Row {
-                    DietRecommendationCard("Arroz Branco", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                    DietRecommendationCard("Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
-                    DietRecommendationCard("Feijão Mulato", "200CAL", onClick = { navController.navigate(LifitnessScreen.Food_Screen.name) })
+            DietsRecomendationTitle()
+            LazyRow {
+                dietValues.value?.chunked(4) { chunk ->
+                    items(chunk) { diet ->
+                        DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0]) {
+                            navController.navigate("${LifitnessScreen.Food_Screen.name}/${Json.encodeToString(diet)}")
+                        }
+                    }
                 }
             }
         }

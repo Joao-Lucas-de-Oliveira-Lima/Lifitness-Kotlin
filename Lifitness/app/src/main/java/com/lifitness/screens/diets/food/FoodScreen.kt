@@ -33,13 +33,17 @@ import com.lifitness.common.composable.FoodTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.screens.diets.Diet
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 import com.lifitness.ui.theme.TextColor
 
 @Composable
-fun FoodScreen(navController: NavHostController){
+fun FoodScreen(
+    navController: NavHostController,
+    diet: Diet
+){
     Column(
         modifier = Modifier
             .fillMaxHeight()
@@ -51,12 +55,12 @@ fun FoodScreen(navController: NavHostController){
         Spacer(modifier = Modifier.spacer())
 
         Column (modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "FEIJÃO", color = TextColor, fontSize = 20.sp)
+            Text(text = diet.dietName, color = TextColor, fontSize = 20.sp)
             Spacer(modifier = Modifier.smallSpacer())
             Image(
                 painter = painterResource(R.drawable.frame_bean),
                 contentScale = ContentScale.FillHeight,
-                contentDescription = "feijão",
+                contentDescription = "foodImage",
                 modifier = Modifier
                     .height(200.dp)
                     .padding(5.dp)
@@ -70,7 +74,7 @@ fun FoodScreen(navController: NavHostController){
                     .fillMaxWidth(), textAlign = TextAlign.Start)
                 Spacer(modifier = Modifier.smallSpacer())
                 Text(
-                    text = "O feijão carioca, também conhecido como feijão-mulatinho ou feijão-carioquinha, é uma variedade popular de feijão consumida em várias partes do mundo. Ele é uma excelente fonte de nutrientes essenciais e oferece diversos benefícios à saúde.",
+                    text = diet.dietDescription,
                     color = TextColor,
                     fontSize = 14.sp,
                     modifier = Modifier.padding(20.dp) )
@@ -104,7 +108,7 @@ fun FoodScreen(navController: NavHostController){
                         fontSize = 16.sp,
                     )
                     Text(
-                        text = "12.92kcal",
+                        text = diet.dietNutricionalTable[0],
                         color = TextColor,
                         fontSize = 16.sp,
                     )
@@ -125,7 +129,7 @@ fun FoodScreen(navController: NavHostController){
                         fontSize = 16.sp,
                     )
                     Text(
-                        text = "2.31g",
+                        text = diet.dietNutricionalTable[1],
                         color = TextColor,
                         fontSize = 16.sp,
                     )
@@ -144,7 +148,7 @@ fun FoodScreen(navController: NavHostController){
                         fontSize = 16.sp,
                     )
                     Text(
-                        text = "0.09g",
+                        text = diet.dietNutricionalTable[2],
                         color = TextColor,
                         fontSize = 16.sp,
                     )
@@ -164,7 +168,7 @@ fun FoodScreen(navController: NavHostController){
                         fontSize = 16.sp,
                     )
                     Text(
-                        text = "0.82g",
+                        text = diet.dietNutricionalTable[3],
                         color = TextColor,
                         fontSize = 16.sp,
                     )
@@ -179,5 +183,5 @@ fun FoodScreen(navController: NavHostController){
 @Preview
 fun FoodScreenPreview(){
     val navController = rememberNavController()
-    FoodScreen(navController)
+    //FoodScreen(navController)
 }
