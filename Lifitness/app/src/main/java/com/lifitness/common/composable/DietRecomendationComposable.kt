@@ -19,16 +19,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.lifitness.common.ext.shimmerLoadingAnimation
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
 
-fun DietRecommendationCard(foodName: String, dietCal: String, onClick: () -> Unit) {
-    EditorDietRecomendationCard(foodName, dietCal, onClick)
+fun DietRecommendationCard(foodName: String, dietCal: String, isLoadingCompleted: Boolean, onClick: () -> Unit) {
+    EditorDietRecomendationCard(foodName, dietCal, onClick, isLoadingCompleted)
 }
 
 @Composable
-fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, onClick: () -> Unit) {
+fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, onClick: () -> Unit, isLoadingCompleted: Boolean) {
     Box(
         modifier = Modifier
             .clickable(onClick = { onClick() })
@@ -47,13 +48,16 @@ fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, o
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight(),
+                    .fillMaxHeight()
+                    .shimmerLoadingAnimation(isLoadingCompleted),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                ImageDiet()
-                SpecificDietName(healthInstructorName)
-                SpecificDietCal(dietCal)
+                if(isLoadingCompleted) {
+                    ImageDiet()
+                    SpecificDietName(healthInstructorName)
+                    SpecificDietCal(dietCal)
+                }
             }
         }
     }
@@ -65,5 +69,5 @@ fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, o
 @Composable
 fun PreviewDietRecommendationCard() {
 
-    DietRecommendationCard("Cassandra", "200CAL", onClick = {})
+    DietRecommendationCard("Cassandra", "200CAL", true, onClick = {})
 }
