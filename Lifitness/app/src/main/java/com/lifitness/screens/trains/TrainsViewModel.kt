@@ -1,12 +1,13 @@
-package com.lifitness.screens.exercises
+package com.lifitness.screens.trains
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import com.lifitness.model.Train
 
-class ExercisesViewModel(private val path: String) : ViewModel() {
+class TrainsViewModel(private val path: String) : ViewModel() {
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val exercisesCollection = firestore.collection(path)
 

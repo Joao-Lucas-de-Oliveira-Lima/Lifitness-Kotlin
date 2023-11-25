@@ -73,7 +73,7 @@ fun DietsScreen(navController: NavHostController, dietViewModel: DietsViewModel)
 
             item {
                 LazyRow {
-                    dietValues.value?.chunked(4) { chunk ->
+                    dietValues.value?.chunked(8) { chunk ->
                         items(chunk) { diet ->
                             DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], isLoadingCompleted) {
                                 navController.navigate("${LifitnessScreen.Food_Screen.name}/${Json.encodeToString(diet)}")

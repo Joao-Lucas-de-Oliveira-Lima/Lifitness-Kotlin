@@ -24,7 +24,7 @@ class DietCardComposable {
     @Test
     fun testShowCardDietTexts() {
         composeTestRule.setContent {
-            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
+            DietRecommendationCard("Feijoada","300CAL", true, onClick = {})
         }
         composeTestRule.onNodeWithText("Feijoada").assertIsDisplayed()
         composeTestRule.onNodeWithText("300CAL").assertIsDisplayed()
@@ -33,7 +33,7 @@ class DietCardComposable {
     @Test
     fun testCardDietDimensions() {
         composeTestRule.setContent {
-            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
+            DietRecommendationCard("Feijoada","300CAL",true, onClick = {} )
         }
 
         composeTestRule.onNode(hasTestTag("diet_card"))
@@ -43,7 +43,7 @@ class DietCardComposable {
     @Test
     fun testShowCardDietImages() {
         composeTestRule.setContent {
-            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
+            DietRecommendationCard("Feijoada","300CAL", true, onClick = {} )
         }
         composeTestRule.onNodeWithContentDescription("Diet picture").assertExists()
     }
@@ -51,7 +51,7 @@ class DietCardComposable {
     @Test
     fun testClicableCardDietImages() {
         composeTestRule.setContent {
-            DietRecommendationCard("Feijoada","300CAL", onClick = {} )
+            DietRecommendationCard("Feijoada","300CAL", true, onClick = {})
         }
 
         composeTestRule.onNode(hasText("Feijoada"))
