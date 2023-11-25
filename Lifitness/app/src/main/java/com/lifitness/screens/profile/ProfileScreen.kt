@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.R
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
@@ -55,7 +56,7 @@ fun ProfileScreen(
             ImageBackground()
             Row (horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()){
-                ImageProfile()
+                ImageProfile(R.drawable.image_16)
                 Icon(
                     Icons.Default.Create,
                     contentDescription = "Edit profile image",
