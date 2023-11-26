@@ -27,8 +27,6 @@ import com.lifitness.common.composable.TrainsTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 @Composable
 fun TrainsScreen(navController: NavHostController) {
@@ -72,9 +70,8 @@ fun TrainsScreen(navController: NavHostController) {
 
             basicExercises.value?.chunked(4) { chunk ->
                 items(chunk) { exercise ->
-                    println("Train Screen: ${exercise.trainId}")
                     ExerciseCard(exercise.trainName, exercise.duration) {
-                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${Json.encodeToString(exercise)}")
+                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
                     }
                 }
             }
