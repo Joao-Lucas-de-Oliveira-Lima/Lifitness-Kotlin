@@ -34,9 +34,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.lifitness.R
 import com.lifitness.model.createSingleMock
 import com.lifitness.screens.addExercise.AddExerciseScreen
@@ -74,6 +76,7 @@ enum class LifitnessScreen {
     TrainsScreen,
     Settings,
     Train,
+    UniqueScreen,
     ExerciseViewList,
     Main_Diets,
     Food_Screen,
@@ -217,11 +220,14 @@ fun LiFitnessApp() {
                 composable(LifitnessScreen.TrainsScreen.name) {
                     TrainsScreen(navController)
                 }
-                composable(LifitnessScreen.Train.name) {
-                    ExerciseDescriptionScreen(navController)
+                composable("UniqueScreen/{exerciseDescription}") { backStackEntry ->
+                    ExerciseDescriptionScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("exerciseDescription")!!))
                 }
-                composable("ExerciseViewList/{exercise}") { backStackEntry ->
-                    ExerciseViewListScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("exercise")!!))
+                composable(
+                    "${LifitnessScreen.ExerciseViewList.name}/{exercise}",
+                    arguments = listOf(navArgument("exercise") { type = NavType.IntType })
+                ) { backStackEntry ->
+                    ExerciseViewListScreen(navController, backStackEntry.arguments?.getInt("exercise")!!)
                 }
                 composable(LifitnessScreen.Main_Diets.name) {
                     DietsScreen(navController, dietViewModel)

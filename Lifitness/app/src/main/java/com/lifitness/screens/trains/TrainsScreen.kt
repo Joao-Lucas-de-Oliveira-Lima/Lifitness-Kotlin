@@ -1,5 +1,6 @@
 package com.lifitness.screens.trains
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -32,8 +33,8 @@ import kotlinx.serialization.json.Json
 @Composable
 fun TrainsScreen(navController: NavHostController) {
     val basicExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/basic"), key = "basicExercise")
-    val basicExercises = basicExercisesViewModel.trains.observeAsState()
     val adeptExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/adept"), key = "adeptExercise")
+    val basicExercises = basicExercisesViewModel.trains.observeAsState()
     val adeptExercises = adeptExercisesViewModel.trains.observeAsState()
 
     Box(
@@ -68,10 +69,12 @@ fun TrainsScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.spacer())
                 BegginerTitle()
             }
+
             basicExercises.value?.chunked(4) { chunk ->
                 items(chunk) { exercise ->
+                    println("Train Screen: ${exercise.trainId}")
                     ExerciseCard(exercise.trainName, exercise.duration) {
-                        navController.navigate(LifitnessScreen.Train.name)
+                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${Json.encodeToString(exercise)}")
                     }
                 }
             }
@@ -83,7 +86,7 @@ fun TrainsScreen(navController: NavHostController) {
             adeptExercises.value?.chunked(4) { chunk ->
                 items(chunk) { exercise ->
                     ExerciseCard(exercise.trainName, exercise.duration) {
-                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${Json.encodeToString(exercise)}")
+                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
                     }
                 }
             }

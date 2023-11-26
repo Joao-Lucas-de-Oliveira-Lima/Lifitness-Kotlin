@@ -26,12 +26,16 @@ import com.lifitness.common.composable.HomeTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.screens.diets.DietsViewModel
+import com.lifitness.screens.trains.TrainsViewModel
+import com.lifitness.screens.trains.TrainsViewModelFactory
 import com.lifitness.ui.theme.BackgroundColor
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @Composable
 fun HomeScreen(navController: NavHostController, dietViewModel: DietsViewModel){
+    val adeptExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/adept"), key = "adeptExercise")
+    val adeptExercises = adeptExercisesViewModel.trains.observeAsState()
     val dietValues = dietViewModel.diets.observeAsState()
     var isLoadingCompleted by remember { mutableStateOf(false) }
 
@@ -51,11 +55,11 @@ fun HomeScreen(navController: NavHostController, dietViewModel: DietsViewModel){
             Spacer(modifier = Modifier.spacer())
         }
 
-        item {
-            Column {
-                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
-                ExerciseCard("TREINO DE PEITO", "15 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
-                ExerciseCard("TREINO DE PEITO", "15 MIN", onClick = { navController.navigate(LifitnessScreen.Train.name) })
+        adeptExercises.value?.chunked(4) { chunk ->
+            items(chunk) { exercise ->
+                ExerciseCard(exercise.trainName, exercise.duration) {
+                    navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${Json.encodeToString(exercise)}")
+                }
             }
         }
 

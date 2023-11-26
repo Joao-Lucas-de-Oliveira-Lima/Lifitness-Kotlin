@@ -21,12 +21,15 @@ import com.lifitness.common.composable.DescriptionTitle
 import com.lifitness.common.composable.ExerciseDescription
 import com.lifitness.common.composable.ExerciseTitle
 import com.lifitness.common.composable.ImageExerciseDescription
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.Exercise
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun ExerciseDescriptionScreen(navController: NavHostController) {
+fun ExerciseDescriptionScreen(navController: NavHostController, exerciseDescription: Exercise) {
+    exerciseDescription.decode()
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -35,7 +38,7 @@ fun ExerciseDescriptionScreen(navController: NavHostController) {
     ) {
         Column {
             Row {
-                ExerciseTitle("AGACHAMENTO")
+                ExerciseTitle(exerciseDescription.exerciseName)
             }
             Spacer(modifier = Modifier.spacer())
             ImageExerciseDescription()
@@ -48,13 +51,10 @@ fun ExerciseDescriptionScreen(navController: NavHostController) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                ExerciseDescription(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do" +
-                            " eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                )
-                AmountExerciseTitle("4x13")
+                ExerciseDescription(exerciseDescription.exerciseDescription)
+                AmountExerciseTitle(exerciseDescription.exerciseDuration)
             }
-
+            Spacer(modifier = Modifier.endOfScreenSpacer())
         }
     }
 }
@@ -63,5 +63,6 @@ fun ExerciseDescriptionScreen(navController: NavHostController) {
 @Composable
 fun defaultPreviewExerciseDescriptionScreen() {
     val navController = rememberNavController()
-    ExerciseDescriptionScreen(navController)
+    val exercise = Exercise()
+    ExerciseDescriptionScreen(navController, exercise)
 }
