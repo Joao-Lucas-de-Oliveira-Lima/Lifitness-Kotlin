@@ -23,11 +23,13 @@ import com.lifitness.common.ext.spacer
 import com.lifitness.model.Train
 
 import com.lifitness.ui.theme.BackgroundColor
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Composable
-fun ExerciseViewListScreen(navController: NavHostController, trainId: Train){
+fun ExerciseViewListScreen(navController: NavHostController, trainId: Int){
     val exercisesViewModelList: ExerciseListViewModel = viewModel()
-    exercisesViewModelList.fetchExercisesForTrain(trainId.trainId)
+    exercisesViewModelList.fetchExercisesForTrain(trainId)
     val exercises = exercisesViewModelList.exercises.observeAsState()
 
     LazyColumn(modifier = Modifier
@@ -47,9 +49,10 @@ fun ExerciseViewListScreen(navController: NavHostController, trainId: Train){
         }
 
         exercises.value?.chunked(12) { chunk ->
-            items(chunk) { exerciseAdept ->
-                ExerciseCard(exerciseAdept.exerciseName, exerciseAdept.exerciseDuration) {
-                    navController.navigate(LifitnessScreen.Train.name)
+            items(chunk) { exerciseDescription ->
+                exerciseDescription.encode()
+                ExerciseCard(exerciseDescription.exerciseName, exerciseDescription.exerciseDuration) {
+                    navController.navigate("${LifitnessScreen.UniqueScreen.name}/${Json.encodeToString(exerciseDescription)}")
                 }
             }
         }
@@ -60,6 +63,6 @@ fun ExerciseViewListScreen(navController: NavHostController, trainId: Train){
 @Preview
 fun ExerciseListScreenPreview(){
     val navController = rememberNavController()
-    val train: Train = Train()
+    val train = -1
     ExerciseViewListScreen(navController,  train)
 }
