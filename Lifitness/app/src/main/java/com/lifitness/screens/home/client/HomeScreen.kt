@@ -58,10 +58,11 @@ fun HomeScreen(navController: NavHostController, dietViewModel: DietsViewModel){
         adeptExercises.value?.chunked(4) { chunk ->
             items(chunk) { exercise ->
                 ExerciseCard(exercise.trainName, exercise.duration) {
-                    navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${Json.encodeToString(exercise)}")
+                    navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
                 }
             }
         }
+
 
         item {
             Spacer(modifier = Modifier.spacer())
