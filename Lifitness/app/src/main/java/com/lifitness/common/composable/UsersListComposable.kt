@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -40,7 +41,8 @@ fun UserList(users: List<User>, navController: NavHostController){
         items(users) {user ->
             Button(
                 onClick = { navController.navigate(LifitnessScreen.PersonalClient.name)},
-                colors = ButtonDefaults.buttonColors(CardBackground)
+                colors = ButtonDefaults.buttonColors(CardBackground),
+                shape = RoundedCornerShape(10),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier

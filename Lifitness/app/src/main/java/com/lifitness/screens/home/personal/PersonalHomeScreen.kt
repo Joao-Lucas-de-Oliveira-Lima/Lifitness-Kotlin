@@ -36,7 +36,7 @@ fun PersonalHomeScreen(
         PersonalButton(
             contentTitle = "MANAGE TRAINS",
             contentIcon = Icons.Default.ManageSearch,
-            onClick = {}
+            onClick = {navController.navigate(LifitnessScreen.TrainList.name)}
         )
     }
 }

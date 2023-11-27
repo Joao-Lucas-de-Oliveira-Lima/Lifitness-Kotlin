@@ -107,4 +107,5 @@ dependencies {
     implementation("androidx.compose.material:material:1.1.0-alpha06")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
 }

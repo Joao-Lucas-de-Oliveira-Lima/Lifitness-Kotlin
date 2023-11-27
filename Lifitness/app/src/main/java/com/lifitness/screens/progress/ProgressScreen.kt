@@ -22,8 +22,12 @@ import com.lifitness.common.composable.*
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.Exercise
+import com.lifitness.model.Train
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.TextColor
+
+
 
 @Composable
 fun ProgressScreen(navController: NavHostController){
