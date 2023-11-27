@@ -68,9 +68,13 @@ fun TrainsScreen(navController: NavHostController) {
                 BegginerTitle()
             }
 
-            basicExercises.value?.chunked(4) { chunk ->
-                items(chunk) { exercise ->
-                    ExerciseCard(exercise.trainName, exercise.duration) {
+            if (adeptExercises.value?.isEmpty() != false) {
+                items(4) {
+                    ExerciseCard(exerciseName = "", exerciseDuration = "", isLoading = true) {}
+                }
+            } else {
+                items(basicExercises.value!!) {exercise ->
+                    ExerciseCard(exercise.trainName, exercise.duration, false) {
                         navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
                     }
                 }
@@ -80,9 +84,13 @@ fun TrainsScreen(navController: NavHostController) {
                 IntermediateTitle()
             }
 
-            adeptExercises.value?.chunked(4) { chunk ->
-                items(chunk) { exercise ->
-                    ExerciseCard(exercise.trainName, exercise.duration) {
+            if (adeptExercises.value?.isEmpty() != false) {
+                items(4) {
+                    ExerciseCard(exerciseName = "", exerciseDuration = "", isLoading = true) {}
+                }
+            } else {
+                items(adeptExercises.value!!) {exercise ->
+                    ExerciseCard(exercise.trainName, exercise.duration, false) {
                         navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
                     }
                 }

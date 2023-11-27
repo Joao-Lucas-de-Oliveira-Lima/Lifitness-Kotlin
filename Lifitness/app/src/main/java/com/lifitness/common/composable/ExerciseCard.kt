@@ -25,15 +25,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lifitness.R
+import com.lifitness.common.ext.shimmerLoadingAnimation
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun ExerciseCard(exerciseName: String, exerciseDuration: String, onClick: () -> Unit) {
-    EditorExerciseCard(exerciseName, exerciseDuration, onClick)
+fun ExerciseCard(exerciseName: String, exerciseDuration: String, isLoading: Boolean, onClick: () -> Unit) {
+    EditorExerciseCard(exerciseName, exerciseDuration, isLoading, onClick)
 }
 
 @Composable
-fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, onClick: () -> Unit) {
+fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, isLoading: Boolean, onClick: () -> Unit) {
     Box (
         modifier = Modifier
             .clickable(onClick = { onClick() })
@@ -50,16 +51,21 @@ fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, onClick: 
             )
         ) {
             Row {
-                ImageExercise()
+                if(!isLoading) {
+                    ImageExercise()
+                }
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .fillMaxHeight(),
+                        .fillMaxHeight()
+                        .shimmerLoadingAnimation(!isLoading),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    SpecificTrainTitle(exerciseName)
-                    SpecificTrainDuration(exerciseDuration)
+                    if(!isLoading) {
+                        SpecificTrainTitle(exerciseName)
+                        SpecificTrainDuration(exerciseDuration)
+                    }
                 }
             }
         }
@@ -84,7 +90,7 @@ fun ImagePersonalTrain() {
 @Preview
 @Composable
 fun PreviewExerciseCard() {
-    ExerciseCard(exerciseName = "Treino de Perna", exerciseDuration = "2 horas", {})
+    ExerciseCard(exerciseName = "Treino de Perna", exerciseDuration = "2 horas", true, {})
 }
 
 @Preview

@@ -51,7 +51,7 @@ fun ExerciseViewListScreen(navController: NavHostController, trainId: Int){
         exercises.value?.chunked(12) { chunk ->
             items(chunk) { exerciseDescription ->
                 exerciseDescription.encode()
-                ExerciseCard(exerciseDescription.exerciseName, exerciseDescription.exerciseDuration) {
+                ExerciseCard(exerciseDescription.exerciseName, exerciseDescription.exerciseDuration, false) {
                     navController.navigate("${LifitnessScreen.UniqueScreen.name}/${Json.encodeToString(exerciseDescription)}")
                 }
             }

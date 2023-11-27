@@ -14,6 +14,7 @@ class TrainsViewModel(private val path: String) : ViewModel() {
     private val _trains = MutableLiveData<List<Train>>()
     val trains: LiveData<List<Train>> get() = _trains
 
+
     init {
         fetchExercises()
     }
