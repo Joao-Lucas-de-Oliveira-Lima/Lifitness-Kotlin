@@ -96,5 +96,6 @@
 
     <string name="add_exercise_title">ADD EXERCISE</string>
     <string name="add_train_title">ADD TRAIN</string>
+    <string name="train_list_title">TRAINS</string>
 
 </resources>

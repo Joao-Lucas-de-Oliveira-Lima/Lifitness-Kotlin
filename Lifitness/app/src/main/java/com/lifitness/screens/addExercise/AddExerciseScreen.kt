@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Upload
 import androidx.compose.material3.Button
@@ -48,6 +50,7 @@ fun AddExerciseScreen(navController: NavHostController){
     }
     Column(
         modifier = Modifier
+            .verticalScroll(rememberScrollState())
             .fillMaxWidth()
             .fillMaxHeight()
             .background(BackgroundColor)
@@ -73,8 +76,9 @@ fun AddExerciseScreen(navController: NavHostController){
             Spacer(modifier = Modifier.spacer())
             TextFieldComponent(labelValue = "Muscle Target")
             Spacer(modifier = Modifier.spacer())
-            SmallButton(contentTitle = "ADD", onClick = { navController.navigate(LifitnessScreen.ClientsList.name) }, buttonColor = CardBackground)
+            SmallButton(contentTitle = "ADD", onClick = { navController.navigate(LifitnessScreen.AddTrain.name) }, buttonColor = CardBackground)
         }
+        Spacer(modifier = Modifier.endOfScreenSpacer())
     }
 }
 

@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.Text
@@ -21,6 +23,7 @@ import com.lifitness.R
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ImageProfile
 import com.lifitness.common.composable.SmallButton
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.model.User
 import com.lifitness.model.createSingleMock
@@ -34,6 +37,7 @@ fun PersonalClientScreen(user: User, imageId: Int, navController: NavHostControl
     Column(modifier = Modifier
         .background(BackgroundColor)
         .fillMaxHeight()
+        .verticalScroll(rememberScrollState())
         .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.spacer())
         ImageProfile(imageId)
@@ -129,9 +133,11 @@ fun PersonalClientScreen(user: User, imageId: Int, navController: NavHostControl
                     disabledIndicatorColor = Color.Red, // Cor da linha quando desabilitado
                     errorIndicatorColor = Color.Red // Cor da linha quando há erro
                 ))
+            Spacer(modifier = Modifier.spacer())
+            SmallButton(contentTitle = "SET TRAIN", onClick = { navController.navigate(LifitnessScreen.TrainList.name) }, buttonColor = ButtonEdit)
+            Spacer(modifier = Modifier.endOfScreenSpacer())
         }
-        Spacer(modifier = Modifier.spacer())
-        SmallButton(contentTitle = "SET TRAIN", onClick = { navController.navigate(LifitnessScreen.ClientsList.name) }, buttonColor = ButtonEdit)
+
     }
 }
 

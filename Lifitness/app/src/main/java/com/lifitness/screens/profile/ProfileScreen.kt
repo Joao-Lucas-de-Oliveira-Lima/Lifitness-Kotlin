@@ -9,14 +9,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import com.lifitness.common.composable.*
 import androidx.compose.ui.Alignment
@@ -24,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
@@ -33,6 +33,7 @@ import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.BackgroundColor as background
+
 
 @Composable
 fun ProfileScreen(
@@ -57,14 +58,13 @@ fun ProfileScreen(
             Row (horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()){
                 ImageProfile(R.drawable.image_16)
-                Icon(
-                    Icons.Default.Create,
-                    contentDescription = "Edit profile image",
-                    tint = Color.White,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .padding(end = 10.dp)
-                )
+                Button(onClick = { }, colors = ButtonDefaults.buttonColors(Color.Transparent)) {
+                    Icon(
+                        Icons.Default.CameraAlt,
+                        contentDescription = "Edit profile image",
+                        tint = Color.White,
+                    )
+                }
             }
 
         }

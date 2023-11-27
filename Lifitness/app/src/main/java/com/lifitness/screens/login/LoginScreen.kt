@@ -56,7 +56,10 @@ import com.lifitness.common.composable.FacebookLoginButton
 import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
+import com.lifitness.model.createPersonalMock
+import com.lifitness.model.createSingleMock
 
+val user = createSingleMock()
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun LoginScreen(navController: NavHostController) {
@@ -255,11 +258,22 @@ fun LoginScreen(navController: NavHostController) {
                         GoogleLoginButton(
                             25,
                             Color.White
-                        ) { navController.navigate(LifitnessScreen.Home.name) }
+                        ) {
+                            if(user.personal) {
+                                navController.navigate(LifitnessScreen.HomePersonal.name)
+                            } else {
+                                navController.navigate(LifitnessScreen.Home.name)
+                            }
+                        }
                         FacebookLoginButton(
                             size = 25,
                             buttonColor = Color.White
-                        ) { navController.navigate(LifitnessScreen.Home.name) }
+                        ) { if(user.personal) {
+                                navController.navigate(LifitnessScreen.HomePersonal.name)
+                            } else {
+                                navController.navigate(LifitnessScreen.Home.name)
+                            }
+                        }
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     ClickableDontHaveAnAccountTextComponent(

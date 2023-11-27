@@ -267,6 +267,17 @@ fun AddExerciseTitle(){
 }
 
 @Composable
+fun TrainListTitle(){
+    Text(stringResource(AppText.train_list_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun SpecificTrainTitle(trainName: String){
     Text(trainName,
         color = TextColor,

@@ -7,7 +7,9 @@ data class User (
     val bio: String,
     val goal: String,
     val height: Double,
-    val weight: Double,
+    val weight: List<Double>,
     val whatKeep: String,
     val physicLevel: String,
+    val trains: List<Train>,
+    val personal: Boolean,
 )

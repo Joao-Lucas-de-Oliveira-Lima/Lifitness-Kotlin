@@ -40,8 +40,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.lifitness.R
+import com.lifitness.model.createPersonalMock
 import com.lifitness.model.createSingleMock
 import com.lifitness.screens.addExercise.AddExerciseScreen
+import com.lifitness.screens.addTrain.AddTrainScreen
 import com.lifitness.screens.diets.DietsScreen
 import com.lifitness.screens.diets.DietsViewModel
 import com.lifitness.screens.diets.food.FoodScreen
@@ -51,6 +53,7 @@ import com.lifitness.screens.exerciseList.student.ExerciseViewListScreen
 import com.lifitness.screens.trains.TrainsScreen
 import com.lifitness.screens.trains.exercise.ExerciseDescriptionScreen
 import com.lifitness.screens.home.client.HomeScreen
+import com.lifitness.screens.home.personal.PersonalHomeScreen
 import com.lifitness.screens.login.LoginScreen
 import com.lifitness.screens.personalClient.PersonalClientScreen
 import com.lifitness.screens.profile.ProfileScreen
@@ -61,9 +64,13 @@ import com.lifitness.screens.register.impedimentsRegistration.ImpedimentsRegistr
 import com.lifitness.screens.register.personalDataRegistration.PersonalDataRegistrationScreen
 import com.lifitness.screens.register.recordPhysicalActivityLevel.PhysicalActivityLevelRegistrationScreen
 import com.lifitness.screens.studentsPersonal.ClientsListScreen
+import com.lifitness.screens.trainList.TrainListScreen
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 import kotlinx.serialization.json.Json
+
+val user = createPersonalMock()
+//val user = createSingleMock()
 
 enum class LifitnessScreen {
     Login,
@@ -85,7 +92,10 @@ enum class LifitnessScreen {
     ExerciseList,
     AddExercise,
     ClientsList,
-    PersonalClient
+    PersonalClient,
+    HomePersonal,
+    AddTrain,
+    TrainList,
 }
 
 data class BottomNavigationItem(
@@ -156,7 +166,11 @@ fun LiFitnessApp() {
                                 onClick = {
                                     selectedItemIndex = index
                                     when (index) {
-                                        0 -> navController.navigate(LifitnessScreen.Home.name)
+                                        0 -> if(user.personal){
+                                            navController.navigate(LifitnessScreen.HomePersonal.name)
+                                        } else {
+                                            navController.navigate(LifitnessScreen.Home.name)
+                                        }
                                         1 -> navController.navigate(LifitnessScreen.Main_Diets.name)
                                         2 -> navController.navigate(LifitnessScreen.TrainsScreen.name)
                                         3 -> navController.navigate(LifitnessScreen.Charts.name)
@@ -255,6 +269,15 @@ fun LiFitnessApp() {
                 }
                 composable(LifitnessScreen.PersonalClient.name) {
                     PersonalClientScreen(createSingleMock(), R.drawable.image_16, navController)
+                }
+                composable(LifitnessScreen.AddTrain.name) {
+                    AddTrainScreen(navController)
+                }
+                composable(LifitnessScreen.HomePersonal.name) {
+                    PersonalHomeScreen(navController)
+                }
+                composable(LifitnessScreen.TrainList.name) {
+                    TrainListScreen(navController)
                 }
             }
         }
