@@ -37,13 +37,6 @@ fun HomeScreen(navController: NavHostController, dietViewModel: DietsViewModel){
     val adeptExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/adept"), key = "adeptExercise")
     val adeptExercises = adeptExercisesViewModel.trains.observeAsState()
     val dietValues = dietViewModel.diets.observeAsState()
-    var isLoadingCompleted by remember { mutableStateOf(false) }
-
-
-    if (dietValues.value?.isNotEmpty() == true) {
-        isLoadingCompleted = true
-    }
-
 
     LazyColumn(
         userScrollEnabled = true,
@@ -55,22 +48,30 @@ fun HomeScreen(navController: NavHostController, dietViewModel: DietsViewModel){
             Spacer(modifier = Modifier.spacer())
         }
 
-        adeptExercises.value?.chunked(4) { chunk ->
-            items(chunk) { exercise ->
-                ExerciseCard(exercise.trainName, exercise.duration) {
+
+        if (adeptExercises.value?.isEmpty() != false) {
+            items(4) {
+                ExerciseCard(exerciseName = "", exerciseDuration = "", isLoading = true) {}
+            }
+        } else {
+            items(adeptExercises.value!!) {exercise ->
+                ExerciseCard(exercise.trainName, exercise.duration, false) {
                     navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
                 }
             }
         }
 
-
         item {
             Spacer(modifier = Modifier.spacer())
             DietsRecomendationTitle()
             LazyRow {
-                dietValues.value?.chunked(8) { chunk ->
-                    items(chunk) { diet ->
-                        DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], isLoadingCompleted) {
+                if (dietValues.value?.isEmpty() != false) {
+                    items(8) {
+                        DietRecommendationCard("", "", false) {  }
+                    }
+                } else {
+                    items(dietValues.value!!) { diet ->
+                        DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], true) {
                             navController.navigate("${LifitnessScreen.Food_Screen.name}/${Json.encodeToString(diet)}")
                         }
                     }

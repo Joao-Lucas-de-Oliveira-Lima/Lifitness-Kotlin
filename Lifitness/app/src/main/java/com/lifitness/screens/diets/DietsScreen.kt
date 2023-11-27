@@ -35,11 +35,6 @@ import com.lifitness.ui.theme.BackgroundColor
 @Composable
 fun DietsScreen(navController: NavHostController, dietViewModel: DietsViewModel) {
     val dietValues = dietViewModel.diets.observeAsState()
-    var isLoadingCompleted by remember { mutableStateOf(false) }
-
-    if (dietValues.value?.isNotEmpty() == true) {
-        isLoadingCompleted = true
-    }
 
     Box(
         modifier = Modifier
@@ -73,9 +68,13 @@ fun DietsScreen(navController: NavHostController, dietViewModel: DietsViewModel)
 
             item {
                 LazyRow {
-                    dietValues.value?.chunked(8) { chunk ->
-                        items(chunk) { diet ->
-                            DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], isLoadingCompleted) {
+                    if (dietValues.value?.isEmpty() != false) {
+                        items(8) {
+                            DietRecommendationCard("", "", false) {  }
+                        }
+                    } else {
+                        items(dietValues.value!!) { diet ->
+                            DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], true) {
                                 navController.navigate("${LifitnessScreen.Food_Screen.name}/${Json.encodeToString(diet)}")
                             }
                         }
