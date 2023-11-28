@@ -3,6 +3,7 @@ package com.lifitness.common.composable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -24,38 +25,48 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lifitness.R
+import com.lifitness.common.ext.shimmerLoadingAnimation
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun ExerciseCard(exerciseName: String, exerciseDuration: String) {
-    EditorExerciseCard(exerciseName, exerciseDuration)
+fun ExerciseCard(exerciseName: String, exerciseDuration: String, isLoading: Boolean, onClick: () -> Unit) {
+    EditorExerciseCard(exerciseName, exerciseDuration, isLoading, onClick)
 }
 
 @Composable
-fun EditorExerciseCard(exerciseName: String, exerciseDuration: String) {
-    Card(
+fun EditorExerciseCard(exerciseName: String, exerciseDuration: String, isLoading: Boolean, onClick: () -> Unit) {
+    Box (
         modifier = Modifier
-            .fillMaxWidth()
-            .height(130.dp)
-            .padding(10.dp)
+            .clickable(onClick = { onClick() })
             .testTag("exercise_card")
-            .clickable(onClick = {})
-            .clip(RoundedCornerShape(15)),
-        colors = CardDefaults.cardColors(
-            containerColor = CardBackground
-        )
     ) {
-        Row {
-            ImageExercise()
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                SpecificTrainTitle(exerciseName)
-                SpecificTrainDuration(exerciseDuration)
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(130.dp)
+                .padding(10.dp)
+                .clip(RoundedCornerShape(15)),
+            colors = CardDefaults.cardColors(
+                containerColor = CardBackground
+            )
+        ) {
+            Row {
+                if(!isLoading) {
+                    ImageExercise()
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight()
+                        .shimmerLoadingAnimation(!isLoading),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    if(!isLoading) {
+                        SpecificTrainTitle(exerciseName)
+                        SpecificTrainDuration(exerciseDuration)
+                    }
+                }
             }
         }
     }
@@ -79,7 +90,7 @@ fun ImagePersonalTrain() {
 @Preview
 @Composable
 fun PreviewExerciseCard() {
-    ExerciseCard(exerciseName = "Treino de Perna", exerciseDuration = "2 horas")
+    ExerciseCard(exerciseName = "Treino de Perna", exerciseDuration = "2 horas", true, {})
 }
 
 @Preview

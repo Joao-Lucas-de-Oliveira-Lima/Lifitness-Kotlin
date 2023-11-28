@@ -1,16 +1,21 @@
-package com.lifitness.screens.exercises
+package com.lifitness.screens.trains
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.BegginerTitle
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.HealthInstructorCard
@@ -24,7 +29,12 @@ import com.lifitness.common.ext.spacer
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun ExercisesScreen(navController: NavHostController) {
+fun TrainsScreen(navController: NavHostController) {
+    val basicExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/basic"), key = "basicExercise")
+    val adeptExercisesViewModel: TrainsViewModel = viewModel(factory = TrainsViewModelFactory("train/default/adept"), key = "adeptExercise")
+    val basicExercises = basicExercisesViewModel.trains.observeAsState()
+    val adeptExercises = adeptExercisesViewModel.trains.observeAsState()
+
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -42,7 +52,7 @@ fun ExercisesScreen(navController: NavHostController) {
                 HireInstructorTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard(exerciseName = "Clécia")
+                        HealthInstructorCard("Clécia", {})
                     }
                 }
             }
@@ -56,18 +66,38 @@ fun ExercisesScreen(navController: NavHostController) {
             item {
                 Spacer(modifier = Modifier.spacer())
                 BegginerTitle()
-                ExerciseCard("TREINO DE ABDÔMEN", "20 MIN")
-                ExerciseCard("TREINO DE PEITO", "9 MIN")
-                ExerciseCard("TREINO DE BRAÇO", "17 MIN")
-                ExerciseCard("TREINO DE PERNA", "26 MIN")
+            }
+
+            if (adeptExercises.value?.isEmpty() != false) {
+                items(4) {
+                    ExerciseCard(exerciseName = "", exerciseDuration = "", isLoading = true) {}
+                }
+            } else {
+                items(basicExercises.value!!) {exercise ->
+                    ExerciseCard(exercise.trainName, exercise.duration, false) {
+                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
+                    }
+                }
             }
 
             item {
                 IntermediateTitle()
-                ExerciseCard("TREINO DE ABDÔMEN", "26 MIN")
-                ExerciseCard("TREINO DE PEITO", "15 MIN")
-                ExerciseCard("TREINO DE BRAÇO", "26 MIN")
-                ExerciseCard("TREINO DE PERNA", "41 MIN")
+            }
+
+            if (adeptExercises.value?.isEmpty() != false) {
+                items(4) {
+                    ExerciseCard(exerciseName = "", exerciseDuration = "", isLoading = true) {}
+                }
+            } else {
+                items(adeptExercises.value!!) {exercise ->
+                    ExerciseCard(exercise.trainName, exercise.duration, false) {
+                        navController.navigate("${LifitnessScreen.ExerciseViewList.name}/${exercise.trainId}")
+                    }
+                }
+            }
+
+            item {
+                Spacer(modifier = Modifier.endOfScreenSpacer())
             }
 
             item {
@@ -81,5 +111,5 @@ fun ExercisesScreen(navController: NavHostController) {
 @Composable
 fun DefaultPreviewExercises() {
     val navController = rememberNavController()
-    ExercisesScreen(navController)
+    TrainsScreen(navController)
 }

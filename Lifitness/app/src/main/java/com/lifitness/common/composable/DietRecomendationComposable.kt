@@ -1,6 +1,8 @@
 package com.lifitness.common.composable
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,37 +16,49 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.lifitness.common.ext.shimmerLoadingAnimation
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun DietRecomendationCard(exerciseName: String, dietCal: String) {
-    EditorDietRecomendationCard(exerciseName, dietCal)
+
+fun DietRecommendationCard(foodName: String, dietCal: String, isLoadingCompleted: Boolean, onClick: () -> Unit) {
+    EditorDietRecomendationCard(foodName, dietCal, onClick, isLoadingCompleted)
 }
 
 @Composable
-fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String) {
-    Card(
+fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String, onClick: () -> Unit, isLoadingCompleted: Boolean) {
+    Box(
         modifier = Modifier
-            .width(130.dp)
-            .height(140.dp)
-            .padding(5.dp)
-            .clip(RoundedCornerShape(15)),
-        colors = CardDefaults.cardColors(
-            containerColor = CardBackground
-        )
+            .clickable(onClick = { onClick() })
+            .testTag("diet_card")
     ) {
-        Column(
+        Card(
             modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .width(130.dp)
+                .height(140.dp)
+                .padding(5.dp)
+                .clip(RoundedCornerShape(15)),
+            colors = CardDefaults.cardColors(
+                containerColor = CardBackground
+            )
         ) {
-            ImageDiet()
-            SpecificDietName(healthInstructorName)
-            SpecificDietCal(dietCal)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+                    .shimmerLoadingAnimation(isLoadingCompleted),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                if(isLoadingCompleted) {
+                    ImageDiet()
+                    SpecificDietName(healthInstructorName)
+                    SpecificDietCal(dietCal)
+                }
+            }
         }
     }
 }
@@ -53,6 +67,7 @@ fun EditorDietRecomendationCard(healthInstructorName: String, dietCal: String) {
 
 @Preview
 @Composable
-fun PreviewDietRecomendationCard() {
-    DietRecomendationCard(exerciseName = "Cassandra", "200CAL")
+fun PreviewDietRecommendationCard() {
+
+    DietRecommendationCard("Cassandra", "200CAL", true, onClick = {})
 }

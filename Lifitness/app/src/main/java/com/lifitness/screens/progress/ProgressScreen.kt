@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,21 +22,25 @@ import com.lifitness.common.composable.*
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.Exercise
+import com.lifitness.model.Train
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.TextColor
 
-@Composable
 
+
+@Composable
 fun ProgressScreen(navController: NavHostController){
     Column (
         Modifier
             .background(BackgroundColor)
             .fillMaxHeight()
+            .verticalScroll(rememberScrollState())
     ){
         ProgressTitle()
         Spacer(modifier = Modifier.spacer())
         Text(
-            text = "Gráfico de peso",
+            text = "Weight line chart",
             color = TextColor,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
@@ -46,7 +52,7 @@ fun ProgressScreen(navController: NavHostController){
         }
         Spacer(modifier = Modifier.spacer())
         Text(
-            text = "Tabela de treinos",
+            text = "Training table chart",
             color = TextColor,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),

@@ -155,10 +155,10 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                 fontSize = 17,
                 minHeight = 30,
                 buttonColor = Color.White,
-                horizontalPadding = 50,
-                onClick = { navController.navigate(LifitnessScreen.Home.name) }
-
-            )
+                horizontalPadding = 50
+            ) {
+                navController.navigate(LifitnessScreen.Home.name)
+            }
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
                 text = stringResource(id = R.string.divisive_text),

@@ -1,4 +1,4 @@
-package com.lifitness.screens.exercises.exercise
+package com.lifitness.screens.trains.exercise
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -14,17 +14,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.AmountExerciseTitle
 import com.lifitness.common.composable.DescriptionTitle
 import com.lifitness.common.composable.ExerciseDescription
 import com.lifitness.common.composable.ExerciseTitle
 import com.lifitness.common.composable.ImageExerciseDescription
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.Exercise
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun ExerciseDescriptionScreen() {
+fun ExerciseDescriptionScreen(navController: NavHostController, exerciseDescription: Exercise) {
+    exerciseDescription.decode()
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -33,7 +38,7 @@ fun ExerciseDescriptionScreen() {
     ) {
         Column {
             Row {
-                ExerciseTitle("AGACHAMENTO")
+                ExerciseTitle(exerciseDescription.exerciseName)
             }
             Spacer(modifier = Modifier.spacer())
             ImageExerciseDescription()
@@ -46,13 +51,10 @@ fun ExerciseDescriptionScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                ExerciseDescription(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do" +
-                            " eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                )
-                AmountExerciseTitle("4x13")
+                ExerciseDescription(exerciseDescription.exerciseDescription)
+                AmountExerciseTitle(exerciseDescription.exerciseDuration)
             }
-
+            Spacer(modifier = Modifier.endOfScreenSpacer())
         }
     }
 }
@@ -60,5 +62,7 @@ fun ExerciseDescriptionScreen() {
 @Preview
 @Composable
 fun defaultPreviewExerciseDescriptionScreen() {
-    ExerciseDescriptionScreen()
+    val navController = rememberNavController()
+    val exercise = Exercise()
+    ExerciseDescriptionScreen(navController, exercise)
 }

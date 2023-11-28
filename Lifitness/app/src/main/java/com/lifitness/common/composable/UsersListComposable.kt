@@ -11,6 +11,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,32 +25,42 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
+import com.lifitness.app.LifitnessScreen
 import com.lifitness.model.User
 import com.lifitness.ui.theme.TextColor
 import com.lifitness.model.createMock
+import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
 
 @Composable
-fun UserList(users: List<User>){
+fun UserList(users: List<User>, navController: NavHostController){
     LazyColumn(){
         items(users) {user ->
-            Row(verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(10.dp, 5.dp)
-                    .fillMaxWidth()
-                    .height(70.dp)
-                    .background(CardBackground)
+            Button(
+                onClick = { navController.navigate(LifitnessScreen.PersonalClient.name)},
+                colors = ButtonDefaults.buttonColors(CardBackground),
+                shape = RoundedCornerShape(10),
             ) {
-                Image(
-                    painter = painterResource(R.drawable.image_16),
-                    contentDescription = "User profile picture",
+                Row(verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .size(50.dp)
-                        .clip(CircleShape)
-                        .padding(10.dp, 0.dp, 0.dp, 0.dp)
-                )
-                Text(text = user.nickname, color = TextColor, fontSize = 20.sp, modifier = Modifier.padding(10.dp, 0.dp))
+                        .padding(10.dp, 5.dp)
+                        .fillMaxWidth()
+                        .height(70.dp)
+                        .background(CardBackground)
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.image_16),
+                        contentDescription = "User profile picture",
+                        modifier = Modifier
+                            .size(70.dp)
+                            .clip(CircleShape)
+                            .padding(10.dp, 0.dp, 0.dp, 0.dp)
+                    )
+                    Text(text = user.nickname, color = TextColor, fontSize = 26.sp, modifier = Modifier.padding(20.dp, 0.dp))
+                }
             }
         }
     }
@@ -55,5 +69,6 @@ fun UserList(users: List<User>){
 @Preview
 @Composable
 fun UserListPreview(){
-    UserList(users = createMock())
+    val navController = rememberNavController()
+    UserList(users = createMock(), navController)
 }

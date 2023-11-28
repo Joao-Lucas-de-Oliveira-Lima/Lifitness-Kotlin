@@ -33,14 +33,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.lifitness.R
+import com.lifitness.model.createPersonalMock
+import com.lifitness.model.createSingleMock
+import com.lifitness.screens.addExercise.AddExerciseScreen
+import com.lifitness.screens.addTrain.AddTrainScreen
 import com.lifitness.screens.diets.DietsScreen
+import com.lifitness.screens.diets.DietsViewModel
+import com.lifitness.screens.diets.food.FoodScreen
 import com.lifitness.screens.editProfile.EditProfileScreen
-import com.lifitness.screens.exercises.ExercisesScreen
-import com.lifitness.screens.home.HomeScreen
+import com.lifitness.screens.exerciseList.ExerciseListScreen
+import com.lifitness.screens.exerciseList.student.ExerciseViewListScreen
+import com.lifitness.screens.trains.TrainsScreen
+import com.lifitness.screens.trains.exercise.ExerciseDescriptionScreen
+import com.lifitness.screens.home.client.HomeScreen
+import com.lifitness.screens.home.personal.PersonalHomeScreen
 import com.lifitness.screens.login.LoginScreen
+import com.lifitness.screens.personalClient.PersonalClientScreen
 import com.lifitness.screens.profile.ProfileScreen
 import com.lifitness.screens.progress.ProgressScreen
 import com.lifitness.screens.register.MainRegistrationScreen
@@ -48,8 +63,14 @@ import com.lifitness.screens.register.goalRegistration.GoalRegistrationScreen
 import com.lifitness.screens.register.impedimentsRegistration.ImpedimentsRegistrationScreen
 import com.lifitness.screens.register.personalDataRegistration.PersonalDataRegistrationScreen
 import com.lifitness.screens.register.recordPhysicalActivityLevel.PhysicalActivityLevelRegistrationScreen
+import com.lifitness.screens.studentsPersonal.ClientsListScreen
+import com.lifitness.screens.trainList.TrainListScreen
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
+import kotlinx.serialization.json.Json
+
+val user = createPersonalMock()
+//val user = createSingleMock()
 
 enum class LifitnessScreen {
     Login,
@@ -59,13 +80,22 @@ enum class LifitnessScreen {
     ImpedimentsRegistration,
     PhysicalActivityLevel,
     Home,
-    Main_Exercises,
+    TrainsScreen,
     Settings,
     Train,
+    UniqueScreen,
+    ExerciseViewList,
     Main_Diets,
-    Diet,
+    Food_Screen,
     Profile,
-    Charts
+    Charts,
+    ExerciseList,
+    AddExercise,
+    ClientsList,
+    PersonalClient,
+    HomePersonal,
+    AddTrain,
+    TrainList,
 }
 
 data class BottomNavigationItem(
@@ -79,8 +109,9 @@ data class BottomNavigationItem(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LiFitnessApp() {
+    val dietViewModel: DietsViewModel = viewModel()
     var isLoginScreenDisplayed by remember { mutableStateOf(false) }
-    val navController = rememberNavController();
+    val navController = rememberNavController()
 
     Surface(
         modifier = Modifier
@@ -135,9 +166,13 @@ fun LiFitnessApp() {
                                 onClick = {
                                     selectedItemIndex = index
                                     when (index) {
-                                        0 -> navController.navigate(LifitnessScreen.Home.name)
+                                        0 -> if(user.personal){
+                                            navController.navigate(LifitnessScreen.HomePersonal.name)
+                                        } else {
+                                            navController.navigate(LifitnessScreen.Home.name)
+                                        }
                                         1 -> navController.navigate(LifitnessScreen.Main_Diets.name)
-                                        2 -> navController.navigate(LifitnessScreen.Main_Exercises.name)
+                                        2 -> navController.navigate(LifitnessScreen.TrainsScreen.name)
                                         3 -> navController.navigate(LifitnessScreen.Charts.name)
                                         4 -> navController.navigate(LifitnessScreen.Profile.name)
                                     }
@@ -193,14 +228,26 @@ fun LiFitnessApp() {
                     isLoginScreenDisplayed = true
                 }
                 composable(LifitnessScreen.Home.name) {
-                    HomeScreen(navController)
+                    HomeScreen(navController, dietViewModel)
                     isLoginScreenDisplayed = false
                 }
-                composable(LifitnessScreen.Main_Exercises.name) {
-                    ExercisesScreen(navController)
+                composable(LifitnessScreen.TrainsScreen.name) {
+                    TrainsScreen(navController)
+                }
+                composable("UniqueScreen/{exerciseDescription}") { backStackEntry ->
+                    ExerciseDescriptionScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("exerciseDescription")!!))
+                }
+                composable(
+                    "${LifitnessScreen.ExerciseViewList.name}/{exercise}",
+                    arguments = listOf(navArgument("exercise") { type = NavType.IntType })
+                ) { backStackEntry ->
+                    ExerciseViewListScreen(navController, backStackEntry.arguments?.getInt("exercise")!!)
                 }
                 composable(LifitnessScreen.Main_Diets.name) {
-                    DietsScreen(navController)
+                    DietsScreen(navController, dietViewModel)
+                }
+                composable("Food_Screen/{diet}") { backStackEntry ->
+                    FoodScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("diet")!!))
                 }
                 composable(LifitnessScreen.Profile.name) {
                     ProfileScreen(modifier = Modifier, navController)
@@ -210,6 +257,27 @@ fun LiFitnessApp() {
                 }
                 composable(LifitnessScreen.Settings.name) {
                     EditProfileScreen(navController)
+                }
+                composable(LifitnessScreen.ExerciseList.name) {
+                    ExerciseListScreen(navController)
+                }
+                composable(LifitnessScreen.AddExercise.name) {
+                    AddExerciseScreen(navController)
+                }
+                composable(LifitnessScreen.ClientsList.name) {
+                    ClientsListScreen(navController)
+                }
+                composable(LifitnessScreen.PersonalClient.name) {
+                    PersonalClientScreen(createSingleMock(), R.drawable.image_16, navController)
+                }
+                composable(LifitnessScreen.AddTrain.name) {
+                    AddTrainScreen(navController)
+                }
+                composable(LifitnessScreen.HomePersonal.name) {
+                    PersonalHomeScreen(navController)
+                }
+                composable(LifitnessScreen.TrainList.name) {
+                    TrainListScreen(navController)
                 }
             }
         }

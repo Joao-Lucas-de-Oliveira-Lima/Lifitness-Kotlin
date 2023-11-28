@@ -1,7 +1,10 @@
 package com.lifitness.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Train(
-    val exercises: List<Exercise>,
-    val type:String,
-    val id: Int,
+    val trainName: String = "",
+    val duration: String = "",
+    val trainId: Int = 0,
 )

@@ -6,12 +6,20 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.lifitness.common.composable.DietRecomendationCard
+import com.lifitness.app.LifitnessScreen
+import com.lifitness.common.composable.DietRecommendationCard
 import com.lifitness.common.composable.DietsRecomendationTitle
 import com.lifitness.common.composable.DietsTitle
 import com.lifitness.common.composable.HealthInstructorCard
@@ -20,10 +28,14 @@ import com.lifitness.common.composable.PersonalDietCard
 import com.lifitness.common.composable.PersonalNutricionistTitle
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.*
 import com.lifitness.ui.theme.BackgroundColor
 
 @Composable
-fun DietsScreen(navController: NavHostController) {
+fun DietsScreen(navController: NavHostController, dietViewModel: DietsViewModel) {
+    val dietValues = dietViewModel.diets.observeAsState()
+
     Box(
         modifier = Modifier
             .background(BackgroundColor)
@@ -38,7 +50,7 @@ fun DietsScreen(navController: NavHostController) {
                 HireNutricionistTitle()
                 LazyRow {
                     items(4) {
-                        HealthInstructorCard(exerciseName = "Clécia")
+                        HealthInstructorCard("Clécia", {})
                     }
                 }
             }
@@ -56,24 +68,16 @@ fun DietsScreen(navController: NavHostController) {
 
             item {
                 LazyRow {
-                    item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL")
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL")
-                    }
-                }
-            }
-
-            item {
-                LazyRow {
-                    item {
-                        DietRecomendationCard(exerciseName = "Arroz Branco", "200CAL")
-                        DietRecomendationCard(exerciseName = "Feijão Mulato", "200CAL")
-                        DietRecomendationCard(exerciseName = "Frango", "200CAL")
-                        DietRecomendationCard(exerciseName = "Carnes Vermelhas", "200CAL")
-                        DietRecomendationCard(exerciseName = "Saladas", "200CAL")
+                    if (dietValues.value?.isEmpty() != false) {
+                        items(8) {
+                            DietRecommendationCard("", "", false) {  }
+                        }
+                    } else {
+                        items(dietValues.value!!) { diet ->
+                            DietRecommendationCard(diet.dietName, diet.dietNutricionalTable[0], true) {
+                                navController.navigate("${LifitnessScreen.Food_Screen.name}/${Json.encodeToString(diet)}")
+                            }
+                        }
                     }
                 }
             }
@@ -89,5 +93,6 @@ fun DietsScreen(navController: NavHostController) {
 @Composable
 fun PreviewDietsScreen() {
     val navController = rememberNavController()
-    DietsScreen(navController)
+    val dietViewModel: DietsViewModel = viewModel()
+    DietsScreen(navController, dietViewModel)
 }

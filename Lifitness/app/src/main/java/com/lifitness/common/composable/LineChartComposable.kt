@@ -23,44 +23,41 @@ import co.yml.charts.ui.linechart.model.LineType
 import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
+import com.lifitness.model.createSingleMock
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 import com.lifitness.ui.theme.GrayCard
+val weightList: List<Double> = createSingleMock().weight
+
+fun WeightToPoints(): List<Point>{
+    val weightPoints: MutableList<Point> = mutableListOf()
+    weightList.forEachIndexed { index, weight ->
+        val point = Point(index.toFloat(), weight.toFloat())
+        weightPoints.add(point)
+    }
+    return weightPoints
+}
+
 
 @Composable
 fun WeightLineChart() {
-    val months = 5
-    val pointsData: List<Point> =
-        listOf(
-            Point(0f, 70f),
-            Point(1f, 90f),
-            Point(2f, 80f),
-            Point(3f, 60f),
-            Point(4f, 40f),
-            Point(5f, 90f),
-            Point(6f, 100f),
-            Point(7f, 95f),
-            Point(8f, 90f),
-            Point(9f, 90f),
-            Point(10f, 90f),
-            Point(11f, 70f),
-        )
-
+    val weights = weightList.size
+    val pointsData: List<Point> = WeightToPoints()
     val xAxisData = AxisData.Builder()
         .axisStepSize(100.dp)
         .backgroundColor(CardBackground)
         .steps(pointsData.size - 1)
-        .labelData { i -> i.toString() }
+        .labelData { i -> (i).toString() }
         .labelAndAxisLinePadding(15.dp)
         .axisLineColor(GrayCard)
         .axisLabelColor(Color.White)
         .build()
 
     val yAxisData = AxisData.Builder()
-        .steps(months)
+        .steps(weights)
         .backgroundColor(CardBackground)
         .labelData { i ->
-            val yScale = 100 / months
+            val yScale = 100 / weights
             (i * yScale).toString()
         }
         .labelAndAxisLinePadding(20.dp)
