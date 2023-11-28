@@ -1,7 +1,6 @@
 package com.lifitness.screens.login
 
 import ButtonWithoutIconComposable
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,8 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,8 +28,10 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -70,6 +71,8 @@ fun LoginScreen(navController: NavHostController) {
         PasswordVisualTransformation()
     }
 
+    var isNavigationDone by remember { mutableStateOf(false) }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -82,15 +85,14 @@ fun LoginScreen(navController: NavHostController) {
             viewModel.validationEvents.collect { event ->
                 when (event) {
                     is LoginScreenViewModel.ValidationEvent.Success -> {
-                        Toast.makeText(
-                            context,
-                            "Login successful",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        navController.navigate(LifitnessScreen.Home.name)
+                        viewModel.loginUser(context)
                     }
                 }
             }
+        }
+        if (!state.isLoading && state.isSuccessLogin && !isNavigationDone) {
+            navController.navigate(LifitnessScreen.Home.name)
+            isNavigationDone = true
         }
         Box(
             modifier = Modifier.align(Alignment.TopCenter)
@@ -114,18 +116,18 @@ fun LoginScreen(navController: NavHostController) {
                     color = Color.White
                 )
                 Spacer(modifier = Modifier.height(5.dp))
-                // Username Field
+                // Email Field
                 OutlinedTextField(
-                    value = state.username,
+                    value = state.email,
                     onValueChange = {
-                        viewModel.onEvent(LoginFormEvent.UsernameChanged(it))
+                        viewModel.onEvent(LoginFormEvent.EmailChanged(it))
                     },
-                    isError = state.usernameError != null,
+                    isError = state.emailError != null,
                     modifier = Modifier
                         .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
                     label = {
                         Text(
-                            text = stringResource(id = R.string.sign_up_username_field),
+                            text = stringResource(id = R.string.sign_up_email_field),
                             color = Color.White
                         )
                     },
@@ -138,18 +140,18 @@ fun LoginScreen(navController: NavHostController) {
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Text
                     ),
-                    textStyle = androidx.compose.ui.text.TextStyle(color = Color.White),
+                    textStyle = TextStyle(color = Color.White),
                     leadingIcon = {
                         Icon(
-                            Icons.Default.Person,
+                            Icons.Default.Email,
                             contentDescription = "",
                             tint = Color.White
                         )
                     }
                 )
-                if (state.usernameError != null) {
+                if (state.emailError != null) {
                     Text(
-                        text = state.usernameError,
+                        text = state.emailError,
                         color = MaterialTheme.colors.error,
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     )

@@ -30,7 +30,7 @@ class AuthRepository {
             }.await()
     }
 
-    suspend fun login(
+    suspend fun loginUser(
         email: String,
         password: String,
         onComplete: (Boolean) -> Unit

@@ -72,10 +72,6 @@ fun MainRegistrationScreen(navController: NavHostController) {
     } else {
         PasswordVisualTransformation()
     }
-    var usernameValue by remember { mutableStateOf("") }
-    var emailValue by remember { mutableStateOf("") }
-    var passwordValue by remember { mutableStateOf("") }
-    var passwordConfirmationValue by remember { mutableStateOf("") }
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.screen_background_color))
@@ -88,6 +84,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
             viewModel.validationEvents.collect { event ->
                 when (event) {
                     is MainRegistrationScreenViewModel.ValidationEvent.Success -> {
+                        viewModel.createUser(context)
                         navController.navigate(LifitnessScreen.PersonalData.name)
                     }
                 }
