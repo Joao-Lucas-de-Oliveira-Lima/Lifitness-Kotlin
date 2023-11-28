@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "241723294191",
-    "project_id": "authenticationtest-148c3",
-    "storage_bucket": "authenticationtest-148c3.appspot.com"
+    "project_number": "209633528508",
+    "firebase_url": "https://lifitness-default-rtdb.firebaseio.com",
+    "project_id": "lifitness",
+    "storage_bucket": "lifitness.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241723294191:android:14e4d6a0e56b32f1fab61a",
+        "mobilesdk_app_id": "1:209633528508:android:b9ffce872ec7afd6045eb9",
         "android_client_info": {
           "package_name": "com.lifitness"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAdV9jQDjaLT6JAMDx9CCvdTXf4B_h6VfI"
+          "current_key": "AIzaSyCpYtj4rcvVrZ88_FqVoQyihltaYOQJVKI"
         }
       ],
       "services": {

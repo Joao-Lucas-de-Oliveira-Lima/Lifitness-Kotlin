@@ -65,11 +65,12 @@ dependencies {
 
     // Navigation component
     implementation("androidx.navigation:navigation-compose:2.5.3")
-    //implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
 
     // Testing libraries
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.9.1")
+    //implementation("com.google.firebase:firebase-auth:22.3.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -92,7 +93,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha01")
-    implementation("com.google.firebase:firebase-auth-ktx")
+    //
+    //implementation("com.google.firebase:firebase-auth-ktx")
 
     // Compose Material Design components
     implementation("androidx.compose.material:material-icons-extended:1.5.3")
