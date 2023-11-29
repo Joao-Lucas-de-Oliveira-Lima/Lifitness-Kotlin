@@ -52,7 +52,7 @@ fun ProgressScreen(navController: NavHostController){
         }
         Spacer(modifier = Modifier.spacer())
         Text(
-            text = "Training table chart",
+            text = "Training history",
             color = TextColor,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),

@@ -1,29 +1,40 @@
 package com.lifitness.model
 
-fun createMock(): List<User>{
-    val train: Train = Train("Chest", "60min", 1)
-    val users: List<User> = listOf(
-        User(
-            "URL", "nickname", "username", "bio", "goal",
-            1.70, listOf(71.0), "Nothing", "Active", listOf(train), false),
+import android.net.Uri
+
+fun createMock(): List<Client>{
+    val trains: List<Train> = listOf(
+        Train("Chest", "60min", 1)
     )
-    return users
+    val imageURI = Uri.parse("https://via.placeholder.com/150")
+    val clients: List<Client> = listOf(
+        Client(
+            imageURI, "nickname", "username", trains, false,
+            "bio", "GOAL", 1.70, listOf(71.0, 70.0, 65.0, 72.0, 77.0), "Nothing", "Active"
+        ),
+    )
+    return clients
 }
 
-fun createSingleMock(): User{
-    val train: Train = Train("Chest", "60min", 1)
-    val user: User = User(
-        "URL", "nickname", "username", "bio", "goal",
-        1.70, listOf(71.0, 70.0, 65.0, 72.0, 77.0), "Nothing", "Active", listOf(train), false
+fun createSingleMock(): Client{
+    val trains: List<Train> = listOf(
+        Train("Chest", "60min", 1)
+    )
+    val imageURI = Uri.parse("https://via.placeholder.com/150")
+    val client = Client(
+        imageURI, "nickname", "username", trains, false,
+        "bio", "GOAL", 1.70, listOf(71.0, 70.0, 65.0, 72.0, 77.0), "Nothing", "Active"
         )
-    return user
+    return client
 }
 
-fun createPersonalMock(): User{
+fun createPersonalMock(): Personal{
     val train: Train = Train("Chest", "60min", 1)
-    val user: User = User(
-        "URL", "nickname", "username", "bio", "goal",
-        1.70, listOf(71.0, 70.0, 65.0, 72.0, 77.0), "Nothing", "Active", listOf(train), true
+    val imageURI = Uri.parse("https://via.placeholder.com/150")
+    val clients: List<Client> = listOf()
+    val trains: List<Train> = listOf()
+    val personal: Personal = Personal(
+        imageURI, "Personal", "Teacher", trains, true, clients,
     )
-    return user
+    return personal
 }

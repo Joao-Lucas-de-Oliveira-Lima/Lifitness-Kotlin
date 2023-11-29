@@ -35,7 +35,7 @@
 
     <!--Profile Screen-->
 
-    <string name="more_title">MORE</string>
+    <string name="more_title">PROFILE</string>
     <string name="settings_title">SETTINGS</string>
 
     <!--Goal Registration Screen-->
@@ -97,5 +97,9 @@
     <string name="add_exercise_title">ADD EXERCISE</string>
     <string name="add_train_title">ADD TRAIN</string>
     <string name="train_list_title">TRAINS</string>
+
+    <string name="client_list_title">YOUR CLIENTS</string>
+    <string name="add_client_title">ADD CLIENT</string>
+
 
 </resources>

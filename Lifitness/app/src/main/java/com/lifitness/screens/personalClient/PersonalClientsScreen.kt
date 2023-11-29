@@ -14,33 +14,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberImagePainter
 import com.lifitness.R
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ImageProfile
 import com.lifitness.common.composable.SmallButton
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.Client
 import com.lifitness.model.User
 import com.lifitness.model.createSingleMock
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.ButtonEdit
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.TextColor
-
+val user: Client = createSingleMock()
 @Composable
-fun PersonalClientScreen(user: User, imageId: Int, navController: NavHostController){
+fun PersonalClientScreen(user: Client, imageId: Int, navController: NavHostController){
     Column(modifier = Modifier
         .background(BackgroundColor)
         .fillMaxHeight()
         .verticalScroll(rememberScrollState())
         .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.spacer())
-        ImageProfile(imageId)
+        val painter: Painter = rememberImagePainter(com.lifitness.screens.profile.user.imageURL)
+        ImageProfile(painter)
         Text(text = user.nickname, color = TextColor, fontSize = 24.sp)
         Spacer(modifier = Modifier.spacer())
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
