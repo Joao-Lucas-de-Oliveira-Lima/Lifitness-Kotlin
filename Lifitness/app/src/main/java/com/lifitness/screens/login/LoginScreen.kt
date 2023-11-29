@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -284,6 +285,12 @@ fun LoginScreen(navController: NavHostController) {
                             navController.navigate(LifitnessScreen.Register.name)
                         }
                     )
+                    Spacer(modifier = Modifier.height(15.dp))
+                    if (state.isLoading){
+                        CircularProgressIndicator(
+                            color = Color.White
+                        )
+                    }
                 }
             }
         }

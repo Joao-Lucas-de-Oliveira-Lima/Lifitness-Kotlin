@@ -70,6 +70,7 @@ class LoginScreenViewModel(
 
     fun loginUser(context: Context) = viewModelScope.launch {
         try {
+            state = state.copy(isLoading = true)
             repository.loginUser(
                 state.email, state.password
             ) { isSuccessful ->
