@@ -1,7 +1,6 @@
 package com.lifitness.screens.register
 
 import android.content.Context
-import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -13,6 +12,7 @@ import com.lifitness.domain.use_case.ValidateRepeatedPassword
 import com.lifitness.domain.use_case.ValidateTerms
 import com.lifitness.domain.use_case.ValidateUsername
 import com.lifitness.repository.AuthRepository
+import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -93,26 +93,20 @@ class MainRegistrationScreenViewModel(
 
     //Testing
     fun createUser(context: Context) = viewModelScope.launch {
+        val userSingleton = LoggedInUserSingleton.getInstance()
         try {
-            //loginUiState = loginUiState.copy(isLoading = true)
+            state = state.copy(isLoading = true)
             repository.createUser(
                 state.email,
                 state.password
             ) { isSuccessful ->
                 if (isSuccessful) {
-                    Toast.makeText(
-                        context,
-                        "success Login",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    //loginUiState = loginUiState.copy(isSuccessLogin = true)
+                    //todo
+                    userSingleton.email = state.email
+                    userSingleton.username = state.username
+                    state = state.copy(isSuccessLogin = true)
                 } else {
-                    Toast.makeText(
-                        context,
-                        "Failed Login",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    //loginUiState = loginUiState.copy(isSuccessLogin = false)
+                    state = state.copy(isSuccessLogin = false)
                 }
 
             }
@@ -120,7 +114,7 @@ class MainRegistrationScreenViewModel(
             //loginUiState = loginUiState.copy(signUpError = e.localizedMessage)
             //e.printStackTrace()
         } finally {
-            //loginUiState = loginUiState.copy(isLoading = false)
+            state = state.copy(isLoading = false)
         }
     }
 

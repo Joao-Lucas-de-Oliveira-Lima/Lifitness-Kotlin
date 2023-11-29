@@ -12,19 +12,40 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
@@ -34,14 +55,33 @@ import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
 import com.lifitness.common.composable.TextFieldWithoutIconComposable
+import com.lifitness.screens.register.MainRegistrationScreenFormEvent
+import com.lifitness.screens.register.MainRegistrationScreenViewModel
+import java.time.LocalDate
+import java.time.Month
+import java.time.format.DateTimeFormatter
+
 
 @Composable
 fun PersonalDataRegistrationScreen(navController: NavHostController) {
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.screen_background_color))
     ) {
+        val viewModel = viewModel<PersonalDataRegistrationScreenViewModel>()
+        val state = viewModel.state
+        val context = LocalContext.current
+        LaunchedEffect(key1 = context) {
+            viewModel.validationEvents.collect { event ->
+                when (event) {
+                    is PersonalDataRegistrationScreenViewModel.ValidationEvent.Success -> {
+                        navController.navigate(LifitnessScreen.GoalRegistration.name)
+                    }
+                }
+            }
+        }
         Column(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -92,7 +132,48 @@ fun PersonalDataRegistrationScreen(navController: NavHostController) {
                 horizontalPadding = 50
             )
             Spacer(modifier = Modifier.height(10.dp))
-            TextFieldWithoutIconComposable(labelValue = stringResource(id = R.string.personal_data_registration_screen_age_field))
+            OutlinedTextField(
+                value = state.age.toString(),
+                onValueChange = {
+                    val onlyDigits = it.filter { char -> char.isDigit() }
+                    viewModel.onEvent(PersonalDataRegistrationScreenFormEvent.AgeChanged(it))
+                },
+                isError = state.ageError != null,
+                modifier = Modifier
+                    .background(Color(35, 33, 33), RoundedCornerShape(12.dp)),
+                label = {
+                    Text(
+                        text = stringResource(id = R.string.sign_up_username_field),
+                        color = Color.White
+                    )
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    cursorColor = Color.White,
+                    focusedBorderColor = Color.White,
+                    unfocusedBorderColor = Color.White,
+                    focusedLabelColor = Color.White,
+                ),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
+                ),
+                textStyle = TextStyle(color = Color.White),
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Person,
+                        contentDescription = "",
+                        tint = Color.White
+                    )
+                }
+            )
+            if (state.ageError != null) {
+                Text(
+                    text = state.ageError,
+                    color = MaterialTheme.colors.error,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
+            }
+            //
+            //TextFieldWithoutIconComposable(labelValue = stringResource(id = R.string.personal_data_registration_screen_age_field))
             Spacer(modifier = Modifier.height(10.dp))
             TextFieldWithoutIconComposable(labelValue = stringResource(id = R.string.personal_data_registration_screen_height_field))
             Spacer(modifier = Modifier.height(10.dp))
@@ -105,7 +186,7 @@ fun PersonalDataRegistrationScreen(navController: NavHostController) {
                 minHeight = 30,
                 buttonColor = Color.White,
                 horizontalPadding = 50,
-                onClick = {navController.navigate(LifitnessScreen.GoalRegistration.name)}
+                onClick = { viewModel.onEvent(PersonalDataRegistrationScreenFormEvent.NextScreen) }
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(

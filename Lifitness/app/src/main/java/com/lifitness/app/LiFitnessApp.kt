@@ -50,8 +50,6 @@ import com.lifitness.screens.diets.food.FoodScreen
 import com.lifitness.screens.editProfile.EditProfileScreen
 import com.lifitness.screens.exerciseList.ExerciseListScreen
 import com.lifitness.screens.exerciseList.student.ExerciseViewListScreen
-import com.lifitness.screens.trains.TrainsScreen
-import com.lifitness.screens.trains.exercise.ExerciseDescriptionScreen
 import com.lifitness.screens.home.client.HomeScreen
 import com.lifitness.screens.home.personal.PersonalHomeScreen
 import com.lifitness.screens.login.LoginScreen
@@ -65,6 +63,8 @@ import com.lifitness.screens.register.personalDataRegistration.PersonalDataRegis
 import com.lifitness.screens.register.recordPhysicalActivityLevel.PhysicalActivityLevelRegistrationScreen
 import com.lifitness.screens.studentsPersonal.ClientsListScreen
 import com.lifitness.screens.trainList.TrainListScreen
+import com.lifitness.screens.trains.TrainsScreen
+import com.lifitness.screens.trains.exercise.ExerciseDescriptionScreen
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 import kotlinx.serialization.json.Json
@@ -166,11 +166,12 @@ fun LiFitnessApp() {
                                 onClick = {
                                     selectedItemIndex = index
                                     when (index) {
-                                        0 -> if(user.personal){
+                                        0 -> if (user.personal) {
                                             navController.navigate(LifitnessScreen.HomePersonal.name)
                                         } else {
                                             navController.navigate(LifitnessScreen.Home.name)
                                         }
+
                                         1 -> navController.navigate(LifitnessScreen.Main_Diets.name)
                                         2 -> navController.navigate(LifitnessScreen.TrainsScreen.name)
                                         3 -> navController.navigate(LifitnessScreen.Charts.name)
@@ -235,19 +236,28 @@ fun LiFitnessApp() {
                     TrainsScreen(navController)
                 }
                 composable("UniqueScreen/{exerciseDescription}") { backStackEntry ->
-                    ExerciseDescriptionScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("exerciseDescription")!!))
+                    ExerciseDescriptionScreen(
+                        navController,
+                        Json.decodeFromString(backStackEntry.arguments?.getString("exerciseDescription")!!)
+                    )
                 }
                 composable(
                     "${LifitnessScreen.ExerciseViewList.name}/{exercise}",
                     arguments = listOf(navArgument("exercise") { type = NavType.IntType })
                 ) { backStackEntry ->
-                    ExerciseViewListScreen(navController, backStackEntry.arguments?.getInt("exercise")!!)
+                    ExerciseViewListScreen(
+                        navController,
+                        backStackEntry.arguments?.getInt("exercise")!!
+                    )
                 }
                 composable(LifitnessScreen.Main_Diets.name) {
                     DietsScreen(navController, dietViewModel)
                 }
                 composable("Food_Screen/{diet}") { backStackEntry ->
-                    FoodScreen(navController, Json.decodeFromString(backStackEntry.arguments?.getString("diet")!!))
+                    FoodScreen(
+                        navController,
+                        Json.decodeFromString(backStackEntry.arguments?.getString("diet")!!)
+                    )
                 }
                 composable(LifitnessScreen.Profile.name) {
                     ProfileScreen(modifier = Modifier, navController)

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -61,6 +62,7 @@ import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.singleton.LoggedInUserSingleton
 
 @Composable
 fun MainRegistrationScreen(navController: NavHostController) {
@@ -72,6 +74,10 @@ fun MainRegistrationScreen(navController: NavHostController) {
     } else {
         PasswordVisualTransformation()
     }
+
+    var isNavigationDone by remember { mutableStateOf(false) }
+
+
     Box(
         modifier = Modifier
             .background(colorResource(id = R.color.screen_background_color))
@@ -85,11 +91,16 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 when (event) {
                     is MainRegistrationScreenViewModel.ValidationEvent.Success -> {
                         viewModel.createUser(context)
-                        navController.navigate(LifitnessScreen.PersonalData.name)
                     }
                 }
             }
         }
+
+        if (!state.isLoading && state.isSuccessLogin && !isNavigationDone) {
+            navController.navigate(LifitnessScreen.PersonalData.name)
+            isNavigationDone = true
+        }
+
         Box(
             modifier = Modifier.align(Alignment.Center)
         ) {
@@ -385,20 +396,12 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 ClickableLoginTextComponent(
                     text = stringResource(id = R.string.create_an_account_text)
                 ) { navController.navigate(LifitnessScreen.Login.name) }
-                Spacer(modifier = Modifier.height(5.dp))
-            }
-            Box(
-                modifier = Modifier.align(Alignment.BottomCenter)
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                    //.align(Alignment.TopCenter)
-                    //.fillMaxSize(),
-                ) {
-
+                Spacer(modifier = Modifier.height(15.dp))
+                if (state.isLoading){
+                    CircularProgressIndicator(
+                        color = Color.White
+                    )
                 }
-
             }
         }
     }

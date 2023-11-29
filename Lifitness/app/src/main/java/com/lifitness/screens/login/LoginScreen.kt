@@ -1,6 +1,7 @@
 package com.lifitness.screens.login
 
 import ButtonWithoutIconComposable
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -60,12 +61,13 @@ import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.model.createPersonalMock
 import com.lifitness.model.createSingleMock
+import com.lifitness.singleton.LoggedInUserSingleton
 
 val user = createSingleMock()
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun LoginScreen(navController: NavHostController) {
-
+    val userSingleton = LoggedInUserSingleton.getInstance()
     var isPasswordVisible = remember {
         mutableStateOf(false)
     }
@@ -109,6 +111,14 @@ fun LoginScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(20.dp))
                 LogoComponent(60, 70)
                 Spacer(modifier = Modifier.height(5.dp))
+
+                //todo
+                NormalTextComposable(
+                    text = userSingleton.myValue,
+                    fontSize = 15,
+                    color = Color.White
+                )
+
                 NormalTextComposable(
                     text = stringResource(id = R.string.greeting_text),
                     fontSize = 15,

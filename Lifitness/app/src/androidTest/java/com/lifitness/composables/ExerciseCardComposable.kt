@@ -22,7 +22,7 @@ class ExerciseCardComposable {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testShowCardExerciseTexts(){
+    fun testShowCardExerciseTexts() {
         composeTestRule.setContent {
             ExerciseCard("TREINO DE PERNA", "20 MIN", onClick = {})
         }
@@ -31,7 +31,7 @@ class ExerciseCardComposable {
     }
 
     @Test
-    fun testCardExerciseDimensions(){
+    fun testCardExerciseDimensions() {
         composeTestRule.setContent {
             ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
         }
@@ -41,7 +41,7 @@ class ExerciseCardComposable {
     }
 
     @Test
-    fun testShowCardExerciseImages(){
+    fun testShowCardExerciseImages() {
         composeTestRule.setContent {
             ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
         }
@@ -49,7 +49,7 @@ class ExerciseCardComposable {
     }
 
     @Test
-    fun testClickableCardExerciseImages(){
+    fun testClickableCardExerciseImages() {
         composeTestRule.setContent {
             ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
         }

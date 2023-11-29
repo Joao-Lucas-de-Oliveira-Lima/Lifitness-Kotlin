@@ -2,7 +2,10 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id ("kotlin-kapt")
+    id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
     kotlin("plugin.serialization") version "1.9.0"
+
 }
 
 android {
@@ -47,6 +50,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -112,8 +116,25 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     //Room
-    val roomVersion = "2.4.1"
+
+
+    /*
+    val roomVersion = "2.5.0"
+
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+     */
+
+
+    val room_version = "2.5.0"
+    //implementation ("androidx.room:room-ktx:$room_version")
+    //kapt ("androidx.room:room-compiler:$room_version")
+    //ksp"androidx.room:room-compiler:2.5.0"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
 }

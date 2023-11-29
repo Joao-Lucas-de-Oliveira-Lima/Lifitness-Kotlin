@@ -10,5 +10,7 @@ data class MainRegistrationScreenFormState(
     val repeatedPassword: String = "",
     val repeatedPasswordError: String? = null,
     val acceptedTerms: Boolean = false,
-    val termsError: String? = null
+    val termsError: String? = null,
+    val isLoading: Boolean = false,
+    val isSuccessLogin: Boolean = false
 )
