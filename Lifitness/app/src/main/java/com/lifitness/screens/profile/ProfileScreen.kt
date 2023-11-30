@@ -35,6 +35,7 @@ import coil.compose.rememberImagePainter
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.createSingleMock
 import com.lifitness.singleton.LoggedInUserSingleton
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.BackgroundColor as background
@@ -44,11 +45,12 @@ fun ProfileScreen(
     modifier: Modifier,
     navController: NavHostController
 ){
+    val user = createSingleMock()
     val profileViewModel: ProfileViewModel = viewModel()
     val photoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = {
-            profileViewModel.photo = it
+            //profileViewModel.update({},{"Falha ao carregar a foto"})
         }
     )
     val userSingleton = LoggedInUserSingleton.getInstance()
@@ -85,8 +87,8 @@ fun ProfileScreen(
 
         }
         BioCard(
-            nickname = user.nickname,
-            content = user.bio
+            nickname = userSingleton.username,
+            content = userSingleton.age.toString()
         )
 
         Column(

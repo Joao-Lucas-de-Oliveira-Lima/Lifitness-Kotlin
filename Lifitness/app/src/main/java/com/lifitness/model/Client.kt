@@ -3,7 +3,7 @@ package com.lifitness.model
 import android.net.Uri
 
 open class Client(
-    override var imageURL: Uri?,
+    override var imageURL: String,
     override val nickname: String,
     override val username: String,
     override val trains: List<Train>,

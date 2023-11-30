@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.lifitness.R
-import com.lifitness.screens.profile.user
 import com.lifitness.R.drawable as AppImages
 
 @Composable

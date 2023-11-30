@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-class AuthRepository {
+class   AuthRepository {
     val currentUser : FirebaseUser? = Firebase.auth.currentUser
     val userSingleton = LoggedInUserSingleton.getInstance()
 
