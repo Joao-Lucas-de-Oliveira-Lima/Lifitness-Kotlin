@@ -23,7 +23,7 @@ class UserListTest {
             UserList(users = createMock(), navController)
         }
 
-        userListTestRule.onNode(hasText("test"))
+        userListTestRule.onNode(hasText("nickname"))
             .assertExists()
     }
 }

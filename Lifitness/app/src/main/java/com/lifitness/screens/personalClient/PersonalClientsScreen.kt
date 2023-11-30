@@ -43,7 +43,7 @@ fun PersonalClientScreen(user: Client, imageId: Int, navController: NavHostContr
         .verticalScroll(rememberScrollState())
         .fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.spacer())
-        val painter: Painter = rememberImagePainter(com.lifitness.screens.profile.user.imageURL)
+        val painter: Painter = rememberImagePainter(user.imageURL)
         ImageProfile(painter)
         Text(text = user.nickname, color = TextColor, fontSize = 24.sp)
         Spacer(modifier = Modifier.spacer())
