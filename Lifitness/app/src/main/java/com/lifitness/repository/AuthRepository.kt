@@ -25,7 +25,7 @@ class AuthRepository {
             .createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener{
                 if(it.isSuccessful){
-                    userSingleton.firebaseUid = getUserId()
+                    userSingleton.firebaseAuthenticationUid = getUserId()
                     onComplete.invoke(true)
                 }else{
                     onComplete.invoke(false)
@@ -42,7 +42,7 @@ class AuthRepository {
             .signInWithEmailAndPassword(email, password)
             .addOnCompleteListener{
                 if(it.isSuccessful){
-                    userSingleton.firebaseUid = getUserId()
+                    userSingleton.firebaseAuthenticationUid = getUserId()
                     onComplete.invoke(true)
                 }else{
                     onComplete.invoke(false)

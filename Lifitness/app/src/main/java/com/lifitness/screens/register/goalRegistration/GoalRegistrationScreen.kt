@@ -45,6 +45,7 @@ import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.singleton.LoggedInUserSingleton
 
 data class Option(val labelId: Int, val imageId: Int)
 
@@ -58,6 +59,8 @@ fun GoalRegistrationScreen(navController: NavHostController) {
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
 
+    val userSingleton = LoggedInUserSingleton.getInstance()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -68,6 +71,19 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            //todo
+            Text(
+                text = userSingleton.age.toString(),
+                color = Color.White
+            )
+            Text(
+                text = userSingleton.firebaseAuthenticationUid,
+                color = Color.White
+            )
+            Text(
+                text = userSingleton.username.toString(),
+                color = Color.White
+            )
             Spacer(modifier = Modifier.height(15.dp))
             RegistrationProgressBarComposable(
                 currentStep = 3,

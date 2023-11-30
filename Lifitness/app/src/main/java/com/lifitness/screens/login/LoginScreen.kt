@@ -233,8 +233,7 @@ fun LoginScreen(navController: NavHostController) {
                 //
                 Spacer(modifier = Modifier.height(16.dp))
                 ClickableForgotYouPasswordTextComponent(text = stringResource(id = R.string.forgot_your_password_text))
-                Spacer(modifier = Modifier.height(10.dp))
-                Spacer(modifier = Modifier.height(180.dp))
+                Spacer(modifier = Modifier.height(190.dp))
 
             }
             Box(
