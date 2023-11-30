@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ExerciseCard
 import com.lifitness.common.composable.ExerciseListTitle
+import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.smallSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.model.Train
@@ -55,6 +56,10 @@ fun ExerciseViewListScreen(navController: NavHostController, trainId: Int){
                     navController.navigate("${LifitnessScreen.UniqueScreen.name}/${Json.encodeToString(exerciseDescription)}")
                 }
             }
+        }
+
+        item {
+            Spacer(modifier = Modifier.endOfScreenSpacer())
         }
     }
 }

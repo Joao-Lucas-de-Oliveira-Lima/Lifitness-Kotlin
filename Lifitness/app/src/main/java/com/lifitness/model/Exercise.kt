@@ -8,7 +8,7 @@ import java.net.URLEncoder
 @Serializable
 data class Exercise(
     var videoURL: String = "",
-    val idTrain: Int = -1,
+    val idTrain: List<Int> = listOf(),
     val exerciseName: String = "",
     val exerciseDuration: String = "",
     val exerciseDescription: String = "",
