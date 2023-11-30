@@ -31,6 +31,7 @@ import com.lifitness.R
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.singleton.LoggedInUserSingleton
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.BackgroundColor as background
 
@@ -40,6 +41,7 @@ fun ProfileScreen(
     modifier: Modifier,
     navController: NavHostController
 ){
+    val userSingleton = LoggedInUserSingleton.getInstance()
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -99,7 +101,9 @@ fun ProfileScreen(
                 DefaultButton(
                     contentTitle = "LOG OUT",
                     contentIcon = Icons.Default.ExitToApp,
-                    onClick = { navController.navigate(LifitnessScreen.Login.name) },
+                    onClick = {
+                        userSingleton.resetUserData()
+                        navController.navigate(LifitnessScreen.Login.name) },
                     buttonColor = BackgroundColor
                 )
                 Spacer(modifier = Modifier.spacer())

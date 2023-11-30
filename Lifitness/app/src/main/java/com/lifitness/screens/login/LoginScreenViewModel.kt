@@ -10,6 +10,8 @@ import androidx.lifecycle.viewModelScope
 import com.lifitness.domain.use_case.ValidateEmail
 import com.lifitness.domain.use_case.ValidatePassword
 import com.lifitness.repository.AuthRepository
+import com.lifitness.repository.UserRepository
+import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -19,8 +21,8 @@ class LoginScreenViewModel(
     private val validatePassword: ValidatePassword = ValidatePassword(),
     private val repository: AuthRepository = AuthRepository()
 ) : ViewModel() {
-
-    val currentUser = repository.currentUser
+    val userRepository = UserRepository()
+    val userSingleton = LoggedInUserSingleton.getInstance()
 
     val hasUser: Boolean
         get() = repository.hasUser()
@@ -78,6 +80,17 @@ class LoginScreenViewModel(
                     Toast.makeText(
                         context, "success Login", Toast.LENGTH_SHORT
                     ).show()
+                    viewModelScope.launch {
+                        val userData = userRepository.getUserByUid()
+                        if (userData != null) {
+                            userSingleton.username = userData["username"].toString()
+                            userSingleton.email = userData["email"].toString()
+                            userSingleton.age = userData["age"].toString().toInt()
+                            userSingleton.height = userData["height"].toString().toInt()
+                            userSingleton.weight = userData["weight"].toString().toInt()
+                        }
+
+                    }
                     state = state.copy(isSuccessLogin = true)
                 } else {
                     Toast.makeText(

@@ -6,9 +6,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
+import com.lifitness.datasource.DataSource
 import com.lifitness.domain.use_case.ValidateAge
 import com.lifitness.domain.use_case.ValidateHeight
 import com.lifitness.domain.use_case.ValidateWeight
+import com.lifitness.repository.UserRepository
 import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -19,10 +21,9 @@ class PersonalDataRegistrationScreenViewModel(
     private val validateHeight: ValidateHeight = ValidateHeight(),
     private val validateWeight: ValidateWeight = ValidateWeight()
 ) : ViewModel() {
-    //todo
-    val db = FirebaseFirestore.getInstance()
     val userSingleton = LoggedInUserSingleton.getInstance()
     var state by mutableStateOf(PersonalDataRegistrationScreenFormState())
+    val userRepository = UserRepository()
 
     private val validationEventChannel =
         Channel<PersonalDataRegistrationScreenViewModel.ValidationEvent>()
@@ -72,6 +73,8 @@ class PersonalDataRegistrationScreenViewModel(
             userSingleton.age = state.age.toInt()
             userSingleton.weight = state.weight.toInt()
             userSingleton.height = state.height.toInt()
+            //todo
+            userRepository.saveUser()
             validationEventChannel.send(PersonalDataRegistrationScreenViewModel.ValidationEvent.Success)
         }
     }

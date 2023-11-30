@@ -26,4 +26,13 @@ class LoggedInUserSingleton {
         val authRepository = AuthRepository()
         firebaseAuthenticationUid = authRepository.getUserId()
     }
+
+    fun resetUserData(){
+        firebaseAuthenticationUid = ""
+        username = ""
+        email = ""
+        age = 0
+        height = 0
+        weight = 0
+    }
 }

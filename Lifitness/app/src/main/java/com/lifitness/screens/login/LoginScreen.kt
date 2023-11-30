@@ -1,7 +1,6 @@
 package com.lifitness.screens.login
 
 import ButtonWithoutIconComposable
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -59,11 +58,11 @@ import com.lifitness.common.composable.FacebookLoginButton
 import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
-import com.lifitness.model.createPersonalMock
 import com.lifitness.model.createSingleMock
 import com.lifitness.singleton.LoggedInUserSingleton
 
 val user = createSingleMock()
+
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun LoginScreen(navController: NavHostController) {
@@ -76,6 +75,7 @@ fun LoginScreen(navController: NavHostController) {
     } else {
         PasswordVisualTransformation()
     }
+
 
     var isNavigationDone by remember { mutableStateOf(false) }
 
@@ -92,6 +92,7 @@ fun LoginScreen(navController: NavHostController) {
                 when (event) {
                     is LoginScreenViewModel.ValidationEvent.Success -> {
                         viewModel.loginUser(context)
+
                     }
                 }
             }
@@ -111,13 +112,6 @@ fun LoginScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(20.dp))
                 LogoComponent(60, 70)
                 Spacer(modifier = Modifier.height(5.dp))
-
-                //todo
-                NormalTextComposable(
-                    text = userSingleton.myValue,
-                    fontSize = 15,
-                    color = Color.White
-                )
 
                 NormalTextComposable(
                     text = stringResource(id = R.string.greeting_text),
@@ -271,7 +265,7 @@ fun LoginScreen(navController: NavHostController) {
                             25,
                             Color.White
                         ) {
-                            if(user.personal) {
+                            if (user.personal) {
                                 navController.navigate(LifitnessScreen.HomePersonal.name)
                             } else {
                                 navController.navigate(LifitnessScreen.Home.name)
@@ -280,7 +274,8 @@ fun LoginScreen(navController: NavHostController) {
                         FacebookLoginButton(
                             size = 25,
                             buttonColor = Color.White
-                        ) { if(user.personal) {
+                        ) {
+                            if (user.personal) {
                                 navController.navigate(LifitnessScreen.HomePersonal.name)
                             } else {
                                 navController.navigate(LifitnessScreen.Home.name)
@@ -295,7 +290,7 @@ fun LoginScreen(navController: NavHostController) {
                         }
                     )
                     Spacer(modifier = Modifier.height(15.dp))
-                    if (state.isLoading){
+                    if (state.isLoading) {
                         CircularProgressIndicator(
                             color = Color.White
                         )
