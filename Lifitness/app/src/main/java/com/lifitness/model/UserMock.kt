@@ -20,7 +20,7 @@ fun createSingleMock(): Client{
         Train("Chest", "60min", 1)
     )
     val client = Client(
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fmicrobiology.ucr.edu%2Fimage%2Fprofile-image-placeholder&psig=AOvVaw2P-PtUvl3vxflO3voibZpe&ust=1701399575671000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKCa_aXe6oIDFQAAAAAdAAAAABAE", "nickname", "username", trains, false,
+        "\"https://via.placeholder.com/150\"", "nickname", "username", trains, false,
         "bio", "GOAL", 1.70, listOf(71.0, 70.0, 65.0, 72.0, 77.0), "Nothing", "Active"
         )
     return client

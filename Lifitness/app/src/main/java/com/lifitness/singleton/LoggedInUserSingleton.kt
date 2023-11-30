@@ -21,6 +21,11 @@ class LoggedInUserSingleton {
     var age: Int = 0
     var height: Int = 0
     var weight: Int = 0
+    var bio: String = ""
+    var personal: Boolean = false
+    var goal: String = ""
+    var activityLevel: String = ""
+    var impediments: String = ""
 
     fun updateUserInfo() {
         val authRepository = AuthRepository()
@@ -34,5 +39,6 @@ class LoggedInUserSingleton {
         age = 0
         height = 0
         weight = 0
+        personal = false
     }
 }

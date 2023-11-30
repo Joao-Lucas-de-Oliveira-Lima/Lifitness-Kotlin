@@ -46,31 +46,37 @@ import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.singleton.LoggedInUserSingleton
 
-data class Option(val labelId: Int, val descriptionId: Int, val imageId: Int)
+data class Option(val labelId: Int, val descriptionId: Int, val imageId: Int, val descriptionAsString: String)
 
 @Composable
 fun PhysicalActivityLevelRegistrationScreen(navController: NavHostController) {
+    val userSingleton = LoggedInUserSingleton.getInstance()
     val options = listOf(
         Option(
             labelId = R.string.sedentary_option,
             descriptionId = R.string.almost_no_exercise_description,
-            imageId = R.drawable.sedentary
+            imageId = R.drawable.sedentary,
+            "Sedentary"
         ),
         Option(
             labelId = R.string.slightly_active_option,
             descriptionId = R.string.up_to_2_hours_of_exercise_per_week_description,
-            imageId = R.drawable.slightly_active
+            imageId = R.drawable.slightly_active,
+            "Slightly active"
         ),
         Option(
             labelId = R.string.active_option,
             descriptionId = R.string.up_to_4_hours_of_exercise_per_week_description,
-            imageId = R.drawable.active
+            imageId = R.drawable.active,
+            "Active"
         ),
         Option(
             labelId = R.string.very_active_option,
             descriptionId = R.string.more_than_4_hours_of_exercise_per_week_description,
-            imageId = R.drawable.very_active
+            imageId = R.drawable.very_active,
+            "Very active"
         )
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
@@ -136,7 +142,10 @@ fun PhysicalActivityLevelRegistrationScreen(navController: NavHostController) {
                 options.forEach { option ->
                     Row(
                         modifier = Modifier
-                            .clickable { selectedOption = option }
+                            .clickable {
+                                //todo
+                                userSingleton.activityLevel = option.descriptionAsString
+                                selectedOption = option }
                             .padding(5.dp)
                             .width(240.dp)
                             .height(70.dp)

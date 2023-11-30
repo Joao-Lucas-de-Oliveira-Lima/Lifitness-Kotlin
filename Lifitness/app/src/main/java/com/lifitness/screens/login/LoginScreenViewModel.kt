@@ -77,21 +77,26 @@ class LoginScreenViewModel(
                 state.email, state.password
             ) { isSuccessful ->
                 if (isSuccessful) {
-                    Toast.makeText(
-                        context, "success Login", Toast.LENGTH_SHORT
-                    ).show()
                     viewModelScope.launch {
+                        Toast.makeText(
+                            context, "success Login", Toast.LENGTH_SHORT
+                        ).show()
                         val userData = userRepository.getUserByUid()
                         if (userData != null) {
+                            //todo
                             userSingleton.username = userData["username"].toString()
                             userSingleton.email = userData["email"].toString()
                             userSingleton.age = userData["age"].toString().toInt()
                             userSingleton.height = userData["height"].toString().toInt()
                             userSingleton.weight = userData["weight"].toString().toInt()
+                            userSingleton.personal = userData["personal"].toString().toBoolean()
+                            userSingleton.impediments = userData["impediments"].toString()
+                            userSingleton.activityLevel = userData["activityLevel"].toString()
+                            userSingleton.goal = userData["goal"].toString()
+                            userSingleton.bio = userData["bio"].toString();
                         }
-
+                        state = state.copy(isSuccessLogin = true)
                     }
-                    state = state.copy(isSuccessLogin = true)
                 } else {
                     Toast.makeText(
                         context, "Failed Login", Toast.LENGTH_SHORT

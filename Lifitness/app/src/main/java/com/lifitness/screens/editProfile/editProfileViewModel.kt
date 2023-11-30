@@ -22,7 +22,11 @@ class EditProfileViewModel() : ViewModel(){
         try {
             val updates = hashMapOf<String, Any>(
                 "height" to height,
-                "weight" to weight
+                "weight" to weight,
+                "bio" to bio,
+                "goal" to goal,
+                "activityLevel" to aLevel,
+                "impediments" to wKeep
             )
             db.collection("users").document(user.username)
                 .update(updates)
