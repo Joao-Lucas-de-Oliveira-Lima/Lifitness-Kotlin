@@ -69,7 +69,7 @@ import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 import kotlinx.serialization.json.Json
 
-val user = createPersonalMock()
+//val user = createPersonalMock()
 //val user = createSingleMock()
 
 enum class LifitnessScreen {
@@ -166,11 +166,12 @@ fun LiFitnessApp() {
                                 onClick = {
                                     selectedItemIndex = index
                                     when (index) {
-                                        0 -> if(user.personal){
-                                            navController.navigate(LifitnessScreen.HomePersonal.name)
-                                        } else {
-                                            navController.navigate(LifitnessScreen.Home.name)
-                                        }
+                                        0 -> navController.navigate(LifitnessScreen.Home.name)
+//                                            if(user.personal){
+//                                            navController.navigate(LifitnessScreen.HomePersonal.name)
+//                                        } else {
+//                                            navController.navigate(LifitnessScreen.Home.name)
+//                                        }
                                         1 -> navController.navigate(LifitnessScreen.Main_Diets.name)
                                         2 -> navController.navigate(LifitnessScreen.TrainsScreen.name)
                                         3 -> navController.navigate(LifitnessScreen.Charts.name)

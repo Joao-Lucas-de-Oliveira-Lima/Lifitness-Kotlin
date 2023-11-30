@@ -1,15 +1,12 @@
 package com.lifitness.model
 
-data class User (
-    val imageURL: String,
-    val nickname: String,
-    val username: String,
-    val bio: String,
-    val goal: String,
-    val height: Double,
-    val weight: List<Double>,
-    val whatKeep: String,
-    val physicLevel: String,
-    val trains: List<Train>,
-    val personal: Boolean,
+import android.net.Uri
+import android.text.BoringLayout
+
+open class User (
+    open var imageURL: Uri?,
+    open val nickname: String,
+    open val username: String,
+    open val personal: Boolean = false,
+    open val trains: List<Train>,
 )

@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -21,6 +22,7 @@ import com.lifitness.common.composable.DescriptionTitle
 import com.lifitness.common.composable.ExerciseDescription
 import com.lifitness.common.composable.ExerciseTitle
 import com.lifitness.common.composable.ImageExerciseDescription
+import com.lifitness.common.composable.YoutubeVideoPlayer
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.model.Exercise
@@ -41,7 +43,10 @@ fun ExerciseDescriptionScreen(navController: NavHostController, exerciseDescript
                 ExerciseTitle(exerciseDescription.exerciseName)
             }
             Spacer(modifier = Modifier.spacer())
-            ImageExerciseDescription()
+            YoutubeVideoPlayer(
+                youtubeVideoId = exerciseDescription.videoURL,
+                lifecycleOwner = LocalLifecycleOwner.current
+            )
             Spacer(modifier = Modifier.spacer())
             DescriptionTitle("Description")
             Column(

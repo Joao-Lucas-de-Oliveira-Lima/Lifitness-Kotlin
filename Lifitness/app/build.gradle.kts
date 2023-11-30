@@ -97,7 +97,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha01")
-    //
     //implementation("com.google.firebase:firebase-auth-ktx")
 
     // Compose Material Design components
@@ -114,27 +113,6 @@ dependencies {
     implementation("androidx.compose.material:material:1.1.0-alpha06")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-
-    //Room
-
-
-    /*
-    val roomVersion = "2.5.0"
-
-    implementation("androidx.room:room-runtime:$roomVersion")
-    annotationProcessor("androidx.room:room-compiler:$roomVersion")
-
-    // To use Kotlin annotation processing tool (kapt)
-    kapt("androidx.room:room-compiler:$roomVersion")
-
-     */
-
-
-    val room_version = "2.5.0"
-    //implementation ("androidx.room:room-ktx:$room_version")
-    //kapt ("androidx.room:room-compiler:$room_version")
-    //ksp"androidx.room:room-compiler:2.5.0"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
-
+    implementation("io.coil-kt:coil-compose:1.3.2")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 }
