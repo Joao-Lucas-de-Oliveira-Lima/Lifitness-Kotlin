@@ -17,7 +17,7 @@ class ExerciseListViewModel() : ViewModel() {
 
     fun fetchExercisesForTrain(idTrain: Int) {
         exercisesCollection
-            .whereEqualTo("idTrain", idTrain)
+            .whereArrayContains("idTrain", idTrain)
             .get()
             .addOnSuccessListener { snapshot: QuerySnapshot ->
                 val exercisesList = snapshot.toObjects(Exercise::class.java)
@@ -28,3 +28,4 @@ class ExerciseListViewModel() : ViewModel() {
             }
     }
 }
+
