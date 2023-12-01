@@ -49,7 +49,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun EditProfileScreen(navController: NavHostController) {
     val editProfileViewModel: EditProfileViewModel = EditProfileViewModel()
-    val userSingleton = LoggedInUserSingleton
     var goal by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
@@ -170,7 +169,6 @@ fun EditProfileScreen(navController: NavHostController) {
                 },
                 buttonColor = ButtonEdit
             )
-            Spacer(modifier = Modifier.endOfScreenSpacer())
             Spacer(modifier = Modifier.endOfScreenSpacer())
         }
 
