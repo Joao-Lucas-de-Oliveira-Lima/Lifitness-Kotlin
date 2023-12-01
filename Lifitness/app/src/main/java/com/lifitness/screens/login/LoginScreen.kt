@@ -46,6 +46,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -76,7 +77,6 @@ fun LoginScreen(navController: NavHostController) {
         PasswordVisualTransformation()
     }
 
-
     var isNavigationDone by remember { mutableStateOf(false) }
 
     Box(
@@ -92,13 +92,16 @@ fun LoginScreen(navController: NavHostController) {
                 when (event) {
                     is LoginScreenViewModel.ValidationEvent.Success -> {
                         viewModel.loginUser(context)
-
                     }
                 }
             }
         }
         if (!state.isLoading && state.isSuccessLogin && !isNavigationDone) {
-            navController.navigate(LifitnessScreen.Home.name)
+            if(userSingleton.personal){
+                navController.navigate(LifitnessScreen.HomePersonal.name)
+            }else{
+                navController.navigate(LifitnessScreen.Home.name)
+            }
             isNavigationDone = true
         }
         Box(
@@ -266,7 +269,7 @@ fun LoginScreen(navController: NavHostController) {
                             Color.White
                         ) {
                             if (user.personal) {
-                                navController.navigate(LifitnessScreen.HomePersonal.name)
+
                             } else {
                                 navController.navigate(LifitnessScreen.Home.name)
                             }

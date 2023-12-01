@@ -19,7 +19,7 @@ fun createSingleMock(): Client{
     val trains: List<Train> = listOf(
         Train("Chest", "60min", 1)
     )
-    val client = Client(
+  
         "https://picsum.photos/800/800", "nickname", "username", trains, false,
         "bio", "GOAL", 1.70, listOf(71.0, 70.0, 65.0, 72.0, 77.0), "Nothing", "Active"
         )

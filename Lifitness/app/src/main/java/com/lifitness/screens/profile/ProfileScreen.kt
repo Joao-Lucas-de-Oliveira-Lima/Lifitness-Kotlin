@@ -88,7 +88,7 @@ fun ProfileScreen(
         }
         BioCard(
             nickname = userSingleton.username,
-            content = userSingleton.myValue
+            content = userSingleton.bio
         )
 
         Column(

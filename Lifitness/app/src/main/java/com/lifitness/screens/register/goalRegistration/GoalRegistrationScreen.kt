@@ -47,15 +47,15 @@ import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
 import com.lifitness.singleton.LoggedInUserSingleton
 
-data class Option(val labelId: Int, val imageId: Int)
+data class Option(val labelId: Int, val imageId: Int, val descriptionAsString: String)
 
 @Composable
 fun GoalRegistrationScreen(navController: NavHostController) {
     val options = listOf(
-        Option(labelId = R.string.to_lose_weight_option, imageId = R.drawable.to_lose_weight),
-        Option(labelId = R.string.to_become_strong_option, imageId = R.drawable.to_become_strong),
-        Option(labelId = R.string.to_gain_lean_mass_option, imageId = R.drawable.to_gain_lean_mass),
-        Option(labelId = R.string.to_be_healthy_option, imageId = R.drawable.to_be_healthy)
+        Option(labelId = R.string.to_lose_weight_option, imageId = R.drawable.to_lose_weight, "To lose weight"),
+        Option(labelId = R.string.to_become_strong_option, imageId = R.drawable.to_become_strong, "To become strong"),
+        Option(labelId = R.string.to_gain_lean_mass_option, imageId = R.drawable.to_gain_lean_mass, "To gain lean mass"),
+        Option(labelId = R.string.to_be_healthy_option, imageId = R.drawable.to_be_healthy, "To be healthy")
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
 
@@ -71,19 +71,6 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            //todo
-            Text(
-                text = userSingleton.age.toString(),
-                color = Color.White
-            )
-            Text(
-                text = userSingleton.firebaseAuthenticationUid,
-                color = Color.White
-            )
-            Text(
-                text = userSingleton.username.toString(),
-                color = Color.White
-            )
             Spacer(modifier = Modifier.height(15.dp))
             RegistrationProgressBarComposable(
                 currentStep = 3,
@@ -135,7 +122,10 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 options.forEach { option ->
                     Row(
                         modifier = Modifier
-                            .clickable { selectedOption = option }
+                            .clickable {
+                                //todo
+                                userSingleton.goal = option.descriptionAsString
+                                selectedOption = option }
                             .padding(5.dp)
                             .width(240.dp)
                             .height(70.dp)

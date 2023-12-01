@@ -87,6 +87,7 @@ class MainRegistrationScreenViewModel(
             return
         }
         viewModelScope.launch {
+
             validationEventChannel.send(ValidationEvent.Success)
         }
     }
