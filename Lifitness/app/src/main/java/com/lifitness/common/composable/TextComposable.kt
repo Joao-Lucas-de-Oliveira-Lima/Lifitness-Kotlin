@@ -69,6 +69,28 @@ fun EditTitle(){
 }
 
 @Composable
+fun ExerciseListTitle(){
+    Text(stringResource(AppText.exercise_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun HomeTitle(){
+    Text(stringResource(AppText.home_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
 fun ProgressTitle(){
     Text(stringResource(AppText.progress_title),
         color = TextColor,
@@ -106,10 +128,10 @@ fun ExerciseDescription(exerciseName: String){
     Text(text = exerciseName,
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        modifier = Modifier.padding(bottom = 20.dp).padding(top = 20.dp).padding(start = 5.dp).padding(end = 5.dp),
-        textAlign = TextAlign.Center
+        fontSize = 16.sp,
+        fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Justify,
+        modifier = Modifier.padding(20.dp),
     )
 }
 @Composable
@@ -129,7 +151,7 @@ fun AmountExerciseTitle(exerciseName: String){
     Text(text = exerciseName,
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
-        fontSize = 50.sp,
+        fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier.padding(top = 15.dp).padding(bottom = 25.dp),
         textAlign = TextAlign.Center
@@ -222,6 +244,38 @@ fun IntermediateTitle(){
         fontWeight = FontWeight.Bold
     )
 }
+@Composable
+fun AddTrainTitle(){
+    Text(stringResource(AppText.add_train_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun AddExerciseTitle(){
+    Text(stringResource(AppText.add_exercise_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun TrainListTitle(){
+    Text(stringResource(AppText.train_list_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 20.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
 
 @Composable
 fun SpecificTrainTitle(trainName: String){
@@ -291,6 +345,28 @@ fun ClientsTitle(){
         color = TextColor,
         fontFamily = FontFamily.SansSerif,
         fontSize = 24.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun AddClientTitle(){
+    Text(stringResource(AppText.add_client_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 26.sp,
+        modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
+        fontWeight = FontWeight.Bold
+    )
+}
+
+@Composable
+fun ClientListTitle(){
+    Text(stringResource(AppText.client_list_title),
+        color = TextColor,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 26.sp,
         modifier = Modifier.padding(start = 20.dp).padding(top = 20.dp),
         fontWeight = FontWeight.Bold
     )

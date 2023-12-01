@@ -3,6 +3,9 @@ package com.lifitness.composables.students
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.ImageBackground
 import com.lifitness.common.composable.UserList
 import com.lifitness.model.createMock
@@ -16,10 +19,11 @@ class UserListTest {
     @Test
     fun testUserListIsDisplayed(){
         userListTestRule.setContent {
-            UserList(users = createMock())
+            val navController = rememberNavController()
+            UserList(users = createMock(), navController)
         }
 
-        userListTestRule.onNode(hasText("test"))
+        userListTestRule.onNode(hasText("nickname"))
             .assertExists()
     }
 }

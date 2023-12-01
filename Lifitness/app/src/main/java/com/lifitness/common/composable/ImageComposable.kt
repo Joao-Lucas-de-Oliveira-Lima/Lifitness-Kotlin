@@ -11,18 +11,20 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import com.lifitness.R
 import com.lifitness.R.drawable as AppImages
 
 @Composable
-fun ImageProfile() {
+fun ImageProfile(painter: Painter) {
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
-            painter = painterResource(AppImages.image_16),
+            painter = painter,
             contentDescription = "User profile picture",
             modifier = Modifier
                 .size(120.dp)
@@ -64,7 +66,8 @@ fun PreviewLogoImage() {
 @Preview
 @Composable
 fun PreviewImageProfile() {
-    ImageProfile()
+    val painter: Painter = rememberImagePainter("    ImageProfile(\"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wilsoncenter.org%2Fperson%2Fjames-person&psig=AOvVaw2waumFKOZQHjQ9p57BVjOH&ust=1701315267453000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjdkrOj6IIDFQAAAAAdAAAAABAE\")\n")
+    ImageProfile(painter)
 }
 
 @Preview

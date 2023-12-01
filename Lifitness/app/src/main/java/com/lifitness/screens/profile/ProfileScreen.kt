@@ -1,5 +1,8 @@
 package com.lifitness.screens.profile
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import com.lifitness.common.composable.DefaultButton
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -9,27 +12,31 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.ExitToApp
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import com.lifitness.common.composable.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberImagePainter
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
+import com.lifitness.model.createSingleMock
+import com.lifitness.singleton.LoggedInUserSingleton
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.BackgroundColor as background
 
@@ -38,6 +45,15 @@ fun ProfileScreen(
     modifier: Modifier,
     navController: NavHostController
 ){
+    val user = createSingleMock()
+    val profileViewModel: ProfileViewModel = viewModel()
+    val photoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = {
+            //profileViewModel.update({},{"Falha ao carregar a foto"})
+        }
+    )
+    val userSingleton = LoggedInUserSingleton.getInstance()
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -52,24 +68,27 @@ fun ProfileScreen(
         }
         Spacer(modifier = Modifier.spacer())
         Box {
+            val painter: Painter = rememberImagePainter(user.imageURL)
             ImageBackground()
             Row (horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()){
-                ImageProfile()
-                Icon(
-                    Icons.Default.Create,
-                    contentDescription = "Edit profile image",
-                    tint = Color.White,
-                    modifier = Modifier
-                        .padding(top = 10.dp)
-                        .padding(end = 10.dp)
-                )
+                ImageProfile(painter)
+                Button(onClick = {
+                    photoPickerLauncher.launch(
+                        PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                ) }, colors = ButtonDefaults.buttonColors(Color.Transparent)) {
+                    Icon(
+                        Icons.Default.CameraAlt,
+                        contentDescription = "Edit profile image",
+                        tint = Color.White,
+                    )
+                }
             }
 
         }
         BioCard(
-            nickname = "Pedro Marcelo",
-            content = "My story begins with the Lifitness app, which has been my trusty companion on this fitness adventure. I believe that age is just a number, and with the right tools and mindset, we can all live life to the fullest."
+            nickname = userSingleton.username,
+            content = userSingleton.bio
         )
 
         Column(
@@ -89,16 +108,11 @@ fun ProfileScreen(
                 )
                 Spacer(modifier = Modifier.spacer())
                 DefaultButton(
-                    contentTitle = "ACCOUNT",
-                    contentIcon = Icons.Default.Person,
-                    onClick = { /*TODO*/ },
-                    buttonColor = BackgroundColor
-                )
-                Spacer(modifier = Modifier.spacer())
-                DefaultButton(
                     contentTitle = "LOG OUT",
                     contentIcon = Icons.Default.ExitToApp,
-                    onClick = { navController.navigate(LifitnessScreen.Login.name) },
+                    onClick = {
+                        userSingleton.resetUserData()
+                        navController.navigate(LifitnessScreen.Login.name) },
                     buttonColor = BackgroundColor
                 )
                 Spacer(modifier = Modifier.spacer())

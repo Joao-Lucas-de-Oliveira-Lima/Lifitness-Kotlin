@@ -45,18 +45,21 @@ import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.singleton.LoggedInUserSingleton
 
-data class Option(val labelId: Int, val imageId: Int)
+data class Option(val labelId: Int, val imageId: Int, val descriptionAsString: String)
 
 @Composable
 fun GoalRegistrationScreen(navController: NavHostController) {
     val options = listOf(
-        Option(labelId = R.string.to_lose_weight_option, imageId = R.drawable.to_lose_weight),
-        Option(labelId = R.string.to_become_strong_option, imageId = R.drawable.to_become_strong),
-        Option(labelId = R.string.to_gain_lean_mass_option, imageId = R.drawable.to_gain_lean_mass),
-        Option(labelId = R.string.to_be_healthy_option, imageId = R.drawable.to_be_healthy)
+        Option(labelId = R.string.to_lose_weight_option, imageId = R.drawable.to_lose_weight, "To lose weight"),
+        Option(labelId = R.string.to_become_strong_option, imageId = R.drawable.to_become_strong, "To become strong"),
+        Option(labelId = R.string.to_gain_lean_mass_option, imageId = R.drawable.to_gain_lean_mass, "To gain lean mass"),
+        Option(labelId = R.string.to_be_healthy_option, imageId = R.drawable.to_be_healthy, "To be healthy")
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
+
+    val userSingleton = LoggedInUserSingleton.getInstance()
 
     Box(
         modifier = Modifier
@@ -81,7 +84,9 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(LifitnessScreen.PersonalData.name)
+                    },
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .background(Color.Transparent), // Define o background como transparente
@@ -117,7 +122,10 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 options.forEach { option ->
                     Row(
                         modifier = Modifier
-                            .clickable { selectedOption = option }
+                            .clickable {
+                                //todo
+                                userSingleton.goal = option.descriptionAsString
+                                selectedOption = option }
                             .padding(5.dp)
                             .width(240.dp)
                             .height(70.dp)
@@ -154,7 +162,8 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 minHeight = 30,
                 buttonColor = Color.White,
                 horizontalPadding = 50,
-                onClick = { navController.navigate(LifitnessScreen.ImpedimentsRegistration.name) }
+
+                onClick = { navController.navigate(LifitnessScreen.PhysicalActivityLevel.name) }
             )
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
@@ -163,7 +172,9 @@ fun GoalRegistrationScreen(navController: NavHostController) {
                 color = Color.White,
                 thickness = 1
             )
-            ClickableLoginTextComponent(text = stringResource(id = R.string.create_an_account_text))
+            ClickableLoginTextComponent(
+                text = stringResource(id = R.string.create_an_account_text)
+            ) { navController.navigate(LifitnessScreen.Login.name) }
             Spacer(modifier = Modifier.height(5.dp))
         }
     }

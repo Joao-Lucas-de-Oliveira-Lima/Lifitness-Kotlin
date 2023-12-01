@@ -22,18 +22,18 @@ class ExerciseCardComposable {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testShowCardExerciseTexts(){
+    fun testShowCardExerciseTexts() {
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE PERNA", "20 MIN", onClick = {})
+            ExerciseCard("TREINO DE PERNA", "20 MIN", onClick = {}, isLoading = false)
         }
         composeTestRule.onNodeWithText("TREINO DE PERNA").assertIsDisplayed()
         composeTestRule.onNodeWithText("20 MIN").assertIsDisplayed()
     }
 
     @Test
-    fun testCardExerciseDimensions(){
+    fun testCardExerciseDimensions() {
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
+            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {}, isLoading = false)
         }
 
         composeTestRule.onNode(hasTestTag("exercise_card"))
@@ -41,17 +41,17 @@ class ExerciseCardComposable {
     }
 
     @Test
-    fun testShowCardExerciseImages(){
+    fun testShowCardExerciseImages() {
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
+            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {}, isLoading = false)
         }
         composeTestRule.onNodeWithContentDescription("Exercise picture").assertExists()
     }
 
     @Test
-    fun testClickableCardExerciseImages(){
+    fun testClickableCardExerciseImages() {
         composeTestRule.setContent {
-            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {})
+            ExerciseCard("TREINO DE BRAÇO", "20 MIN", onClick = {}, isLoading = false)
         }
 
         composeTestRule.onNode(hasText("TREINO DE BRAÇO"))

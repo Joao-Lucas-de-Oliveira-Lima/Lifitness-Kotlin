@@ -45,18 +45,20 @@ import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.singleton.LoggedInUserSingleton
 
-data class Option(val labelId: Int, val imageId: Int)
+data class Option(val labelId: Int, val imageId: Int, val descriptionAsString: String)
 
 @Composable
 fun ImpedimentsRegistrationScreen(navController: NavHostController) {
     val options = listOf(
-        Option(labelId = R.string.no_motivation_option, imageId = R.drawable.no_motivation),
-        Option(labelId = R.string.lack_of_knowledge_option, imageId = R.drawable.lack_of_knowledge),
-        Option(labelId = R.string.busy_schedule_option, imageId = R.drawable.busy_schedule),
-        Option(labelId = R.string.not_enough_guidance_option, imageId = R.drawable.not_enough_guidance)
+        Option(labelId = R.string.no_motivation_option, imageId = R.drawable.no_motivation, "No motivation"),
+        Option(labelId = R.string.lack_of_knowledge_option, imageId = R.drawable.lack_of_knowledge, "Lack of knowledge"),
+        Option(labelId = R.string.busy_schedule_option, imageId = R.drawable.busy_schedule, "Busy schedule"),
+        Option(labelId = R.string.not_enough_guidance_option, imageId = R.drawable.not_enough_guidance, "Not enough guidance")
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
+    val userSingleton = LoggedInUserSingleton.getInstance()
 
     Box(
         modifier = Modifier
@@ -81,7 +83,9 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 IconButton(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(LifitnessScreen.PhysicalActivityLevel.name)
+                    },
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .background(Color.Transparent), // Define o background como transparente
@@ -117,7 +121,10 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                 options.forEach { option ->
                     Row(
                         modifier = Modifier
-                            .clickable { selectedOption = option }
+                            .clickable {
+                                //todo
+                                userSingleton.impediments = option.descriptionAsString
+                                selectedOption = option }
                             .padding(5.dp)
                             .width(240.dp)
                             .height(70.dp)
@@ -153,9 +160,10 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                 fontSize = 17,
                 minHeight = 30,
                 buttonColor = Color.White,
-                horizontalPadding = 50,
-                onClick = { navController.navigate(LifitnessScreen.Home.name) }
-            )
+                horizontalPadding = 50
+            ) {
+                navController.navigate(LifitnessScreen.Home.name)
+            }
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
                 text = stringResource(id = R.string.divisive_text),
@@ -163,7 +171,9 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                 color = Color.White,
                 thickness = 1
             )
-            ClickableLoginTextComponent(text = stringResource(id = R.string.create_an_account_text))
+            ClickableLoginTextComponent(
+                text = stringResource(id = R.string.create_an_account_text)
+            ) { navController.navigate(LifitnessScreen.Login.name) }
             Spacer(modifier = Modifier.height(5.dp))
         }
     }

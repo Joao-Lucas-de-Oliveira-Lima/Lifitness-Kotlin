@@ -1,12 +1,20 @@
 package com.lifitness.composables
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertHeightIsEqualTo
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
+import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.lifitness.common.composable.DefaultButton
@@ -108,5 +116,17 @@ class ButtonTests {
 
         buttonTestRule.onNode(hasText("TESTE"))
             .assertHeightIsEqualTo(60.dp)
+    }
+
+    @OptIn(ExperimentalFoundationApi::class)
+    @Test
+    fun testClickableText(){
+        buttonTestRule.setContent {
+            ClickableText(
+                AnnotatedString("test"), {}, Modifier, TextStyle(), true, TextOverflow.Clip, Int.MAX_VALUE, {}, {}
+            )
+        }
+        buttonTestRule.onAllNodes(hasClickAction()).assertCountEquals(0)
+
     }
 }

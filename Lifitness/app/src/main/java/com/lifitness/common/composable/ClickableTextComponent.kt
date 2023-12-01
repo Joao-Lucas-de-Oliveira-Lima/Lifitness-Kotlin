@@ -47,7 +47,7 @@ fun ClickablePolicyTextAndTermsTextComponent(text: String) {
 }
 
 @Composable
-fun ClickableLoginTextComponent(text: String) {
+fun ClickableLoginTextComponent(text: String, onClick: () -> Unit) {
     val initialText = "Already hava an account? "
     val loginText = "Login"
 
@@ -63,7 +63,9 @@ fun ClickableLoginTextComponent(text: String) {
     ClickableText(text = annotatedString, onClick = { offset ->
         annotatedString.getStringAnnotations(offset, offset)
             .firstOrNull()?.also { span ->
-                Log.d("clickableTextComponent", "{$span.item}")
+                if (span.item == loginText) {
+                    onClick()
+                }
             }
     })
 }

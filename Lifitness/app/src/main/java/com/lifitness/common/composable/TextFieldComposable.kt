@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.R.drawable.*
@@ -24,7 +25,12 @@ import androidx.core.R.drawable.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: ImageVector) {
+fun TextFieldComposable(
+    labelValue: String,
+    hasAnIcon: Boolean,
+    imageVector: ImageVector,
+    onValueChange: (String) -> Unit
+) {
 
     var textValue = remember {
         mutableStateOf("")
@@ -40,6 +46,7 @@ fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: Ima
             value = textValue.value,
             onValueChange = {
                 textValue.value = it
+                onValueChange(it)
             },
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 unfocusedBorderColor = Color.White,
@@ -47,7 +54,9 @@ fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: Ima
                 focusedLabelColor = Color.White,
                 cursorColor = Color.White,
             ),
-            keyboardOptions = KeyboardOptions.Default,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text
+            ),
             textStyle = androidx.compose.ui.text.TextStyle(color = Color.White),
             leadingIcon = {
                 if (hasAnIcon) {
@@ -65,9 +74,11 @@ fun TextFieldComposable(labelValue: String, hasAnIcon: Boolean, imageVector: Ima
 @Preview
 @Composable
 fun PreviewTextFieldComposable() {
+    var value : String
     TextFieldComposable(
         labelValue = "Preview",
         hasAnIcon = true,
-        imageVector = Icons.Default.Preview
+        imageVector = Icons.Default.Preview,
+        onValueChange = { value = it }
     )
 }
