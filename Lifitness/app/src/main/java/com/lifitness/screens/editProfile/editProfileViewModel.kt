@@ -6,7 +6,7 @@ import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.tasks.await
 
 
-class EditProfileViewModel() : ViewModel(){
+class EditProfileViewModel : ViewModel(){
     val user = LoggedInUserSingleton.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
@@ -29,7 +29,10 @@ class EditProfileViewModel() : ViewModel(){
         }
         user.weight = weight.toInt()
         user.height = height.toInt()
-
+        user.activityLevel = aLevel
+        user.bio = bio
+        user.goal = goal
+        user.impediments = wKeep
 
     }
 }
