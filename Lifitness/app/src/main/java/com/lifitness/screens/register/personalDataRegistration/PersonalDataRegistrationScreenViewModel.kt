@@ -5,8 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.firestore.FirebaseFirestore
-import com.lifitness.datasource.DataSource
 import com.lifitness.domain.use_case.ValidateAge
 import com.lifitness.domain.use_case.ValidateHeight
 import com.lifitness.domain.use_case.ValidateWeight

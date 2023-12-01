@@ -1,6 +1,6 @@
 package com.lifitness.screens.studentsPersonal
 
-import androidx.compose.foundation.BorderStroke
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,11 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -27,13 +24,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.common.composable.AddClientTitle
 import com.lifitness.common.composable.ClientListTitle
-import com.lifitness.common.composable.ClientsTitle
 import com.lifitness.common.composable.UserList
 import com.lifitness.common.ext.spacer
 import com.lifitness.model.createMock
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.CardBackground
-import com.lifitness.ui.theme.CardGreen
 import com.lifitness.ui.theme.TextColor
 
 @Composable

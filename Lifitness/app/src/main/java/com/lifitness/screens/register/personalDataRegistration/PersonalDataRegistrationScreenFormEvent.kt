@@ -1,6 +1,5 @@
 package com.lifitness.screens.register.personalDataRegistration
 
-import com.lifitness.screens.register.MainRegistrationScreenFormEvent
 
 sealed class PersonalDataRegistrationScreenFormEvent{
     data class AgeChanged(val age: String) : PersonalDataRegistrationScreenFormEvent()

@@ -1,14 +1,10 @@
 package com.lifitness.screens.addExercise
 
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import com.lifitness.model.Exercise
 import com.lifitness.model.Train
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.tasks.await
+
 
 
 class AddExerciseViewModel: ViewModel() {

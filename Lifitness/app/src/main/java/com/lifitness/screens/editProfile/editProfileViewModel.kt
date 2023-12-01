@@ -1,14 +1,7 @@
 package com.lifitness.screens.editProfile
 
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.tasks.await
 

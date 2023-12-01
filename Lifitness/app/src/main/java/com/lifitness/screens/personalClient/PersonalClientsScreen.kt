@@ -28,7 +28,6 @@ import com.lifitness.common.composable.SmallButton
 import com.lifitness.common.ext.endOfScreenSpacer
 import com.lifitness.common.ext.spacer
 import com.lifitness.model.Client
-import com.lifitness.model.User
 import com.lifitness.model.createSingleMock
 import com.lifitness.ui.theme.BackgroundColor
 import com.lifitness.ui.theme.ButtonEdit

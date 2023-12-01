@@ -1,6 +1,5 @@
 package com.lifitness.screens.home.personal
 
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
