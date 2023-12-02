@@ -20,7 +20,7 @@ class LoggedInUserSingleton {
     var email: String = ""
     var age: Int = 0
     var height: Int = 0
-    var weight: Int = 0
+    var weights: MutableList<Int> = mutableListOf()
     var bio: String = ""
     var personal: Boolean = false
     var goal: String = ""
@@ -33,12 +33,17 @@ class LoggedInUserSingleton {
     }
 
     fun resetUserData(){
-        firebaseAuthenticationUid = ""
-        username = ""
-        email = ""
-        age = 0
-        height = 0
-        weight = 0
-        personal = false
+        var myValue: String = "Hello from Singleton"
+        var firebaseAuthenticationUid: String = ""
+        var username: String = ""
+        var email: String = ""
+        var age: Int = 0
+        var height: Int = 0
+        var weights: MutableList<Int> = mutableListOf()
+        var bio: String = ""
+        var personal: Boolean = false
+        var goal: String = ""
+        var activityLevel: String = ""
+        var impediments: String = ""
     }
 }

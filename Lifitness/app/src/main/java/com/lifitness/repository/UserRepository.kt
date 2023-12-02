@@ -13,7 +13,7 @@ class UserRepository() {
             userSingleton.email,
             userSingleton.age,
             userSingleton.height,
-            userSingleton.weight,
+            userSingleton.weights,
             userSingleton.personal,
             userSingleton.bio,
             userSingleton.goal,

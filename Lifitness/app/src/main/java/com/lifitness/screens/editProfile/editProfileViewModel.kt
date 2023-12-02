@@ -1,28 +1,28 @@
 package com.lifitness.screens.editProfile
 
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.tasks.await
 
 
-class EditProfileViewModel() : ViewModel(){
+class EditProfileViewModel() : ViewModel() {
     val user = LoggedInUserSingleton.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
-    suspend fun updateUser(goal: String, height: String, weight: String, aLevel: String, wKeep: String, bio: String) {
-
+    suspend fun updateUser(
+        goal: String,
+        height: String,
+        weight: String,
+        aLevel: String,
+        wKeep: String,
+        bio: String
+    ) {
         try {
-            val updates = hashMapOf<String, Any>(
+            user.weights.add(weight.toInt())
+            val updates = hashMapOf(
                 "height" to height,
-                "weight" to weight,
+                "weights" to user.weights,
                 "bio" to bio,
                 "goal" to goal,
                 "activityLevel" to aLevel,
@@ -34,9 +34,10 @@ class EditProfileViewModel() : ViewModel(){
         } catch (e: Exception) {
             print(e)
         }
-        user.weight = weight.toInt()
+        user.bio = bio
+        user.goal = goal
+        user.activityLevel = aLevel
+        user.impediments = wKeep
         user.height = height.toInt()
-
-
     }
 }

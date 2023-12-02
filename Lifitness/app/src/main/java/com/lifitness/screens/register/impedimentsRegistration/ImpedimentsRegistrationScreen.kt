@@ -24,6 +24,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,12 +32,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.R
@@ -45,6 +48,7 @@ import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.repository.UserRepository
 import com.lifitness.singleton.LoggedInUserSingleton
 
 data class Option(val labelId: Int, val imageId: Int, val descriptionAsString: String)
@@ -52,13 +56,43 @@ data class Option(val labelId: Int, val imageId: Int, val descriptionAsString: S
 @Composable
 fun ImpedimentsRegistrationScreen(navController: NavHostController) {
     val options = listOf(
-        Option(labelId = R.string.no_motivation_option, imageId = R.drawable.no_motivation, "No motivation"),
-        Option(labelId = R.string.lack_of_knowledge_option, imageId = R.drawable.lack_of_knowledge, "Lack of knowledge"),
-        Option(labelId = R.string.busy_schedule_option, imageId = R.drawable.busy_schedule, "Busy schedule"),
-        Option(labelId = R.string.not_enough_guidance_option, imageId = R.drawable.not_enough_guidance, "Not enough guidance")
+        Option(
+            labelId = R.string.no_motivation_option,
+            imageId = R.drawable.no_motivation,
+            "No motivation"
+        ),
+        Option(
+            labelId = R.string.lack_of_knowledge_option,
+            imageId = R.drawable.lack_of_knowledge,
+            "Lack of knowledge"
+        ),
+        Option(
+            labelId = R.string.busy_schedule_option,
+            imageId = R.drawable.busy_schedule,
+            "Busy schedule"
+        ),
+        Option(
+            labelId = R.string.not_enough_guidance_option,
+            imageId = R.drawable.not_enough_guidance,
+            "Not enough guidance"
+        )
     )
     var selectedOption by remember { mutableStateOf(options[0]) }
     val userSingleton = LoggedInUserSingleton.getInstance()
+
+    val viewModel = viewModel<ImpedimentsRegistrationScreenViewModel>()
+    val context = LocalContext.current
+
+    val userRepository = UserRepository()
+    LaunchedEffect(key1 = context) {
+        viewModel.validationEvents.collect { event ->
+            when (event) {
+                is ImpedimentsRegistrationScreenViewModel.ValidationEvent.Success -> {
+                    navController.navigate(LifitnessScreen.Home.name)
+                }
+            }
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -124,12 +158,14 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                             .clickable {
                                 //todo
                                 userSingleton.impediments = option.descriptionAsString
-                                selectedOption = option }
+                                selectedOption = option
+                            }
                             .padding(5.dp)
                             .width(240.dp)
                             .height(70.dp)
                             .background(
                                 if (option == selectedOption) Color.LightGray else Color.Transparent,
+
                                 RoundedCornerShape(16.dp)
                             ),
                         verticalAlignment = Alignment.CenterVertically,
@@ -162,7 +198,7 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
                 buttonColor = Color.White,
                 horizontalPadding = 50
             ) {
-                navController.navigate(LifitnessScreen.Home.name)
+                viewModel.onEvent(ImpedimentsRegistrationScreenFormEvent.Finishing)
             }
             Spacer(modifier = Modifier.height(5.dp))
             DividerTextComposable(
@@ -181,7 +217,7 @@ fun ImpedimentsRegistrationScreen(navController: NavHostController) {
 
 @Preview
 @Composable
-fun ImpedimentsRegistrationScreenPreview(){
+fun ImpedimentsRegistrationScreenPreview() {
     val navController = rememberNavController()
     ImpedimentsRegistrationScreen(navController);
 }

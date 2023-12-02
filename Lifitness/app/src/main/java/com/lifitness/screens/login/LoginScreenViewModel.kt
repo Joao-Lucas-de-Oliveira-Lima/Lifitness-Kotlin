@@ -88,12 +88,13 @@ class LoginScreenViewModel(
                             userSingleton.email = userData["email"].toString()
                             userSingleton.age = userData["age"].toString().toInt()
                             userSingleton.height = userData["height"].toString().toInt()
-                            userSingleton.weight = userData["weight"].toString().toInt()
                             userSingleton.personal = userData["personal"].toString().toBoolean()
                             userSingleton.impediments = userData["impediments"].toString()
                             userSingleton.activityLevel = userData["activityLevel"].toString()
                             userSingleton.goal = userData["goal"].toString()
                             userSingleton.bio = userData["bio"].toString();
+                            val weightsArray = userData["weights"] as? MutableList<Int>
+                            weightsArray?.let { userSingleton.weights.addAll(it) }
                         }
                         state = state.copy(isSuccessLogin = true)
                     }

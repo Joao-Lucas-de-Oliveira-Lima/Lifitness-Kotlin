@@ -71,10 +71,9 @@ class PersonalDataRegistrationScreenViewModel(
         }
         viewModelScope.launch {
             userSingleton.age = state.age.toInt()
-            userSingleton.weight = state.weight.toInt()
+            userSingleton.weights.add(state.weight.toInt())
             userSingleton.height = state.height.toInt()
             //todo
-            userRepository.saveUser()
             validationEventChannel.send(PersonalDataRegistrationScreenViewModel.ValidationEvent.Success)
         }
     }
