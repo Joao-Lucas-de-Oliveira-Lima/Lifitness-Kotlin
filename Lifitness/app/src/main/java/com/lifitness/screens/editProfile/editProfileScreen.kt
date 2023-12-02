@@ -161,7 +161,6 @@ fun EditProfileScreen(navController: NavHostController) {
                 buttonColor = ButtonEdit
             )
             Spacer(modifier = Modifier.endOfScreenSpacer())
-            Spacer(modifier = Modifier.endOfScreenSpacer())
         }
 
     }

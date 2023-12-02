@@ -40,7 +40,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.lifitness.R
-import com.lifitness.model.createPersonalMock
 import com.lifitness.model.createSingleMock
 import com.lifitness.screens.addExercise.AddExerciseScreen
 import com.lifitness.screens.addTrain.AddTrainScreen

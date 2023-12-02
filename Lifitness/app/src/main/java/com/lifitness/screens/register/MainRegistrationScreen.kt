@@ -62,7 +62,7 @@ import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
-import com.lifitness.singleton.LoggedInUserSingleton
+
 
 @Composable
 fun MainRegistrationScreen(navController: NavHostController) {

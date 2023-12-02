@@ -6,7 +6,7 @@ import com.lifitness.singleton.LoggedInUserSingleton
 import kotlinx.coroutines.tasks.await
 
 
-class EditProfileViewModel() : ViewModel() {
+class EditProfileViewModel : ViewModel(){
     val user = LoggedInUserSingleton.getInstance()
     private val db = FirebaseFirestore.getInstance()
 
