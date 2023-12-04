@@ -73,12 +73,12 @@ fun GoalRegistrationScreen(navController: NavHostController) {
         ) {
             Spacer(modifier = Modifier.height(15.dp))
             RegistrationProgressBarComposable(
-                currentStep = 3,
+                currentStep = 1,
                 totalSteps = 5,
                 Color(255, 102, 102),
-                160
+                240
             )
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(15.dp))
             Box(
                 //verticalAlignment = Alignment.CenterVertically
                 modifier = Modifier.fillMaxWidth()

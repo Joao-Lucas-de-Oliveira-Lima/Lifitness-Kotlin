@@ -5,7 +5,7 @@ class ValidateWeight {
         if(weight.isBlank()){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The weight field can't be blank"
+                errorMessage = "O campo de peso não pode ficar em branco"
             )
         }
         var weightAsInt: Int
@@ -14,14 +14,14 @@ class ValidateWeight {
         }catch(e: Exception){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The weight field is not in a valid format"
+                errorMessage = "O campo de peso não está em um formato válido"
             )
         }
 
-        if(weightAsInt < 1 || weightAsInt > 700){
+        if(weightAsInt < 1 || weightAsInt > 730){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The weight field must be greater than or equal to 1kg and less than or equal to 700kg"
+                errorMessage = "O campo peso deve ser maior ou igual a 1kg e menor ou igual a 730kg"
             )
         }
         return ValidationResult(

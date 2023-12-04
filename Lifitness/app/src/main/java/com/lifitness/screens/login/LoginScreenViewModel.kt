@@ -100,7 +100,7 @@ class LoginScreenViewModel(
                             val weightsArray = userData["weights"] as? MutableList<Int>
                             weightsArray?.let { userSingleton.weights.addAll(it) }
                         }
-                        //state = state.copy(isSuccessLogin = true)
+                        state = state.copy(isSuccessLogin = true)
                     }
                 } else {
                     Toast.makeText(

@@ -7,7 +7,7 @@ class ValidatePassword {
         if(password.length < 8){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The password must consist of at least 8 characters"
+                errorMessage = "A senha deve consistir de pelo menos 8 caracteres"
             )
         }
         // Todo: most secure password pattern
@@ -15,7 +15,7 @@ class ValidatePassword {
         if(!containsLettersAndDigits){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The password must contain at least one number and one letter"
+                errorMessage = "A senha deve conter pelo menos um número e uma letra"
             )
         }
         return ValidationResult(

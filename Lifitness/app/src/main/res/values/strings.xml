@@ -103,5 +103,8 @@
     <string name="client_list_title">SEUS CLIENTES</string>
     <string name="add_client_title">ADICIONAR CLIENTES</string>
 
+    <!--Validations-->
+    <string name="checking_duplicate_username_error_mensage">O nome de usuário já existe</string>
+
 
 </resources>

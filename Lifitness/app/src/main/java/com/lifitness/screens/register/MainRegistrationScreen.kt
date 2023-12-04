@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
@@ -82,10 +84,15 @@ fun MainRegistrationScreen(navController: NavHostController) {
     var isNavigationDone by remember { mutableStateOf(false) }
     val userSingleton = LoggedInUserSingleton.getInstance()
 
-    Box(
+    val scrollState = rememberScrollState()
+
+    Column(
         modifier = Modifier
-            .background(colorResource(id = R.color.screen_background_color))
             .fillMaxSize()
+            .verticalScroll(scrollState)
+            .background(colorResource(id = R.color.screen_background_color)),
+            //.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val viewModel = viewModel<MainRegistrationScreenViewModel>()
         val state = viewModel.state
@@ -124,7 +131,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
             }
         )
         Box(
-            modifier = Modifier.align(Alignment.Center)
+            //modifier = Modifier.align(Alignment.Center)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -137,9 +144,9 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     currentStep = 1,
                     totalSteps = 5,
                     Color(255, 102, 102),
-                    160
+                    240
                 )
-                Spacer(modifier = Modifier.height(1.dp))
+                Spacer(modifier = Modifier.height(15.dp))
                 LogoComponent(50, 60)
                 Spacer(modifier = Modifier.height(3.dp))
                 NormalTextComposable(
@@ -189,8 +196,11 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 if (state.usernameError != null) {
                     Text(
                         text = state.usernameError,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colors.error,
                         modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .padding(horizontal = 50.dp),
+                        textAlign = TextAlign.End
                     )
                 }
                 //
@@ -231,8 +241,11 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 if (state.emailError != null) {
                     Text(
                         text = state.emailError,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colors.error,
                         modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .padding(horizontal = 50.dp),
+                        textAlign = TextAlign.End
                     )
                 }
                 //
@@ -288,12 +301,11 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 if (state.passwordError != null) {
                     Text(
                         text = state.passwordError,
-                        fontSize = 16.sp,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colors.error,
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(horizontal = 65.dp),
-                        textAlign = TextAlign.Center
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .padding(horizontal = 50.dp),
+                        textAlign = TextAlign.End
                     )
                 }
                 //
@@ -350,8 +362,11 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 if (state.repeatedPasswordError != null) {
                     Text(
                         text = state.repeatedPasswordError,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colors.error,
                         modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .padding(horizontal = 50.dp),
+                        textAlign = TextAlign.End
                     )
                 }
                 //
@@ -362,7 +377,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .heightIn(min = 10.dp)
-                        .padding(horizontal = 50.dp),
+                        .padding(horizontal = 34.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Checkbox(
@@ -376,7 +391,11 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 if (state.termsError != null) {
                     Text(
                         text = state.termsError,
+                        fontSize = 14.sp,
                         color = MaterialTheme.colors.error,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                            .padding(horizontal = 50.dp),
+
                     )
                 }
                 Spacer(modifier = Modifier.height(5.dp))
@@ -418,6 +437,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 ClickableLoginTextComponent(
                     text = stringResource(id = R.string.create_an_account_text)
                 ) { navController.navigate(LifitnessScreen.Login.name) }
+
                 Spacer(modifier = Modifier.height(15.dp))
                 if (state.isLoading){
                     CircularProgressIndicator(

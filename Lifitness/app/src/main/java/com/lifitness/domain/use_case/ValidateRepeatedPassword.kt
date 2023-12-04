@@ -5,7 +5,7 @@ class ValidateRepeatedPassword {
         if(password != repeatedPassword){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The passwords don't match"
+                errorMessage = "As senhas não coincidem"
             )
         }
         return ValidationResult(

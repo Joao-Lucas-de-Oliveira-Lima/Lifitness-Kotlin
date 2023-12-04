@@ -5,7 +5,7 @@ class ValidateHeight {
         if(height.isBlank()){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The height field can't be blank"
+                errorMessage = "O campo de altura não pode ficar em branco"
             )
         }
         var heightAsInt: Int
@@ -14,14 +14,14 @@ class ValidateHeight {
         }catch(e: Exception){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The height field is not in a valid format"
+                errorMessage = "O campo de altura não está em um formato válido"
             )
         }
 
         if(heightAsInt < 50 || heightAsInt > 250){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The height field must be greater than or equal to 50cm and less than or equal to 250cm"
+                errorMessage = "O campo de altura deve ser maior ou igual a 50cm e menor ou igual a 250cm"
             )
         }
         return ValidationResult(

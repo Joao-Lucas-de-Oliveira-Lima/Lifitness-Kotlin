@@ -8,7 +8,7 @@ class ValidateAge {
         if(age.isBlank()){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The age field can't be blank"
+                errorMessage = "O campo idade não pode ficar em branco"
             )
         }
         var ageAsInt: Int
@@ -17,14 +17,14 @@ class ValidateAge {
         }catch(e: Exception){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The age field is not in a valid format"
+                errorMessage = "O campo de idade não está em um formato válido"
             )
         }
 
         if(ageAsInt <  10 || ageAsInt > 150){
             return ValidationResult(
                 successful = false,
-                errorMessage = "The age field must be greater than or equal to 10 and less than or equal to 150"
+                errorMessage = "O campo idade deve ser maior ou igual a 10 e menor ou igual a 150"
             )
         }
         return ValidationResult(

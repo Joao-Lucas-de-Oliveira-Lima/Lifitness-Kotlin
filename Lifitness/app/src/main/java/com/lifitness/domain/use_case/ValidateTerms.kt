@@ -5,7 +5,7 @@ class ValidateTerms {
         if(!acceptedTerms){
             return ValidationResult(
                 successful = false,
-                errorMessage = "Please accept the terms"
+                errorMessage = "Por favor, aceite os termos"
             )
         }
         return ValidationResult(
