@@ -20,6 +20,7 @@ import com.lifitness.domain.use_case.ValidateUsername
 import com.lifitness.repository.AuthRepository
 import com.lifitness.repository.UserRepository
 import com.lifitness.singleton.LoggedInUserSingleton
+import com.stevdzasan.onetap.getUserFromTokenId
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -173,6 +174,17 @@ class MainRegistrationScreenViewModel(
                                     userSingleton.bio = userData["bio"].toString();
                                     val weightsArray = userData["weights"] as? MutableList<Int>
                                     weightsArray?.let { userSingleton.weights.addAll(it) }
+                                    Toast.makeText(
+                                        context, "success Login", Toast.LENGTH_SHORT
+                                    ).show()
+                                }else{
+                                    if(getUserFromTokenId(token)?.givenName != null){
+                                        userSingleton.username = getUserFromTokenId(token)?.givenName.toString()
+                                    }
+                                    if(getUserFromTokenId(token)?.email != null){
+                                        userSingleton.email = getUserFromTokenId(token)?.email.toString()
+                                    }
+                                    //userRepository.saveUser()
                                 }
                             }
                             Log.d(
