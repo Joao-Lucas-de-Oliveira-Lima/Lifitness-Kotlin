@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lifitness.app.LifitnessScreen
@@ -67,9 +69,10 @@ fun EditProfileScreen(navController: NavHostController) {
         ) {
             Spacer(modifier = Modifier.spacer())
             OutlinedTextField(
+                modifier = Modifier.width(300.dp),
                 value = goal,
                 onValueChange = { goal = it },
-                label = { Text(text = "Goal", color = Color.Gray) },
+                label = { Text(text = "Objetivo", color = Color.Gray) },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Color.White,
@@ -82,9 +85,10 @@ fun EditProfileScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.spacer())
             OutlinedTextField(
+                modifier = Modifier.width(300.dp),
                 value = height,
                 onValueChange = { height = it },
-                label = { Text(text = "Height", color = Color.Gray) },
+                label = { Text(text = "Altura", color = Color.Gray) },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Color.White,
@@ -96,9 +100,10 @@ fun EditProfileScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.spacer())
             OutlinedTextField(
+                modifier = Modifier.width(300.dp),
                 value = weight,
                 onValueChange = { weight = it },
-                label = { Text(text = "Weight", color = Color.Gray) },
+                label = { Text(text = "Peso", color = Color.Gray) },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Color.White,
@@ -110,9 +115,10 @@ fun EditProfileScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.spacer())
             OutlinedTextField(
+                modifier = Modifier.width(300.dp),
                 value = aLevel,
                 onValueChange = { aLevel = it },
-                label = { Text(text = "Activity level", color = Color.Gray) },
+                label = { Text(text = "Nível de atividade", color = Color.Gray) },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Color.White,
@@ -124,9 +130,10 @@ fun EditProfileScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.spacer())
             OutlinedTextField(
+                modifier = Modifier.width(300.dp),
                 value = wKeep,
                 onValueChange = { wKeep = it },
-                label = { Text(text = "What keep you from working-out?", color = Color.Gray) },
+                label = { Text(text = "O que te impede?", color = Color.Gray) },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Color.White,
@@ -138,9 +145,10 @@ fun EditProfileScreen(navController: NavHostController) {
             )
             Spacer(modifier = Modifier.spacer())
             OutlinedTextField(
+                modifier = Modifier.width(300.dp),
                 value = bio,
                 onValueChange = { bio = it },
-                label = { Text(text = "Biography", color = Color.Gray) },
+                label = { Text(text = "Bio", color = Color.Gray) },
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     unfocusedBorderColor = Color.White,
                     focusedBorderColor = Color.White,

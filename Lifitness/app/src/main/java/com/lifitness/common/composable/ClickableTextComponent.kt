@@ -13,10 +13,10 @@ import com.lifitness.app.LifitnessScreen
 
 @Composable
 fun ClickablePolicyTextAndTermsTextComponent(text: String) {
-    val initialText = "By continuing you accept our "
-    val privacyPolicyText = "Privacy policy "
-    val andText = "and "
-    val termsAndConditionslText = "Term of Use"
+    val initialText = "Continuando voce aceita nossa "
+    val privacyPolicyText = "Política de privacidade "
+    val andText = "e "
+    val termsAndConditionslText = "Termo de uso"
 
     val annotatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(Color.White)) {
@@ -48,7 +48,7 @@ fun ClickablePolicyTextAndTermsTextComponent(text: String) {
 
 @Composable
 fun ClickableLoginTextComponent(text: String, onClick: () -> Unit) {
-    val initialText = "Already hava an account? "
+    val initialText = "Já tem conta? "
     val loginText = "Login"
 
     val annotatedString = buildAnnotatedString {
@@ -72,7 +72,7 @@ fun ClickableLoginTextComponent(text: String, onClick: () -> Unit) {
 
 @Composable
 fun ClickableForgotYouPasswordTextComponent(text: String) {
-    val text = "Forgot your password? "
+    val text = "Esqueceu a senha? "
 
     val annotatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(Color(173, 216, 230))) {
@@ -91,8 +91,8 @@ fun ClickableForgotYouPasswordTextComponent(text: String) {
 
 @Composable
 fun ClickableDontHaveAnAccountTextComponent(text: String, onClick: () -> Unit) {
-    val initialText = "Don't hava an account yet? "
-    val registerText = "Register"
+    val initialText = "Não tem conta ainda? "
+    val registerText = "Cadastrar"
 
     val annotatedString = buildAnnotatedString {
         withStyle(style = SpanStyle(Color.White)) {

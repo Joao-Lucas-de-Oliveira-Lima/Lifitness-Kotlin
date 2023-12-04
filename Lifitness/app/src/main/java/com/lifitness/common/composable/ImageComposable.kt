@@ -28,7 +28,8 @@ fun ImageProfile(painter: Painter) {
             contentDescription = "User profile picture",
             modifier = Modifier
                 .size(120.dp)
-                .clip(CircleShape)
+                .clip(CircleShape),
+            contentScale = ContentScale.Crop
         )
     }
 }

@@ -31,9 +31,11 @@ import com.lifitness.model.Train
 import com.lifitness.model.User
 import com.lifitness.model.createSingleMock
 import com.lifitness.screens.exerciseList.student.ExerciseListViewModel
+import com.lifitness.screens.progress.ProgressViewModel
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.CardGreen
 import com.lifitness.ui.theme.GrayCard
+
 
 val trains: List<Train> = createSingleMock().trains
 
@@ -44,9 +46,9 @@ fun TableChartComposable(){
         .padding(5.dp)) {
         Row (horizontalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier.fillMaxWidth()){
-            Text(text = "Exercises", color = Color.White)
-            Text(text = "Train", color = Color.White)
-            Text(text = "Duration", color = Color.White)
+            Text(text = "Exercícios", color = Color.White)
+            Text(text = "Treino", color = Color.White)
+            Text(text = "Duração", color = Color.White)
         }
         Spacer(modifier = Modifier.spacer())
         LazyColumn(modifier = Modifier
