@@ -38,11 +38,16 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditProfileScreen(navController: NavHostController) {
+
     val editProfileViewModel: EditProfileViewModel = EditProfileViewModel()
     val userSingleton = LoggedInUserSingleton.getInstance()
     var goal by remember { mutableStateOf(userSingleton.goal) }
     var height by remember { mutableStateOf(userSingleton.height.toString()) }
-    var weight by remember { mutableStateOf(userSingleton.weights.last().toString()) }
+    var weightFieldLabel = ""
+    if(userSingleton.weights.isNotEmpty()){
+        weightFieldLabel = userSingleton.weights.last().toString()
+    }
+    var weight by remember { mutableStateOf(weightFieldLabel) }
     var aLevel by remember { mutableStateOf(userSingleton.activityLevel) }
     var wKeep by remember { mutableStateOf(userSingleton.impediments) }
     var bio by remember { mutableStateOf(userSingleton.bio) }

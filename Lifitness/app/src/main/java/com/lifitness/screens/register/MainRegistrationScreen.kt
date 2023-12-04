@@ -1,6 +1,7 @@
 package com.lifitness.screens.register
 
 import ButtonWithoutIconComposable
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -62,6 +63,9 @@ import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.common.composable.RegistrationProgressBarComposable
+import com.lifitness.singleton.LoggedInUserSingleton
+import com.stevdzasan.onetap.OneTapSignInWithGoogle
+import com.stevdzasan.onetap.rememberOneTapSignInState
 
 
 @Composable
@@ -76,7 +80,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
     }
 
     var isNavigationDone by remember { mutableStateOf(false) }
-
+    val userSingleton = LoggedInUserSingleton.getInstance()
 
     Box(
         modifier = Modifier
@@ -95,12 +99,30 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 }
             }
         }
-
         if (!state.isLoading && state.isSuccessLogin && !isNavigationDone) {
             navController.navigate(LifitnessScreen.PersonalData.name)
             isNavigationDone = true
         }
-
+        val googleAuth = rememberOneTapSignInState()
+        OneTapSignInWithGoogle(
+            state = googleAuth,
+            clientId = stringResource(id = R.string.web_client_Id),
+            onTokenIdReceived = { tokenId ->
+                viewModel.authenticateGoogleWithFirebase(context, tokenId)
+                if (!state.isLoading && !isNavigationDone) {
+                    if (userSingleton.personal) {
+                        navController.navigate(LifitnessScreen.HomePersonal.name)
+                    } else {
+                        navController.navigate(LifitnessScreen.Home.name)
+                    }
+                    isNavigationDone = true
+                }
+                Log.d("Token", tokenId)
+            },
+            onDialogDismissed = { message ->
+                Log.d("Token", message)
+            }
+        )
         Box(
             modifier = Modifier.align(Alignment.Center)
         ) {
@@ -384,7 +406,7 @@ fun MainRegistrationScreen(navController: NavHostController) {
                     GoogleLoginButton(
                         23,
                         Color.White
-                    ) { navController.navigate(LifitnessScreen.Home.name) }
+                    ) { googleAuth.open() }
                     FacebookLoginButton(
                         size = 23,
                         buttonColor = Color.White

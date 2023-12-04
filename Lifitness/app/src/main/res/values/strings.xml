@@ -2,6 +2,8 @@
 
     <string name="app_name">Lifitness</string>
 
+    <string name="web_client_Id">209633528508-2js4s4navi2evaqac3s87lcrdrd6i810.apps.googleusercontent.com</string>
+
     <!--Main registration and login Screen-->
 
     <string name="divisive_text">or</string>

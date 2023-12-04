@@ -1,5 +1,6 @@
 package com.lifitness.common.composable
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lifitness.R
+import com.stevdzasan.onetap.OneTapSignInWithGoogle
 
 @Composable
 fun GoogleLoginButton(size: Int, buttonColor : Color, onClick : () -> Unit) {

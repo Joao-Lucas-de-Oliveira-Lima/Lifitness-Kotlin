@@ -1,6 +1,7 @@
 package com.lifitness.screens.login
 
 import ButtonWithoutIconComposable
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -46,7 +47,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -61,6 +61,8 @@ import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
 import com.lifitness.model.createSingleMock
 import com.lifitness.singleton.LoggedInUserSingleton
+import com.stevdzasan.onetap.OneTapSignInWithGoogle
+import com.stevdzasan.onetap.rememberOneTapSignInState
 
 val user = createSingleMock()
 
@@ -78,6 +80,8 @@ fun LoginScreen(navController: NavHostController) {
     }
 
     var isNavigationDone by remember { mutableStateOf(false) }
+
+    val googleAuth = rememberOneTapSignInState()
 
     Box(
         modifier = Modifier
@@ -97,13 +101,33 @@ fun LoginScreen(navController: NavHostController) {
             }
         }
         if (!state.isLoading && state.isSuccessLogin && !isNavigationDone) {
-            if(userSingleton.personal){
+            if (userSingleton.personal) {
                 navController.navigate(LifitnessScreen.HomePersonal.name)
-            }else{
+            } else {
                 navController.navigate(LifitnessScreen.Home.name)
             }
             isNavigationDone = true
         }
+        val googleAuth = rememberOneTapSignInState()
+        OneTapSignInWithGoogle(
+            state = googleAuth,
+            clientId = stringResource(id = R.string.web_client_Id),
+            onTokenIdReceived = { tokenId ->
+                viewModel.authenticateGoogleWithFirebase(context, tokenId)
+                if (!state.isLoading && !isNavigationDone) {
+                    if (userSingleton.personal) {
+                        navController.navigate(LifitnessScreen.HomePersonal.name)
+                    } else {
+                        navController.navigate(LifitnessScreen.Home.name)
+                    }
+                    isNavigationDone = true
+                }
+                Log.d("Token", tokenId)
+            },
+            onDialogDismissed = { message ->
+                Log.d("Token", message)
+            }
+        )
         Box(
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
@@ -268,11 +292,7 @@ fun LoginScreen(navController: NavHostController) {
                             25,
                             Color.White
                         ) {
-                            if (user.personal) {
-
-                            } else {
-                                navController.navigate(LifitnessScreen.Home.name)
-                            }
+                            googleAuth.open()
                         }
                         FacebookLoginButton(
                             size = 25,

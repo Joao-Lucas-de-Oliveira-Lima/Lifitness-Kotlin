@@ -1,12 +1,16 @@
 package com.lifitness.screens.login
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.lifitness.domain.use_case.ValidateEmail
 import com.lifitness.domain.use_case.ValidatePassword
 import com.lifitness.repository.AuthRepository
@@ -96,7 +100,7 @@ class LoginScreenViewModel(
                             val weightsArray = userData["weights"] as? MutableList<Int>
                             weightsArray?.let { userSingleton.weights.addAll(it) }
                         }
-                        state = state.copy(isSuccessLogin = true)
+                        //state = state.copy(isSuccessLogin = true)
                     }
                 } else {
                     Toast.makeText(
@@ -118,4 +122,55 @@ class LoginScreenViewModel(
         object Success : ValidationEvent()
     }
 
+    fun authenticateGoogleWithFirebase(context: Context, token: String) {
+        val auth = Firebase.auth
+        try {
+            state = state.copy(isLoading = true)
+            Toast.makeText(
+                context, "success Login", Toast.LENGTH_SHORT
+            ).show()
+            val credential = GoogleAuthProvider.getCredential(token, null)
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        viewModelScope.launch {
+                            state = state.copy(isSuccessLogin = true)
+                            // User is signed in with Firebase successfully
+                            val firebaseUser = auth.currentUser
+                            if (firebaseUser != null) {
+                                userSingleton.firebaseAuthenticationUid = firebaseUser.uid
+                                val userData = userRepository.getUserByUid()
+                                if (userData != null) {
+                                    //todo
+                                    userSingleton.username = userData["username"].toString()
+                                    userSingleton.email = userData["email"].toString()
+                                    userSingleton.age = userData["age"].toString().toInt()
+                                    userSingleton.height = userData["height"].toString().toInt()
+                                    userSingleton.personal =
+                                        userData["personal"].toString().toBoolean()
+                                    userSingleton.impediments = userData["impediments"].toString()
+                                    userSingleton.activityLevel =
+                                        userData["activityLevel"].toString()
+                                    userSingleton.goal = userData["goal"].toString()
+                                    userSingleton.bio = userData["bio"].toString();
+                                    val weightsArray = userData["weights"] as? MutableList<Int>
+                                    weightsArray?.let { userSingleton.weights.addAll(it) }
+                                }
+                            }
+                            Log.d(
+                                "Firebase",
+                                "Firebase Authentication Successful: ${firebaseUser?.uid}"
+                            )
+                        }
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("Firebase", "Firebase Authentication Failed", task.exception)
+                    }
+                }
+        } catch (e: Exception) {
+
+        } finally {
+            state = state.copy(isLoading = false)
+        }
+    }
 }
