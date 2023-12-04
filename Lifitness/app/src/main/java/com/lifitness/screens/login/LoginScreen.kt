@@ -117,8 +117,8 @@ fun LoginScreen(navController: NavHostController) {
             onTokenIdReceived = { tokenId ->
                 viewModel.authenticateGoogleWithFirebase(context, tokenId)
                 if (!state.isLoading && !isNavigationDone) {
-                    if (userSingleton.personal) {
-                        navController.navigate(LifitnessScreen.HomePersonal.name)
+                    if (userSingleton.age == 0) {
+                        navController.navigate(LifitnessScreen.PersonalData.name)
                     } else {
                         navController.navigate(LifitnessScreen.Home.name)
                     }
