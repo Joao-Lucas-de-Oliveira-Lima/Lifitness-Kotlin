@@ -84,9 +84,7 @@ fun LoginScreen(navController: NavHostController) {
 
     val googleAuth = rememberOneTapSignInState()
 
-    val googleAuth = rememberOneTapSignInState()
-
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.screen_background_color))

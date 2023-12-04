@@ -11,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.lifitness.domain.use_case.CheckingDuplicateUsername
 import com.lifitness.domain.use_case.ValidateEmail
 import com.lifitness.domain.use_case.ValidatePassword
 import com.lifitness.domain.use_case.ValidateRepeatedPassword
@@ -29,7 +30,8 @@ class MainRegistrationScreenViewModel(
     private val validateEmail: ValidateEmail = ValidateEmail(),
     private val validatePassword: ValidatePassword = ValidatePassword(),
     private val validateRepeatedPassword: ValidateRepeatedPassword = ValidateRepeatedPassword(),
-    private val validateTerms: ValidateTerms = ValidateTerms()
+    private val validateTerms: ValidateTerms = ValidateTerms(),
+    private val checkingDuplicateUsername : CheckingDuplicateUsername = CheckingDuplicateUsername()
 ) : ViewModel() {
 
     var state by mutableStateOf(MainRegistrationScreenFormState())
@@ -96,7 +98,6 @@ class MainRegistrationScreenViewModel(
             return
         }
         viewModelScope.launch {
-
             validationEventChannel.send(ValidationEvent.Success)
         }
     }
@@ -106,19 +107,26 @@ class MainRegistrationScreenViewModel(
         val userSingleton = LoggedInUserSingleton.getInstance()
         try {
             state = state.copy(isLoading = true)
-            repository.createUser(
-                state.email,
-                state.password
-            ) { isSuccessful ->
-                if (isSuccessful) {
-                    //todo
-                    userSingleton.email = state.email
-                    userSingleton.username = state.username
-                    state = state.copy(isSuccessLogin = true)
-                } else {
-                    state = state.copy(isSuccessLogin = false)
-                }
+            val usernameResult = checkingDuplicateUsername.execute(state.username)
+            if(!usernameResult.successful){
+                Log.d("Username", usernameResult.errorMessage.orEmpty())
+                state = state.copy(usernameError = usernameResult.errorMessage)
+                state = state.copy(isSuccessLogin = false)
+            }else{
+                repository.createUser(
+                    state.email,
+                    state.password
+                ) { isSuccessful ->
+                    if (isSuccessful) {
+                        //todo
+                        userSingleton.email = state.email
+                        userSingleton.username = state.username
+                        state = state.copy(isSuccessLogin = true)
+                    } else {
+                        state = state.copy(isSuccessLogin = false)
+                    }
 
+                }
             }
         } catch (e: Exception) {
             //loginUiState = loginUiState.copy(signUpError = e.localizedMessage)
