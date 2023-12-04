@@ -129,7 +129,7 @@ fun FoodScreen(
                         fontSize = 16.sp,
                     )
                     Text(
-                        text = diet.dietNutricionalTable[1],
+                        text = diet.dietNutricionalTable[2],
                         color = TextColor,
                         fontSize = 16.sp,
                     )
@@ -148,7 +148,7 @@ fun FoodScreen(
                         fontSize = 16.sp,
                     )
                     Text(
-                        text = diet.dietNutricionalTable[2],
+                        text = diet.dietNutricionalTable[1],
                         color = TextColor,
                         fontSize = 16.sp,
                     )

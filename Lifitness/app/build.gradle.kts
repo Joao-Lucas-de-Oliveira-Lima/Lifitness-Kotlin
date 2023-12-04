@@ -115,7 +115,7 @@ dependencies {
     implementation("androidx.compose.material:material:1.1.0-alpha06")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-    implementation("io.coil-kt:coil-compose:1.3.2")
+    implementation("io.coil-kt:coil-compose:1.4.0")
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.28")
 
     implementation("com.github.stevdza-san:OneTapCompose:1.0.9")

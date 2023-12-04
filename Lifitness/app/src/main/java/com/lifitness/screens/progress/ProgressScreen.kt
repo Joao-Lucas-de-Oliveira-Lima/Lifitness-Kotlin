@@ -38,7 +38,7 @@ fun ProgressScreen(navController: NavHostController){
         ProgressTitle()
         Spacer(modifier = Modifier.spacer())
         Text(
-            text = "Weight line chart",
+            text = "Gráfico do peso",
             color = TextColor,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
@@ -50,7 +50,7 @@ fun ProgressScreen(navController: NavHostController){
         }
         Spacer(modifier = Modifier.spacer())
         Text(
-            text = "Training history",
+            text = "Histórico de treinos",
             color = TextColor,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),

@@ -59,6 +59,7 @@ import com.lifitness.common.composable.FacebookLoginButton
 import com.lifitness.common.composable.GoogleLoginButton
 import com.lifitness.common.composable.LogoComponent
 import com.lifitness.common.composable.NormalTextComposable
+import com.lifitness.common.ext.spacer
 import com.lifitness.model.createSingleMock
 import com.lifitness.singleton.LoggedInUserSingleton
 import com.stevdzasan.onetap.OneTapSignInWithGoogle
@@ -83,11 +84,14 @@ fun LoginScreen(navController: NavHostController) {
 
     val googleAuth = rememberOneTapSignInState()
 
+    val googleAuth = rememberOneTapSignInState()
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.screen_background_color))
     ) {
+        Spacer(modifier = Modifier.spacer())
         val viewModel = viewModel<LoginScreenViewModel>()
         val state = viewModel.state
         val context = LocalContext.current
@@ -129,7 +133,7 @@ fun LoginScreen(navController: NavHostController) {
             }
         )
         Box(
-            modifier = Modifier.align(Alignment.TopCenter)
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Column(
                 modifier = Modifier
