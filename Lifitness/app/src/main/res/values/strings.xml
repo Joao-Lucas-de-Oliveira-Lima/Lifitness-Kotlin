@@ -4,66 +4,66 @@
 
     <!--Main registration and login Screen-->
 
-    <string name="divisive_text">or</string>
-    <string name="edit_title">EDIT PROFILE</string>
-    <string name="greeting_text">Hey there,</string>
-    <string name="sign_up_username_field">username</string>
-    <string name="sign_up_password_field">password</string>
+    <string name="divisive_text">ou</string>
+    <string name="edit_title">EDITAR PERFIL</string>
+    <string name="greeting_text">Olá</string>
+    <string name="sign_up_username_field">nome</string>
+    <string name="sign_up_password_field">senha</string>
 
     <!--Main registration Screen-->
 
-    <string name="next_title">next</string>
+    <string name="next_title">próximo</string>
     <string name="sign_up_email_field">email</string>
-    <string name="welcome_back_text">Welcome Back</string>
-    <string name="create_an_account_text">Create an Account</string>
-    <string name="sign_up_retype_your_password_field">confirm password</string>
-    <string name="return_to_login_screen_text">Already hava an account? Login</string>
-    <string name="privacy_policy_and_terms_of_use_text">By continuing you accept our Privacy Policy and Terms of Use</string>
+    <string name="welcome_back_text">Bem-vindo de volta</string>
+    <string name="create_an_account_text">Crie uma conta</string>
+    <string name="sign_up_retype_your_password_field">confirme a senha</string>
+    <string name="return_to_login_screen_text">Já tem uma conta? Login</string>
+    <string name="privacy_policy_and_terms_of_use_text">Continuando você aceita nossos termos de uso e políticas de privacidade</string>
 
     <!--Personal Data Registration Screen-->
 
-    <string name="personal_data_registration_screen_age_field">Age</string>
-    <string name="personal_data_registration_screen_height_field">Height (cm)</string>
-    <string name="personal_data_registration_screen_weight_field">Weight (kg)</string>
-    <string name="personal_data_registration_screen_greeting_text">To help our professionals offer a service made especially for you</string>
+    <string name="personal_data_registration_screen_age_field">Idade</string>
+    <string name="personal_data_registration_screen_height_field">Altura (cm)</string>
+    <string name="personal_data_registration_screen_weight_field">Peso (kg)</string>
+    <string name="personal_data_registration_screen_greeting_text">Para nos ajudar a entregar um serviço melhor:</string>
 
     <!--Login Screen-->
 
     <string name="login_title">login</string>
-    <string name="forgot_your_password_text">Forgot your password?</string>
-    <string name="dont_hava_an_account_text">Don\'t hava an account yet? Register</string>
+    <string name="forgot_your_password_text">Esqueceu sua senha?</string>
+    <string name="dont_hava_an_account_text">Não tem conta ainda? Cadastre-se</string>
 
     <!--Profile Screen-->
 
-    <string name="more_title">PROFILE</string>
-    <string name="settings_title">SETTINGS</string>
+    <string name="more_title">PERFIL</string>
+    <string name="settings_title">CONFIGURAÇÕES</string>
 
     <!--Goal Registration Screen-->
-    <string name="to_lose_weight_option">TO LOSE WEIGHT</string>
-    <string name="to_become_strong_option">TO BECOME STRONG</string>
-    <string name="to_gain_lean_mass_option">TO GAIN LEAN MASS</string>
-    <string name="to_be_healthy_option">TO BE HEALTHY</string>
+    <string name="to_lose_weight_option">PERDER PESO</string>
+    <string name="to_become_strong_option">FICAR MAIS FORTE</string>
+    <string name="to_gain_lean_mass_option">GANHAR MASSA MAGRA</string>
+    <string name="to_be_healthy_option">SER SAUDÁVEL</string>
 
     <!--Physical Activity Level Registration Screen-->
-    <string name="sedentary_option">SEDENTARY</string>
-    <string name="slightly_active_option">SLIGHTLY ACTIVE</string>
-    <string name="active_option">ACTIVE</string>
-    <string name="very_active_option">VERY ACTIVE</string>
-    <string name="almost_no_exercise_description">ALMOST NO EXERCISE</string>
-    <string name="up_to_2_hours_of_exercise_per_week_description">UP TO 2 HOURS OF EXERCISE PER WEEK</string>
-    <string name="up_to_4_hours_of_exercise_per_week_description">UP TO 4 HOURS OF EXERCISE PER WEEK</string>
-    <string name="more_than_4_hours_of_exercise_per_week_description">MORE THAN 4 HOURS OF EXERCISE PER WEEK</string>
+    <string name="sedentary_option">SEDENTÁRIO</string>
+    <string name="slightly_active_option">LEVEMENTE ATIVO</string>
+    <string name="active_option">ATIVO</string>
+    <string name="very_active_option">MUITO ATIVO</string>
+    <string name="almost_no_exercise_description">QUASE NÃO FAÇO EXERCÍCIO</string>
+    <string name="up_to_2_hours_of_exercise_per_week_description">ATÉ 2 HORAS DE EXERCÍCIO POR SEMANA</string>
+    <string name="up_to_4_hours_of_exercise_per_week_description">ATÉ 4 HORAS DE EXERCÍCIO POR SEMANA</string>
+    <string name="more_than_4_hours_of_exercise_per_week_description">MAIS DE 4 HORAS DE EXERCÍCIO POR SEMANA</string>
 
     <!--Impediments Registration Screen-->
-    <string name="no_motivation_option">NO MOTIVATION</string>
-    <string name="lack_of_knowledge_option">LACK OF KNOWLEDGE</string>
-    <string name="busy_schedule_option">BUSY SCHEDULE</string>
-    <string name="not_enough_guidance_option">NOT ENOUGH GUIDANCE</string>
-    <string name="finish_title">finish</string>
+    <string name="no_motivation_option">SEM MOTIVAÇÃO</string>
+    <string name="lack_of_knowledge_option">FALTA DE CONHECIMENTO</string>
+    <string name="busy_schedule_option">FALTA DE TEMPO</string>
+    <string name="not_enough_guidance_option">SEM ORIENTAÇÃO SUFICIENTE</string>
+    <string name="finish_title">fim</string>
 
     <!--Clients list screen-->
   
-    <string name="clients_title">CLIENTS</string>
+    <string name="clients_title">CLIENTES</string>
   
     <!--Exercises Screen -->
   
@@ -73,7 +73,7 @@
     <string name="intermediate_title">TREINOS INTERMEDIÁRIO</string>
     <string name="hireInstructor_title">CONTRATE UM INSTRUTOR</string>
     <string name="hirePersonalTrainer_title">CONTRATE UM TREINADOR</string>
-    <string name="exercise_title">EXERCISES</string>
+    <string name="exercise_title">EXERCÍCIOS</string>
 
     <!--Diets Screen -->
 
@@ -85,21 +85,21 @@
 
     <!--Food Screen -->
 
-    <string name="food_title">FOOD</string>
+    <string name="food_title">COMIDA</string>
 
     <!--Profile Screen-->
 
-    <string name="progress_title">PROGRESS</string>
+    <string name="progress_title">PROGRESSO</string>
 
     <!--Home Screen -->
-    <string name="home_title">HOME</string>
+    <string name="home_title">PRINCIPAL</string>
 
-    <string name="add_exercise_title">ADD EXERCISE</string>
-    <string name="add_train_title">ADD TRAIN</string>
-    <string name="train_list_title">TRAINS</string>
+    <string name="add_exercise_title">ADICIONAR EXERCÍCIO</string>
+    <string name="add_train_title">ADICIONAR TREINO</string>
+    <string name="train_list_title">TREINOS</string>
 
-    <string name="client_list_title">YOUR CLIENTS</string>
-    <string name="add_client_title">ADD CLIENT</string>
+    <string name="client_list_title">SEUS CLIENTES</string>
+    <string name="add_client_title">ADICIONAR CLIENTES</string>
 
 
 </resources>

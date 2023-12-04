@@ -1,5 +1,6 @@
 package com.lifitness.screens.profile
 
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import com.lifitness.singleton.LoggedInUserSingleton
 

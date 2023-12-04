@@ -24,10 +24,15 @@ import co.yml.charts.ui.linechart.model.SelectionHighlightPoint
 import co.yml.charts.ui.linechart.model.SelectionHighlightPopUp
 import co.yml.charts.ui.linechart.model.ShadowUnderLine
 import com.lifitness.model.createSingleMock
+import com.lifitness.singleton.LoggedInUserSingleton
 import com.lifitness.ui.theme.CardBackground
 import com.lifitness.ui.theme.RedChart
 import com.lifitness.ui.theme.GrayCard
-val weightList: List<Double> = createSingleMock().weight
+
+val user = LoggedInUserSingleton.getInstance()
+val weightList: MutableList<Int> = user.weights
+
+
 
 fun WeightToPoints(): List<Point>{
     val weightPoints: MutableList<Point> = mutableListOf()
