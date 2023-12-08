@@ -386,7 +386,10 @@ fun MainRegistrationScreen(navController: NavHostController) {
                             viewModel.onEvent(MainRegistrationScreenFormEvent.AcceptTerms(it))
                         }
                     )
-                    ClickablePolicyTextAndTermsTextComponent(stringResource(id = R.string.privacy_policy_and_terms_of_use_text))
+                    ClickablePolicyTextAndTermsTextComponent(
+                        stringResource(id = R.string.privacy_policy_and_terms_of_use_text),
+                        navController
+                    )
                 }
                 if (state.termsError != null) {
                     Text(

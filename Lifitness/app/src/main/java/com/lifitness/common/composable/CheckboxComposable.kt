@@ -11,10 +11,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun CheckboxComposable(text: String) {
+fun CheckboxComposable(text: String, navController: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,6 +29,6 @@ fun CheckboxComposable(text: String) {
         Checkbox(checked = isChecked.value, onCheckedChange = {
             isChecked.value = !isChecked.value
         })
-        ClickablePolicyTextAndTermsTextComponent(text)
+        ClickablePolicyTextAndTermsTextComponent(text, navController)
     }
 }

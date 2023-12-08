@@ -12,7 +12,7 @@ import androidx.navigation.NavHostController
 import com.lifitness.app.LifitnessScreen
 
 @Composable
-fun ClickablePolicyTextAndTermsTextComponent(text: String) {
+fun ClickablePolicyTextAndTermsTextComponent(text: String, navController: NavHostController) {
     val initialText = "Continuando voce aceita nossa "
     val privacyPolicyText = "Política de privacidade "
     val andText = "e "
@@ -42,6 +42,12 @@ fun ClickablePolicyTextAndTermsTextComponent(text: String) {
         annotatedString.getStringAnnotations(offset, offset)
             .firstOrNull()?.also { span ->
                 Log.d("clickableTextComponent", "{$span.item}")
+                if ((span.item == termsAndConditionslText)) {
+
+                        Log.d("Termos" ,"termos")
+                        navController.navigate(LifitnessScreen.TermsAndConditions.name)
+
+                }
             }
     })
 }
@@ -110,16 +116,4 @@ fun ClickableDontHaveAnAccountTextComponent(text: String, onClick: () -> Unit) {
             onClick()
         }
     })
-}
-
-@Preview
-@Composable
-fun PreviewClickablepolicyTextAndTermsTextComponent() {
-    ClickablePolicyTextAndTermsTextComponent("Preview")
-}
-
-@Preview
-@Composable
-fun PreviewClickableLoginTextComponent() {
-    ClickablePolicyTextAndTermsTextComponent(text = "preview")
 }

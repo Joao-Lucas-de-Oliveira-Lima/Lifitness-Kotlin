@@ -21,7 +21,7 @@
     <string name="sign_up_retype_your_password_field">confirme a senha</string>
     <string name="return_to_login_screen_text">Já tem uma conta? Login</string>
     <string name="privacy_policy_and_terms_of_use_text">Continuando você aceita nossos termos de uso e políticas de privacidade</string>
-
+    <string name="terms_and_conditions_header">Termos de uso</string>
     <!--Personal Data Registration Screen-->
 
     <string name="personal_data_registration_screen_age_field">Idade</string>
