@@ -423,23 +423,22 @@ fun MainRegistrationScreen(navController: NavHostController) {
                 Spacer(modifier = Modifier.height(2.dp))
                 Row(
                     modifier = Modifier.width(230.dp),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
+
                     GoogleLoginButton(
                         23,
                         Color.White
                     ) { googleAuth.open() }
-                    FacebookLoginButton(
-                        size = 23,
-                        buttonColor = Color.White
-                    ) { navController.navigate(LifitnessScreen.Home.name) }
+                    ClickableLoginTextComponent(
+                        text = stringResource(id = R.string.create_an_account_text)
+                    ) { navController.navigate(LifitnessScreen.Login.name) }
                 }
                 //
                 Spacer(modifier = Modifier.height(2.dp))
                 //ClickableLoginTextComponent
-                ClickableLoginTextComponent(
-                    text = stringResource(id = R.string.create_an_account_text)
-                ) { navController.navigate(LifitnessScreen.Login.name) }
+
 
                 Spacer(modifier = Modifier.height(15.dp))
                 if (state.isLoading){

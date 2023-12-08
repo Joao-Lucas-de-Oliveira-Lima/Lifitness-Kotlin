@@ -54,6 +54,7 @@ import com.lifitness.R
 import com.lifitness.app.LifitnessScreen
 import com.lifitness.common.composable.ClickableDontHaveAnAccountTextComponent
 import com.lifitness.common.composable.ClickableForgotYouPasswordTextComponent
+import com.lifitness.common.composable.ClickableLoginTextComponent
 import com.lifitness.common.composable.DividerTextComposable
 import com.lifitness.common.composable.FacebookLoginButton
 import com.lifitness.common.composable.GoogleLoginButton
@@ -288,32 +289,18 @@ fun LoginScreen(navController: NavHostController) {
                     Spacer(modifier = Modifier.height(5.dp))
                     Row(
                         modifier = Modifier.width(230.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
+
                         GoogleLoginButton(
-                            25,
+                            23,
                             Color.White
-                        ) {
-                            googleAuth.open()
-                        }
-                        FacebookLoginButton(
-                            size = 25,
-                            buttonColor = Color.White
-                        ) {
-                            if (user.personal) {
-                                navController.navigate(LifitnessScreen.HomePersonal.name)
-                            } else {
-                                navController.navigate(LifitnessScreen.Home.name)
-                            }
-                        }
+                        ) { googleAuth.open() }
+                        ClickableLoginTextComponent(
+                            text = stringResource(id = R.string.create_an_account_text)
+                        ) { navController.navigate(LifitnessScreen.Login.name) }
                     }
-                    Spacer(modifier = Modifier.height(10.dp))
-                    ClickableDontHaveAnAccountTextComponent(
-                        text = stringResource(id = R.string.dont_hava_an_account_text),
-                        onClick = {
-                            navController.navigate(LifitnessScreen.Register.name)
-                        }
-                    )
                     Spacer(modifier = Modifier.height(15.dp))
                     if (state.isLoading) {
                         CircularProgressIndicator(
