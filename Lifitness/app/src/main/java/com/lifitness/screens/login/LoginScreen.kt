@@ -287,7 +287,7 @@ fun LoginScreen(navController: NavHostController) {
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     Row(
-                        modifier = Modifier.width(260.dp),
+                        modifier = Modifier.width(280.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
