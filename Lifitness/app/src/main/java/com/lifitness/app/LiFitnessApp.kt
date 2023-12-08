@@ -40,6 +40,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.lifitness.R
+import com.lifitness.common.composable.PrivacyTermsScreen
 import com.lifitness.common.composable.TermsAndConditionsScreen
 import com.lifitness.model.createSingleMock
 import com.lifitness.screens.addExercise.AddExerciseScreen
@@ -74,6 +75,7 @@ import kotlinx.serialization.json.Json
 
 enum class LifitnessScreen {
     TermsAndConditions,
+    PrivacyTerms,
     Login,
     Register,
     PersonalData,
@@ -211,6 +213,10 @@ fun LiFitnessApp() {
                 }
                 composable(LifitnessScreen.TermsAndConditions.name) {
                     TermsAndConditionsScreen()
+                    isLoginScreenDisplayed = true
+                }
+                composable(LifitnessScreen.TermsAndConditions.name) {
+                    PrivacyTermsScreen()
                     isLoginScreenDisplayed = true
                 }
                 composable(LifitnessScreen.Register.name) {

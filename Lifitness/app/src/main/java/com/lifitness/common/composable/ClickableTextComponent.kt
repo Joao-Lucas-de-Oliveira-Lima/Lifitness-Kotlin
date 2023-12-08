@@ -43,10 +43,12 @@ fun ClickablePolicyTextAndTermsTextComponent(text: String, navController: NavHos
             .firstOrNull()?.also { span ->
                 Log.d("clickableTextComponent", "{$span.item}")
                 if ((span.item == termsAndConditionslText)) {
-
                         Log.d("Termos" ,"termos")
                         navController.navigate(LifitnessScreen.TermsAndConditions.name)
 
+                }else if((span.item == privacyPolicyText)){
+                        Log.d("Termos" ,"termos")
+                        navController.navigate(LifitnessScreen.PrivacyTerms.name)
                 }
             }
     })

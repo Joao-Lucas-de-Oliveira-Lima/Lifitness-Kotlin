@@ -29,7 +29,7 @@ fun TermsAndConditionsScreen() {
         .background(color = colorResource(id = R.color.screen_background_color))
         .padding(16.dp)) {
 
-        HeadingTextComponent(value = stringResource(id = R.string.terms_and_conditions_header))
+        //HeadingTextComponent(value = stringResource(id = R.string.terms_and_conditions_header))
         Column(
             modifier = Modifier
                 .fillMaxSize()
