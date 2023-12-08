@@ -215,7 +215,7 @@ fun LiFitnessApp() {
                     TermsAndConditionsScreen()
                     isLoginScreenDisplayed = true
                 }
-                composable(LifitnessScreen.TermsAndConditions.name) {
+                composable(LifitnessScreen.PrivacyTerms.name) {
                     PrivacyTermsScreen()
                     isLoginScreenDisplayed = true
                 }
