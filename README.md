@@ -1,6 +1,6 @@
 # Lifitness
 
-O Lifitness é uma aplicação completa e intuitiva para o gerenciamento de dietas e treinos, projetada para ajudar você a atingir seus objetivos de condicionamento físico de maneira eficaz e conveniente. Com Lifitness, você terá todas as ferramentas necessárias para alcançar uma vida mais saudável e ativa ao seu alcance.
+O Lifitness é uma aplicação completa e intuitiva para o gerenciamento de dietas e treinos, projetada para ajudar você a atingir seus objetivos de condicionamento físico de maneira eficaz e conveniente. Com Lifitness, você terá todas as ferramentas necessárias para alcançar uma vida mais saudável e ativa ao seu alcance.  
 
 ![Lifitness Logo](https://github.com/Joao-Lucas-de-Oliveira-Lima/Lifitness-Kotlin/blob/main/public/LifitnessLogo.png)
 
